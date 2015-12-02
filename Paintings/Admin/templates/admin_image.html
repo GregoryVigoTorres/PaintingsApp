@@ -1,0 +1,77 @@
+
+
+{% extends 'admin_base.html' %}
+{% block container %}
+
+
+<form class="admin-form"
+        id="image-form"
+        method="POST"
+        enctype="multipart/form-data"  >
+        
+    <h3>{{ page_title|safe }}</h3>
+
+    <p>add a <a href="{{ url_for('Admin.new_image', series_id=series.id) }}">new</a> image</p>
+    <p>see <a href="{{ url_for('Admin.edit_series', _id=series.id) }}">series</a></p>
+
+    <div id="left-col">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        {{ form.id }} 
+        {{ form.auth_token(value=get_auth_token()) }}
+        {{ form.series_id(value=series.id) }}
+        <!-- if image, get medium.id -->
+        {{ form.medium_id }}
+
+        <p id='file-upload'>
+            <label for='image' class='button'>choose a file to upload</label>
+            {{ form.image(accept=".jpg, .jpeg, .png") }}
+        </p>
+        
+        <p id='filename-container'>
+            filename: <span id='filename'></span>
+        </p>
+
+        <p id="padding-color-label-container">
+            {{ form.padding_color.label }}<br> 
+            <span id="padding-color"></span>
+            <p id="padding-color-selector-container">
+                {{ form.padding_color }}
+            </p>
+        </p>
+
+        <p>{{ form.title.label }} {{ form.title }}</p>
+        <p>{{ form.medium.label}} {{form.medium }}</p>
+        <p>{{ form.date.label }} {{ form.date(size=4) }}</p>
+        <p>
+        <label>dimensions in cm w x h</label><br>
+            {{ form.dimensions[0](size=4, placeholder='w') }} x {{ form.dimensions[1](size=4, placeholder='h') }}
+        </p>
+
+
+        <p>
+            <button type="reset" name="reset" value="reset" formmethod="get">reset</button>
+            <button type="submit" name="save" value="save" formmethod="post">save</button>
+            <button type="submit" 
+                    class="confirm-submit"
+                    name="delete" 
+                    value="delete" 
+                    formmethod="post" 
+                    formaction="{{ url_for('Admin.delete_image', image_id=form.id.data) }}">delete</button>
+        </p>
+    </div>
+    <div id="right-col">
+        <canvas 
+         id="image-preview" 
+         height=500 
+         width=500
+         {% if form.filename.data %}
+            data-url="{{ url_for('Images.static', filename=form.filename.data) }}"
+        {% endif %}>
+        </canvas>
+    </div>
+</form>
+
+
+
+
+{% endblock %}

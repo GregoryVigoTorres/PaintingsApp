@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content="width=device-width, initial-scale=1, maximum-scale=1, height=device-height">
+    <title>GregoryVigoTorres</title>
+    <!-- <link href="/static/css/jquery&#45;ui.min.css" media='all' type="text/css" rel="stylesheet"> -->
+    <link href="/static/css/properties.css" media='all' type="text/css" rel="stylesheet">
+
+    {% assets "css" %}
+        <link href="{{ ASSET_URL }}" media="all" type="text/css" rel="stylesheet"></link>
+    {% endassets %}
+
+    {% assets "admin" %}
+        <link href="{{ ASSET_URL }}" media="all" type="text/css" rel="stylesheet"></link>
+    {% endassets %}
+
+    {% assets "jquery" %}
+        <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    
+
+</head>
+<body>
+    <nav>
+        <ul class="menu" >
+            <li class="has-menu">
+                <a href="{{ url_for('Admin.index') }}">series</a>
+                <ul>
+                    {% for ser in all_series() %}
+                        <li>
+                            <a href="{{ url_for('Admin.edit_series', _id=ser.id) }}">{{ ser.title }}</a>
+                        </li>
+                    {% endfor %}
+                    <li><a href="{{ url_for('Admin.newseries') }}">add a new series</a></li>
+                </ul>
+            </li> 
+            <li><a href="{{ url_for('Admin.texts_links') }}">texts &#38; links</a></li>
+            <li><a href="{{ url_for('Admin.contact') }}">contact</a></li>
+        </ul>
+
+        <ul id='username'>
+            <li>
+                <span class="small-type">logged in as:</span> <span id="auth-username">{{ session['auth_username'] }}</span>
+                <ul>
+                    <li><a href="{{ url_for('Admin.logout') }}">logout</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </nav>
+
+    <div id='overlay'>
+    </div>
+    <div id="message-container">
+        <span id="close-overlay">x</span>
+        <ul class='messages'>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                    {% for msg in messages %}
+                        <li>{{ msg|safe }}</li>
+                    {% endfor %}
+                <script>
+                    $('#message-container').show();
+                    $('#overlay').show();
+                </script>
+            {% endif %}
+        {% endwith %}
+        </ul>
+        <p>
+            <span id="close" class="button"></span>
+            <span id="confirm" class="button"></span>
+        </p>
+    </div>
+
+    <div id="container">
+        {% block container %}{% endblock %} 
+    </div>
+</body>
+<script type="text/javascript" src="{{ url_for('Admin.static', filename='js/admin.js') }}"></script>
+</html>

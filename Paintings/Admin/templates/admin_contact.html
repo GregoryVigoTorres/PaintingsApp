@@ -1,0 +1,43 @@
+{% extends 'admin_base.html' %}
+{% block container %}
+
+<h3>{{ page_title }}</h3>
+
+<p><a href="{{ url_for('Admin.new_contact') }}">add</a> contact info</p>
+
+<table class="contact-table">
+    <thead>
+        <tr><td class="bold" colspan=4>social media</td></tr>
+    </thead>
+    <tbody>
+    {% for p in profiles %}
+        <tr>
+            <td>{{ p.name }}</td>
+            <td><img src="/static/icons/{{ p.icon_filename }}"></td>
+            <td><a href="{{ p.url }}" target=blank>{{ p.url }}</a></td>
+            <td>
+                <a class="button" href="{{ url_for('Admin.edit_contact', _id=p.id) }}">edit</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<table class="contact-table">
+    <thead>
+        <tr><td class="bold" colspan=2>email</td></tr>
+    </thead>
+    <tbody>
+        {% for e in emails %}
+        <tr>
+            <td>{{ e.email }}</td>
+            <td>
+                <a class="button" href="{{ url_for('Admin.edit_contact', _id=e.id) }}">edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+

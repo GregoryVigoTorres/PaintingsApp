@@ -1,0 +1,33 @@
+
+{% extends 'admin_base.html' %}
+{% block container %}
+
+<h3>{{ page_title }}</h3>
+
+<p>add a new <a href="{{ url_for('Admin.new_text_link') }}">text or link</a></p>
+
+<p class="bold">texts</p>
+<table class="edit-texts-links">
+    <tbody>
+    {% for t in texts %}
+        <tr>
+            <td><a href="{{ url_for('Admin.edit_text', text_id=t.id) }}">{{ t.title }}</a></td>
+            <td>{{ t.author }} </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<p class="bold">links</p>
+<table class="edit-texts-links">
+    <tbody>
+    {% for l in links %}
+        <tr>
+            <td>edit <a href="{{ url_for('Admin.edit_link', link_id=l.id) }}">{{ l.label }}</td>
+            <td><a href="{{ l.link_target }}" target="blank">visit link</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+
+
+{% extends 'admin_base.html' %}
+{% block container %}
+
+<h3>{{ page_title|safe }}</h3>
+
+<div id="text-form-container">
+    <form method='post'>
+        {{ form.csrf_token }}
+        {{ form.auth_token(value=get_auth_token()) }}
+        {{ form.id }}
+        <div>
+        <p>
+            <button type="submit" id="submit" name="name" value="link" >save</button>
+            <button type="submit" 
+                    class="confirm-submit"
+                    id="delete" 
+                    name="name" 
+                    value="delete" 
+                    formaction="{{ url_for('Admin.delete_link', link_id=form.id.data)}}">delete</button>
+        </p>
+            {{ form.label.label(class="bold") }} {{ form.label }}
+            {{ form.link_target.label(class="bold") }} {{ form.link_target }}
+        </div>
+        <div>
+            {{ form.description.label(class="bold") }}<br>
+            {{ form.description(cols=60, rows=5) }}
+        </div>
+    </form>
+</div>
+
+{% endblock %}

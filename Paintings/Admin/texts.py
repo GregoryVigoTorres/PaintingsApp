@@ -1,0 +1,183 @@
+from flask import (render_template,
+                   redirect,
+                   request,
+                   url_for,
+                   flash,
+                   jsonify)
+
+from flask.ext.security.decorators import (login_required, auth_token_required) 
+
+from werkzeug.exceptions import NotFound 
+
+from Paintings.Admin.forms.text import (TextForm, LinkForm)
+from .utils import update_model_from_form
+
+from Paintings.lib.utils import flash_form_errors
+from Paintings.core import (db, admin_bp) 
+from Paintings.models.public import Text, Link 
+
+
+@admin_bp.route('/textslinks', methods=['GET'])
+@login_required
+def texts_links():
+    tmpl_args = {'page_title':'all texts and links'}
+    texts = db.session.query(Text).all()
+    links = db.session.query(Link).all()
+
+    return render_template('admin_texts_links.html', texts=texts, links=links, **tmpl_args) 
+
+
+@admin_bp.route('/newtextlink', methods=['GET', 'POST'])
+@login_required
+def new_text_link():
+    """
+       new text OR link 
+    """
+    text_form = TextForm()
+    link_form = LinkForm()
+    tmpl_args = {'page_title':'add a new text or link'}
+
+    if request.method == 'POST':
+        form = None
+        if request.form['name'] == 'text':
+            form = text_form
+            model = Text()
+            next_url = url_for('Admin.edit_text', text_id=text_form.id.data)
+        if request.form['name'] == 'link':
+            form = link_form
+            model = Link()
+            next_url = url_for('Admin.edit_link', link_id=link_form.id.data)
+
+        if not form:
+            return render_template('admin_text.html', 
+                                   text_form=text_form, 
+                                   link_form=link_form, 
+                                   **tmpl_args)
+            
+        valid = form.validate()
+        if not valid:
+            flash_form_errors(form.errors)
+        else:
+            model = update_model_from_form(model, form)
+            db.session.add(model)
+            db.session.commit()
+            name = form.data.get('title') or form.data.get('label')
+            flash('<strong>{} has been added</strong>'.format(name))
+            return redirect(next_url)
+
+    return render_template('admin_text.html', 
+                           text_form=text_form, 
+                           link_form=link_form, 
+                           **tmpl_args)
+
+
+@admin_bp.route('/edittext/<text_id>', methods=['GET', 'POST'])
+@login_required
+def edit_text(text_id):
+    """
+       edit text
+    """
+    text = Text.query.get(text_id)
+    if not text:
+        raise NotFound
+
+    if request.method == 'GET':
+        form = TextForm(obj=text)
+
+    if request.method == 'POST':
+        form = TextForm(request.form)
+    
+    if form.validate_on_submit():
+        db.session.add(text)
+        text = update_model_from_form(text, form)
+        db.session.commit()
+        flash('<strong>&ldquo;{}&rdquo; has been updated</strong>'.format(text.title))
+        return redirect(url_for('Admin.edit_text', text_id=text_id))
+
+    if len(form.errors):
+        flash_form_errors(form.errors)
+
+    tmpl_args = {'page_title': 'edit &ldquo;{}&rdquo;'.format(text.title)}
+
+    return render_template('admin_edit_text.html', text=text, form=form, **tmpl_args)
+
+@admin_bp.route('/editlink/<link_id>', methods=['GET', 'POST'])
+@login_required
+def edit_link(link_id):
+    """
+       edit link 
+    """
+
+    link = Link.query.get(link_id)
+    if not link:
+        raise NotFound
+
+    if request.method == 'GET':
+        form = LinkForm(obj=link)
+
+    if request.method == 'POST':
+        form = LinkForm(request.form)
+    
+    if form.validate_on_submit():
+        db.session.add(link)
+        link = update_model_from_form(link, form)
+        db.session.commit()
+        flash('<strong>&ldquo;{}&rdquo; has been updated</strong>'.format(link.label))
+        return redirect(url_for('Admin.edit_link', link_id=link_id))
+
+    if len(form.errors):
+        flash_form_errors(form.errors)
+
+    tmpl_args = {'page_title': 'edit &ldquo;{}&rdquo;'.format(link.label)}
+
+    return render_template('admin_edit_link.html', link=link, form=form, **tmpl_args)
+
+
+@admin_bp.route('/deletetext/<text_id>', methods=['POST'])
+@login_required
+@auth_token_required
+def delete_text(text_id):
+    """
+       delete text
+       this is ajax
+    """
+    if not request.is_xhr:
+        raise NotFound
+
+    text = Text.query.get(text_id)
+    if not text:
+        raise NotFound
+
+    msg = '{} has been permanently deleted'.format(text.title)
+
+    db.session.add(text)
+    db.session.delete(text)
+    db.session.commit()
+    flash(msg)
+
+    return jsonify({'next': url_for('Admin.texts_links')})
+
+
+@admin_bp.route('/deletelink/<link_id>', methods=['POST'])
+@login_required
+@auth_token_required
+def delete_link(link_id):
+    """
+       delete link
+       this is ajax
+    """
+    if not request.is_xhr:
+        raise NotFound
+
+    link = Link.query.get(link_id)
+    if not link:
+        raise NotFound
+
+    msg = '{} has been permanently deleted'.format(link.label)
+
+    db.session.add(link)
+    db.session.delete(link)
+    db.session.commit()
+    flash(msg)
+
+    return jsonify({'next': url_for('Admin.texts_links')})

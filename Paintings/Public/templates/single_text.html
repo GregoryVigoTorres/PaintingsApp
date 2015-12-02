@@ -1,0 +1,14 @@
+{% extends 'public_base.html' %}
+{% block container %}
+
+
+<div id="content-container">
+    <p><a href="{{ url_for('Public.text_link') }}">&lt;&lt;&nbsp;back</a> to texts</p>
+    <h2 class="text">{{ text.title }}</h2>
+    <h3 class="text">by: {{ text.author}}{% if text.date is not none %}, {{ text.date }} {% endif %}</h3>
+
+    <div id="text-body">
+        {{ text.body }}
+    </div>
+</div>
+{% endblock %}

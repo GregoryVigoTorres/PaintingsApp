@@ -1,0 +1,34 @@
+@font-face {
+    font-family: "MediumSans";
+    src: url("/static/fonts/CooperHewitt/CooperHewitt-Medium.woff");
+    font-style: normal; }
+
+@font-face {
+    font-family: "BoldSans";
+    src: url("/static/fonts/CooperHewitt/CooperHewitt-Bold.woff");
+    font-weight: bold;
+    font-style: normal; }
+
+
+@font-face {
+    font-family: "LightItalic";
+    src: 
+        url("/static/fonts/CooperHewitt/CooperHewitt-LightItalic.woff"),
+        url("/static/fonts/CooperHewitt/CooperHewitt-MediumItalic.eot");
+    }
+
+
+
+
+html {
+    height: 100%
+}
+
+body {
+    height: 100%;
+    font-family: "MediumSans", "Sans";
+}
+
+input {
+    background-color: #ffffff;
+}

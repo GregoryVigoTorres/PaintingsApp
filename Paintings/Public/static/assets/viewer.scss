@@ -1,0 +1,136 @@
+@charset 'UTF-8';
+@import "colors";
+
+@media screen and (min-width: 719px) {
+    #image-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 2.5rem 2.5rem 15rem 2.5rem;
+
+        .image {
+            max-width: 85%;
+            margin: auto;
+
+            img {
+                max-width: 85%;
+            }
+        }
+    }
+
+    #overlay {
+        z-index: 9;
+        display: none;
+        height:100%;
+        width: 100%;
+        opacity: 0.95;
+        background-color: $light-gray;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    #close-viewer {
+        display: none;
+        z-index: 15;
+        font-family: "BoldSans";
+        font-size: 1.5rem;
+        position: absolute;
+        top: 0;
+        left:0;
+        padding: 1rem;
+        background-color: $dark-gray;
+        color: white;
+        cursor: default;
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+
+    #image-info {
+        display: none; 
+        z-index: 12;
+        position: absolute;
+        bottom: 7px;
+        color: $dark-gray;
+
+        .small-font {
+            padding-right: 1rem;
+            padding-left: 2.3rem;
+            text-align: right;
+        }
+
+        td {
+            padding: 2px 26px 2px 6px;
+            text-align: left;
+        }
+    }
+
+    .viewer-open {
+        z-index: 10;
+        text-align: center;
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+
+        canvas {
+            margin: auto;
+        }
+    }
+
+    #viewer-canvas {
+        z-index: 12;
+        opacity: 1.0;
+        background: white;
+    }
+
+    #viewer-count {
+        z-index: 12;
+        position: fixed;
+        bottom: 5%;
+        left: 47%;
+        color: $dark-gray;
+        font-family: "BoldSans";
+        text-align: center;
+    }
+
+    .image {
+        img:hover {
+            opacity: 0.75;
+        }
+    }
+
+    .typcn-arrow-left-thick:before { 
+      content: '\e00d'; /* '' */
+    } 
+
+    .typcn-arrow-right-thick:before { 
+      content: '\e01a'; /* '' */
+    } 
+
+    #back-arrow-container, #forward-arrow-container {
+        z-index: 15;
+        height: 4.6rem;
+        padding: 1.3rem 1rem;
+        text-align: center;
+        background-color: $dark-gray;
+        color: white;
+        font-size: 1.3rem;
+        position: absolute;
+        top: 175px;
+        cursor: default;
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+
+    #back-arrow-container {
+        left: 0px;
+    }
+
+    #forward-arrow-container {
+        right: 0px;
+    }
+}

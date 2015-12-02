@@ -1,0 +1,16 @@
+
+$light-gray: #CECECE;
+$dark-gray: #272727;
+$medium-gray: #585858;
+$footer-height: 7.5rem;
+$link-color: #256EDE;
+
+@mixin light-on-dark {
+    color: $light-gray;
+    background-color: $dark-gray;
+}
+
+@mixin dark-on-light {
+    background-color: $light-gray;
+    color: $dark-gray;
+}

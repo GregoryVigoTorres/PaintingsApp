@@ -1,0 +1,28 @@
+
+{% extends 'public_base.html' %}
+{% block container %}
+
+<h2>Contact Info</h2>
+
+<div id="content-container">
+<table class="contact-info-table">
+    <tbody>
+{% for i in emails %}
+<tr>
+    <td>email</td>
+    <td>
+        <a href="mailto:{{ i.email }}">{{ i.email }}</a>
+    </td>
+</tr>
+{% endfor %}
+
+{% for i in social_media %}
+    <tr>
+        <td><img src="/static/icons/{{ i.icon_filename }}"></td>
+        <td><a href="{{ i.url }}" target="blank">{{ i.name }}</a></td>
+    </tr>
+{% endfor %}
+    </tbody>
+    </table>
+</div>
+{% endblock %}
