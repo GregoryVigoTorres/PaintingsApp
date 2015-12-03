@@ -12,7 +12,6 @@ Ptgs.prototype.eventHandlers = function() {
     });
 
     $('#menu-button-container').on('click', function(event) {
-        // $('nav').slideToggle(60);
         $('nav').toggleClass('open');
         $('body').scrollTop(0); 
     });

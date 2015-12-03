@@ -50,10 +50,10 @@ def create_app(config=None):
     assets = Environment()
     assets.init_app(app)
 
-    jquery = Bundle('js/jquery-2.1.3.min.js', 'js/jquery-ui.min.js', output='js/JQuery.js')
+    jquery = Bundle('js/jquery-2.1.3.min.js', output='js/JQuery.js')
     assets.register('jquery', jquery)
 
-    css = Bundle('css/jquery-ui.min.css', 'css/normalize.css', output='css/base.css')
+    css = Bundle('css/normalize.css', output='css/base.css')
     assets.register('css', css)
 
     security_bundle = Bundle('assets/security.scss', filters='scss', output='css/security.css')
