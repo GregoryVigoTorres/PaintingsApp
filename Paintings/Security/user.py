@@ -39,8 +39,6 @@ def logout():
     if current_user.is_authenticated:
         current_app.logger.info('logged out')
         logout_user()
-        # change redirect to public.index
-        # return 'you have been logged out<br><a href="{}">index</a>'.format(url_for('.login'))
         return redirect(url_for('Public.index'))
     else:
         return '<h1>you are not logged in</h1>'
