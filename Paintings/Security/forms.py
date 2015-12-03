@@ -7,7 +7,6 @@ from flask import (current_app, flash, session)
 
 from flask.ext.security.utils import (get_message, verify_and_update_password)
 
-# from flask.ext.security.forms import LoginForm as Form
 from flask.ext.wtf import Form
 from wtforms import (HiddenField, 
                     StringField, 

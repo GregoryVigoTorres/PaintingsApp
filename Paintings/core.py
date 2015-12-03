@@ -3,7 +3,9 @@ from functools import partial
 from flask import (Blueprint, 
                    current_app, 
                    request_finished, 
-                   _request_ctx_stack)
+                   request_started,
+                   _request_ctx_stack,
+                   session)
 
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask_security.core import current_user
@@ -79,21 +81,26 @@ images_part = partial(_bp_factory,
 
 Blueprints = [admin_bp, public_bp, images_part, thumbnails_part]
 
+
 def no_cookie(app, **kwargs):
     """ Clear cookie before sending response 
-        Except for Admin blueprint
+        Except for Admin blueprint 
+        or when a csrf token is in the session
     """
     if app.testing:
         return None
 
-    if _request_ctx_stack.top.request.blueprint != 'Admin':
+    bp = _request_ctx_stack.top.request.blueprint
+    # don't unset cookie if csrf_token in session 
+    has_csrf = session.get('csrf_token')
+
+    if bp != 'Admin' or has_csrf is None:
         response = kwargs['response']
         del response.headers['Set-Cookie']
 
 
 def get_all_series():
-    """ this should get called before every request because series may change 
-        this should be cached
+    """ template global 
     """
     all_series = db.session.query(Series.title, Series.id).order_by(Series.order).all()
     return all_series
@@ -103,7 +110,7 @@ def add_auth_token():
     """ make current_user auth token available in templates """
     __name__ = 'get_auth_token'
     with current_app.app_context():
-        if current_user and current_user.is_authenticated():
+        if current_user and current_user.is_authenticated:
             return current_user.get_auth_token()
 
 

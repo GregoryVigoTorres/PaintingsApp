@@ -10,7 +10,7 @@ class TestLogin():
         resp = client.get(url)
         assert resp.status_code == 200
 
-    @pytest.mark.options(LOGIN_DISABLED=False)
+    @pytest.mark.options(LOGIN_DISABLED=False, WTF_CSRF_ENABLED=True, WTF_CSRF_CHECK_DEFAULT=True)
     def test_post_valid_login(self, client):
         url = url_for('Admin.login')
         username = current_app.config.get('TEST_USERNAME')

@@ -36,14 +36,13 @@ def login():
 @admin_bp.route('/logout')
 @login_required
 def logout():
-    if current_user.is_authenticated():
+    if current_user.is_authenticated:
         current_app.logger.info('logged out')
         logout_user()
-        # session.clear()
         # change redirect to public.index
-        return 'you have been logged out<br><a href="{}">index</a>'.format(url_for('.login'))
+        # return 'you have been logged out<br><a href="{}">index</a>'.format(url_for('.login'))
+        return redirect(url_for('Public.index'))
     else:
-        # session.clear()
         return '<h1>you are not logged in</h1>'
 
 # @admin_bp.route('/userproperties')
