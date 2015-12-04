@@ -1,9 +1,14 @@
+from pathlib import Path
+import sys
+
 from flask import (render_template,
                    redirect,
                    request,
                    url_for,
                    flash,
-                   jsonify)
+                   jsonify,
+                   current_app)
+
 
 from flask.ext.security.decorators import (login_required, auth_token_required) 
 
@@ -95,7 +100,6 @@ def edit_image(image_id):
 @login_required
 @auth_token_required
 def delete_image(image_id):
-    # the file needs to be "unlinked"
     if not request.is_xhr:
         raise NotFound
 
@@ -104,10 +108,23 @@ def delete_image(image_id):
         raise NotFound
 
     series_id = image.series.id
-    db.session.add(image)
-    db.session.delete(image)
-    db.session.commit()
 
-    flash('&ldquo;{}&rdquo; has been permanently deleted'.format(image.title))
+    try:
+        db.session.delete(image)
 
-    return jsonify({'next': url_for('Admin.edit_series', _id=str(series_id))})
+        img_root = current_app.config['STATIC_IMAGE_ROOT']
+        thumb_root = current_app.config['STATIC_THUMBNAIL_ROOT']
+        img_path = Path(img_root, image.filename)
+        thumb_path = Path(thumb_root, image.filename)
+
+        img_path.unlink()
+        thumb_path.unlink()
+
+        flash('&ldquo;{}&rdquo; has been permanently deleted'.format(image.title))
+        db.session.commit()
+
+        return jsonify({'next': url_for('Admin.edit_series', _id=str(series_id))})
+    except:
+        current_app.log_exception(sys.exc_info())
+        flash('&ldquo;{}&rdquo; could not be deleted'.format(image.title))
+        return jsonify({'next':url_for('Admin.edit_image', image_id=image_id)})
