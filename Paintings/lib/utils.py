@@ -1,5 +1,5 @@
-from flask import flash
 import itertools
+from flask import flash
 
 def flash_form_errors(errors):
     flash('<p>Oops!</p>')
@@ -12,4 +12,3 @@ def flash_form_errors(errors):
             msg = ', '.join(set(msg))
             key = k.replace('_', ' ').title()
         flash('<strong>{}... </strong> {}'.format(key, msg))
-        
