@@ -6,8 +6,10 @@
 
 <p>add a new <a href="{{ url_for('Admin.new_text_link') }}">text or link</a></p>
 
-<p class="bold">texts</p>
 <table class="edit-texts-links">
+    <thead>
+        <tr><td class="bold" colspan=2>texts</td></tr>
+    </thead>
     <tbody>
     {% for t in texts %}
         <tr>
@@ -18,8 +20,10 @@
     </tbody>
 </table>
 
-<p class="bold">links</p>
 <table class="edit-texts-links">
+    <thead>
+        <tr><td class="bold" colspan=2>links</td></tr>
+    </thead>
     <tbody>
     {% for l in links %}
         <tr>

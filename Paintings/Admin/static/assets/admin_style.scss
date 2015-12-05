@@ -24,6 +24,7 @@ a {
 
 .bold {
     font-family: "BoldSans";
+    // margin: 0 0 0 0;
 }
 
 #overlay {
@@ -434,12 +435,6 @@ form {
     }
 }
 
-.edit-texts-links {
-    td {
-        padding: 0 1.2rem 0 0;
-    }
-}
-
 input#icon {
     display: none;
 }
@@ -456,16 +451,15 @@ p#file-upload {
     }
 }
 
-.contact-table {
+.contact-table, .edit-texts-links {
     margin-bottom: 1.7rem;
 
-    thead {
-        background-color: $dark-bg;
-        color: $light-fg;
+    thead tr td {
+        padding: 0 0 .4rem 0;
     }
 
     td {
-        padding: .2rem .5rem 0 .5rem;
+        padding: .2rem .5rem 0 1.5rem;
 
         img {
             height: 1.3rem;
