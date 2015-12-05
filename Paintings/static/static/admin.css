@@ -237,105 +237,119 @@ form button:hover, form .button:hover {
   background-color: #DDDF4B;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003237}}
+@media -sass-debug-info{filename{}line{font-family:\00003236}}
 .admin-form label {
   vertical-align: top;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003241}}
+@media -sass-debug-info{filename{}line{font-family:\00003240}}
 .admin-form button {
   display: inline-block;
   vertical-align: top;
   margin-right: 2em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003247}}
+@media -sass-debug-info{filename{}line{font-family:\00003246}}
 .admin-form #left-col, .admin-form #right-col {
   display: inline-block;
   vertical-align: top;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003252}}
+@media -sass-debug-info{filename{}line{font-family:\00003251}}
 .admin-form #left-col {
   margin-right: 3em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003256}}
+@media -sass-debug-info{filename{}line{font-family:\00003255}}
 .admin-form #dimensions-0, .admin-form #dimensions-1 {
   display: inline-block;
   margin-right: 1em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003261}}
+@media -sass-debug-info{filename{}line{font-family:\00003260}}
 .admin-form #dimensions-1 {
   margin-left: 1em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003265}}
+@media -sass-debug-info{filename{}line{font-family:\00003264}}
 .admin-form #padding-color-label-container {
   display: inline-block;
   vertical-align: top;
   width: 50%;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003271}}
+@media -sass-debug-info{filename{}line{font-family:\00003270}}
 .admin-form #padding-color-selector-container {
   display: inline-block;
   vertical-align: top;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003276}}
+@media -sass-debug-info{filename{}line{font-family:\00003275}}
 .admin-form canvas {
   border: 1px solid black;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003281}}
+@media -sass-debug-info{filename{}line{font-family:\00003280}}
 #show-images-for-series, #images-in-grid, #images-in-rows, #save-image-order {
   font-family: "BoldSans";
   cursor: default;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003285}}
+@media -sass-debug-info{filename{}line{font-family:\00003284}}
 #show-images-for-series:hover, #images-in-grid:hover, #images-in-rows:hover, #save-image-order:hover {
   text-decoration: underline;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003290}}
+@media -sass-debug-info{filename{}line{font-family:\00003289}}
 .series-image-controller {
   display: none;
 }
 
+@media -sass-debug-info{filename{}line{font-family:\00003293}}
+#save-image-order {
+  background: #ffffff;
+  border: 1px solid #000000;
+  font-family: "BoldSans", "sans";
+  margin: 1.5em 1.5em .5em 0;
+  padding: 8px 10px 5px 10px;
+  cursor: pointer;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003301}}
+#save-image-order:hover {
+  background-color: #DDDF4B;
+}
+
 /* little menu for sort by on series page*/
-@media -sass-debug-info{filename{}line{font-family:\00003295}}
+@media -sass-debug-info{filename{}line{font-family:\00003307}}
 #images_order_by {
   cursor: default;
-  display: none;
+  margin-top: .3rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003299}}
+@media -sass-debug-info{filename{}line{font-family:\00003312}}
 #images_order_by ul {
   position: absolute;
   padding: 0px;
   background-color: white;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003305}}
+@media -sass-debug-info{filename{}line{font-family:\00003318}}
 #images_order_by li ul li {
   display: none;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003309}}
+@media -sass-debug-info{filename{}line{font-family:\00003322}}
 #images_order_by li {
   font-family: "BoldSans";
 }
-@media -sass-debug-info{filename{}line{font-family:\00003312}}
+@media -sass-debug-info{filename{}line{font-family:\00003325}}
 #images_order_by li ul {
   background-color: #272727;
   color: #CECECE;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003317}}
+@media -sass-debug-info{filename{}line{font-family:\00003330}}
 #images_order_by li ul li {
   font-family: "MediumSans";
   padding: 4px 3px 2px 5px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003323}}
+@media -sass-debug-info{filename{}line{font-family:\00003336}}
 #images_order_by li:hover ul li {
   display: block;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003325}}
+@media -sass-debug-info{filename{}line{font-family:\00003338}}
 #images_order_by li:hover ul li:hover {
   text-decoration: underline;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003333}}
+@media -sass-debug-info{filename{}line{font-family:\00003346}}
 #series-image-container {
   display: none;
   flex-direction: row;
@@ -343,7 +357,7 @@ form button:hover, form .button:hover {
   justify-content: space-around;
   align-items: baseline;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003341}}
+@media -sass-debug-info{filename{}line{font-family:\00003354}}
 #series-image-container .container {
   margin: 2em;
   min-height: 350px;
@@ -352,23 +366,23 @@ form button:hover, form .button:hover {
   flex-direction: column;
   align-items: left;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003349}}
+@media -sass-debug-info{filename{}line{font-family:\00003362}}
 #series-image-container .container img {
   padding: 1.7em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003353}}
+@media -sass-debug-info{filename{}line{font-family:\00003366}}
 #series-image-container .container p {
   padding: 0 0 1em 0;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003357}}
+@media -sass-debug-info{filename{}line{font-family:\00003370}}
 #series-image-container .container ul {
   padding-left: 1.7em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003361}}
+@media -sass-debug-info{filename{}line{font-family:\00003374}}
 #series-image-container .container li {
   padding: 0;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003366}}
+@media -sass-debug-info{filename{}line{font-family:\00003379}}
 #series-image-container .in-rows {
   padding: 1.5em;
   margin: auto;
@@ -376,45 +390,45 @@ form button:hover, form .button:hover {
   flex-direction: row;
   align-items: flex-start;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003373}}
+@media -sass-debug-info{filename{}line{font-family:\00003386}}
 #series-image-container .in-rows ul {
   margin-top: 4em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003379}}
+@media -sass-debug-info{filename{}line{font-family:\00003392}}
 #series-image-container .odd {
   background-color: #DFDDDD;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003386}}
+@media -sass-debug-info{filename{}line{font-family:\00003399}}
 #image-form #file-upload input {
   display: none;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003391}}
+@media -sass-debug-info{filename{}line{font-family:\00003404}}
 #image-form #filename-container {
   width: 15em;
   word-wrap: break-word;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003397}}
+@media -sass-debug-info{filename{}line{font-family:\00003410}}
 #text-form-container {
   margin-top: 1.3rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003400}}
+@media -sass-debug-info{filename{}line{font-family:\00003413}}
 #text-form-container div {
   display: inline-block;
   vertical-align: top;
   padding-right: 4rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003405}}
+@media -sass-debug-info{filename{}line{font-family:\00003418}}
 #text-form-container div p {
   text-align: center;
   margin: 0 0 0 1rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003411}}
+@media -sass-debug-info{filename{}line{font-family:\00003424}}
 #text-form-container input[type=text] {
   margin-bottom: 1.3rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003415}}
+@media -sass-debug-info{filename{}line{font-family:\00003428}}
 #text-form-container textarea {
   margin: 1.3rem 0 1.3rem 0;
   padding: 1.2rem;
@@ -423,41 +437,41 @@ form button:hover, form .button:hover {
   resize: vertical;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003425}}
+@media -sass-debug-info{filename{}line{font-family:\00003438}}
 .edit-texts-links td {
   padding: 0 1.2rem 0 0;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003430}}
+@media -sass-debug-info{filename{}line{font-family:\00003443}}
 input#icon {
   display: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003435}}
+@media -sass-debug-info{filename{}line{font-family:\00003448}}
 p#file-upload img {
   max-height: 64px;
   max-width: 64px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003440}}
+@media -sass-debug-info{filename{}line{font-family:\00003453}}
 p#file-upload .no-icon {
   padding: .4rem;
   border: 1px solid black;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003446}}
+@media -sass-debug-info{filename{}line{font-family:\00003459}}
 .contact-table {
   margin-bottom: 1.7rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003449}}
+@media -sass-debug-info{filename{}line{font-family:\00003462}}
 .contact-table thead {
   background-color: #272727;
   color: #CECECE;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003454}}
+@media -sass-debug-info{filename{}line{font-family:\00003467}}
 .contact-table td {
   padding: .2rem .5rem 0 .5rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003457}}
+@media -sass-debug-info{filename{}line{font-family:\00003470}}
 .contact-table td img {
   height: 1.3rem;
   max-width: 1.3rem;

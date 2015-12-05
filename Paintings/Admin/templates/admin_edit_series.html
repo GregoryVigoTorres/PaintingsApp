@@ -15,25 +15,28 @@
 
 {% block images %}
 {% if series.images|length > 0 %}
-    <p><span id='show-images-for-series'>show</span> {{ series.images|length }} images</p>
-        <div class='series-image-controller'>
-            show in a <span id='images-in-grid'>grid</span> or in <span id='images-in-rows'>rows</span>
-        </div>
-        <div class="series-image-controller">
+    <div>
+        <span id='show-images-for-series'>show</span> {{ series.images|length }} images
+        in a <span id='images-in-grid'>grid</span> or in <span id='images-in-rows'>rows</span>
+        <p class="series-image-controller">
             <span id="save-image-order" 
-                data-url="{{ url_for('Admin.save_image_order') }}"
-                data-seriesid="{{ series.id }}">save</span> image order
+                  data-url="{{ url_for('Admin.save_image_order') }}"
+                  data-seriesid="{{ series.id }}">
+                save order
+            </span> 
+
             <ul id="images_order_by" class='series-image-controller'>
-                <li>order by:
+                <li>sort by:
                     <ul>
                         <li id="by-title">title</li>
                         <li id="by-date">date</li>
                         <li id="by-date_added">date added</li>
-                        <li id="by-display_order">saved order</li>
+                        <li id="by-display_order">original order</li>
                     </ul>
                 </li>
             </ul>
-        </div>
+        </p>
+    </div>
 
     <div id='series-image-container'>
             {% for i in series.images %}
