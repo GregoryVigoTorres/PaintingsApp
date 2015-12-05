@@ -150,6 +150,10 @@ AdminController.prototype.addEventHandlers = function() {
         App.loadImagePreview(imgSrc, imgSrc);
     };
 
+    $('#save-image-order').on('click', function(event) {
+        App.saveImageOrder(event);
+    });
+
     $('#show-images-for-series').on('click', function(event) {
         App.showImagesForSeries(); 
         $('#by-title').on('click', App.orderSeriesImagesByTitle);
@@ -386,7 +390,6 @@ AdminController.prototype.submitForm = function(elem) {
                 window.alert('show errors')
             };
         }, 
-
         error: function(jqXHR, status, error) {
             console.log(jqXHR.responseText);
         },
@@ -648,6 +651,43 @@ AdminController.prototype.orderSeriesImagesByTitle = function() {
         item.elem.style.order = ind;
     });
 };
+
+AdminController.prototype.saveImageOrder = function(event) {
+    /* sends json to server with series id and images obj 
+     * where image ids are keys and new order are values */
+    var containers = document.getElementsByClassName('container');
+    var data = {};
+
+    var url = document.getElementById('save-image-order').dataset.url;
+    var series_id = document.getElementById('save-image-order').dataset.seriesid;
+
+    data['series_id'] = series_id;
+    var image_data = {};
+
+    for (i=0; i<containers.length; i++) {
+        image_data[containers[i].dataset.imageid] = containers[i].style.order;
+    };
+
+    data['images'] = image_data;
+    var json_data = JSON.stringify(data);
+
+    $.ajax({
+        url:url,
+        method:'post',
+        dataType:'json',
+        data:json_data,
+        contentType:'application/json',
+        success: function(jqXHR, status, response) {
+            App.modalDialog(jqXHR);
+        },
+        error: function(jqXHR, status, response) {
+            App.modalDialog({
+                'message':'There was a network error while updating the image order'
+            });
+        },
+    });
+};
+
 
 AdminController.prototype.showIconPreview = function() {
     /* this is for the contact info icon file upload */

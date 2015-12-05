@@ -20,7 +20,9 @@
             show in a <span id='images-in-grid'>grid</span> or in <span id='images-in-rows'>rows</span>
         </div>
         <div class="series-image-controller">
-            <span id="save-image-order">save</span> image order
+            <span id="save-image-order" 
+                data-url="{{ url_for('Admin.save_image_order') }}"
+                data-seriesid="{{ series.id }}">save</span> image order
             <ul id="images_order_by" class='series-image-controller'>
                 <li>order by:
                     <ul>
@@ -35,7 +37,9 @@
 
     <div id='series-image-container'>
             {% for i in series.images %}
-            <div class='container' style="order:{{ i.order }};" data-originalOrder="{{ i.order }}">
+            <div class='container' style="order:{{ i.order }};" 
+                data-originalOrder="{{ i.order }}"
+                data-imageid="{{ i.id }}">
                 <p>
                     <img src="{{ url_for('Thumbnails.static', filename=i.filename) }}" 
                          alt="image not found"

@@ -1,6 +1,8 @@
+import sys
 from pathlib import Path
 
 from flask import (render_template,
+                   request,
                    redirect,
                    url_for,
                    current_app,
@@ -8,6 +10,8 @@ from flask import (render_template,
                    jsonify)
 
 from flask.ext.security.decorators import (login_required, auth_token_required)
+
+from werkzeug.exceptions import NotFound 
 
 from sqlalchemy.orm import joinedload
 
@@ -77,6 +81,28 @@ def delete_series(_id):
 
     next_url = {'next':url_for('Admin.index')}
     return jsonify(next_url)
+
+@admin_bp.route('/saveimageorder', methods=['POST'])
+@login_required
+@auth_token_required
+def save_image_order():
+    if not request.is_xhr:
+        raise NotFound
+
+    series_id = request.json.get('series_id')
+    updated_images = request.json.get('images') 
+    series = Series.query.get(series_id)
+
+    for i in series.images:
+        db.session.add(i)
+        i.order = updated_images.get(str(i.id))
+
+    try:
+        db.session.commit()
+        return jsonify({'message':'Image order updated'})
+    except:
+        current_app.log_exception(sys.exc_info())
+        return jsonify({'message':'There was an error updating the image order'})
 
 
 @admin_bp.route('/editseries/<_id>', methods=['GET', 'POST'])
