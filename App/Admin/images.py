@@ -1,3 +1,4 @@
+import uuid
 from pathlib import Path
 import sys
 
@@ -36,6 +37,10 @@ def new_image(series_id):
     
     form = ImageForm()
     tmpl_args = {'page_title':'add a new image to &ldquo;{}&rdquo;'.format(series.title)}
+
+    # this fixes a bug where the same id is 
+    # getting used more than once in the image form
+    form.id.data = uuid.uuid4()
 
     if form.validate_on_submit():
         image = upsert_image_from_form(form)

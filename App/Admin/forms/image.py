@@ -77,7 +77,7 @@ class ImageForm(Form):
 
     dimensions = FieldList(IntegerField('dimensions', 
                                         validators=[
-                                            NumberRange(min=1, max=500, message='must be between %(min)s and %(max)s')
+                                            NumberRange(min=1, max=5000, message='must be between %(min)s and %(max)s')
                                             ]),
                                         min_entries=2, 
                                         max_entries=2, 
