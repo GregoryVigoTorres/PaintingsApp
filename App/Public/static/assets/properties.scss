@@ -1,0 +1,70 @@
+@charset 'UTF-8';
+
+@import "colors";
+
+* {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: $link-color;
+    text-decoration: none;
+    font-family: "BoldSans";
+
+    &:visited {
+        color: $link-color;
+    }
+}
+
+/* other fonts are in global (not buleprint) properties */
+@font-face {
+  font-family: 'typicons';
+  font-weight: normal;
+  font-style: normal;
+  src: url('/static/fonts/typicon/typicons.eot');
+  src: url('/static/fonts/typicon/typicons.eot?#iefix') format('embedded-opentype'),
+       url('/static/fonts/typicon/typicons.woff') format('woff'),
+       url('/static/fonts/typicon/typicons.ttf') format('truetype'),
+       url('/static/fonts/typicon/typicons.svg#typicons') format('svg');
+}
+ 
+/* :before psuedo-selector inserts and styles icon */
+.typcn:before {
+  font-family: 'typicons';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  height: 1em;
+  font-size: 1em;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+header {
+    font-size: 1.2rem;
+    color: $medium-gray;
+    margin: 1.3rem;
+}
+
+h2, h3 {
+    margin: 1.3rem 0 1.3rem 1.3rem;
+}
+
+footer {
+    text-align: center;
+    height: $footer-height;
+    bottom: 0; 
+    @include dark-on-light;
+    padding: 3rem 1rem 1.3rem 1rem;
+}

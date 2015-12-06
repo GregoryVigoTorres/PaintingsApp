@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8'>
+    <title>GregoryVigoTorres</title>
+    <meta name='viewport' content="width=device-width, initial-scale=1, maximum-scale=1, height=device-height">
+    <!-- <link href="/static/css/jquery&#45;ui.min.css" media='all' type="text/css" rel="stylesheet"> -->
+    <link href="/static/css/properties.css" media='all' type="text/css" rel="stylesheet">
+
+    {% assets "css" %}
+        <link href="{{ ASSET_URL }}" media="all" type="text/css" rel="stylesheet"></link>
+    {% endassets %}
+
+    {% assets "public" %}
+        <link href="{{ ASSET_URL }}" media="all" type="text/css" rel="stylesheet"></link>
+    {% endassets %}
+
+    {% assets "jquery" %}
+        <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+</head>
+<body>
+    <div id="outer-container">
+    {% block nav %}
+    <nav>
+    <ul>
+        <li>series
+            <ul>
+                {% for s in all_series() %}
+                    <li>
+                        <a href="{{ url_for('Public.index', _id=s.id) }}">{{ s.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li><a href="{{ url_for('Public.text_link') }}">texts &amp; links</a></li>
+        <li><a href="{{ url_for('Public.contact') }}">Contact</a></li>
+    </ul>
+    </nav>
+
+    <header>Gregory Vigo Torres</header>
+
+    <div id="menu-button-container">
+        <span class="icon typcn typcn-th-menu" aria-hidden="true" icon-data=""></span>
+    </div> 
+    {% endblock %}
+    {% block image_viewer %}{% endblock %}
+    {% block container %}{% endblock %}
+    <footer>
+        <p class="small-font">Gregory Vigo Torres, 2015</p> 
+    </footer>
+    <div id="up-button">
+        <span class="icon typcn-arrow-up-thick typcn" aria-hidden="true"></span>
+    </div>
+
+    </div>
+    <script type="text/javascript" src="{{ url_for('Public.static', filename='js/ptgs.js') }}"></script>
+</body>
+</html>

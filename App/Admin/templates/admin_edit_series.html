@@ -1,0 +1,72 @@
+{% extends 'admin_series.html' %}
+
+{% block delete_button %}
+<button type="submit" 
+        id="delete" 
+        class="confirm-submit"
+        name="delete"
+        formaction="{{ url_for('Admin.delete_series', _id=form.id.data) }}">delete</button>
+{% endblock %}
+
+
+{% block add_image_button %}
+<p>add an <a href="{{ url_for('Admin.new_image', series_id=form.id.data) }}">image</a></p>
+{% endblock %}
+
+{% block images %}
+{% if series.images|length > 0 %}
+    <div>
+        <span id='show-images-for-series'>show</span> {{ series.images|length }} images
+        in a <span id='images-in-grid'>grid</span> or in <span id='images-in-rows'>rows</span>
+        <p class="series-image-controller">
+            <span id="save-image-order" 
+                  data-url="{{ url_for('Admin.save_image_order') }}"
+                  data-seriesid="{{ series.id }}">
+                save order
+            </span> 
+
+            <ul id="images_order_by" class='series-image-controller'>
+                <li>sort by:
+                    <ul>
+                        <li id="by-title">title</li>
+                        <li id="by-date">date</li>
+                        <li id="by-date_added">date added</li>
+                        <li id="by-display_order">original order</li>
+                    </ul>
+                </li>
+            </ul>
+        </p>
+    </div>
+
+    <div id='series-image-container'>
+            {% for i in series.images %}
+            <div class='container' style="order:{{ i.order }};" 
+                data-originalOrder="{{ i.order }}"
+                data-imageid="{{ i.id }}">
+                <p>
+                    <img src="{{ url_for('Thumbnails.static', filename=i.filename) }}" 
+                         alt="image not found"
+                         style='background-color: {{ i.padding_color }};'>
+                </p> 
+                <ul>
+                    <li class="title">{{ i.title }}</li>
+                    <li class="medium">{{ i.medium.name }}</li>
+                    <li class="date">{{ i.date }}</li>
+                    <li class="dimensions">{{ i.dimensions[0] }}cm x {{ i.dimensions[1] }}cm</li>
+                    <li class="date-created">
+                        date added:
+                        <time datetime="{{ i.date_created }}">
+                            {{ i.date_created|fmt_datetime }}</time>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('Admin.edit_image', image_id=i.id) }}">edit</a>
+                    </li>
+                </ul>
+            </div>
+            {% endfor %}
+    </div>
+{% else %}
+    <p>There are no images in this series.</p>
+{% endif %}
+{% endblock %}
+

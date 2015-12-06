@@ -1,0 +1,141 @@
+//@import "properties";
+@import "colors";
+
+@media screen and (max-width: 899px) {
+    nav {
+        transform: translate(-300px, 0);
+    }
+}
+
+nav {
+    position: absolute;
+    top: 0px;
+    min-width: 252px;
+    max-width: 299px;
+    min-height: 100%;
+    vertical-align: top;
+    font-family: "BoldSans";
+    letter-spacing: 3px;
+    @include light-on-dark;
+
+    a {
+        color: #CECECE;
+        text-decoration: none;
+        padding: 1rem 1.3rem 1rem 1.3rem;
+        border: 1px solid $dark-gray;
+        &:hover { 
+            border: 1px solid #CECECE;
+        }
+        &:visited {
+            color: #CECECE;
+        }
+    }
+
+    ul {
+        padding: 1.5rem 0 1.5rem 0;
+
+        li {
+            min-height: 3.5rem;
+        }
+    }
+}
+
+nav.open {
+    transform: translate(0px, 0px);
+    z-index: 9;
+    overflow-y: scroll;
+}
+
+@media screen and (max-width: 899px) {
+    #menu-button-container {
+        display: inline-block;
+        position: fixed;
+        right: 0px;
+        top: 0px;
+        z-index: 10;
+        vertical-align: top;
+        padding: 1.5rem;
+        opacity: 0.80;
+        @include light-on-dark;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    #menu-button-container {
+        display: none;
+    }
+
+    $nav-height: 2.3rem;
+
+    nav {
+        min-width: 100%;
+        /* unset height values for responsive menu */
+        max-height: $nav-height;
+        min-height: $nav-height;
+        height: $nav-height;
+        vertical-align: unset;
+        position: static;
+
+        a {
+            padding: 0 0 0 0;
+            border: none;
+            cursor: default;
+
+            &:hover {
+                 border: none;
+            }
+        }
+
+        ul {
+            @include light-on-dark;
+        }
+
+        li {
+            height: $nav-height;
+        }
+
+        li:hover {
+            background-color: $medium-gray;
+        }
+
+        ul li {
+            cursor: default;
+            min-height: 1rem;
+            padding-left: 1.3rem;
+            padding-top: .2rem;
+        }
+
+        ul, li {
+            display: inline-block;
+            padding: 0 1.3rem 0 0;
+        }
+
+        li ul {
+            display: none;
+            padding-right: 0;
+            padding-bottom: 8px;
+        }
+
+        li:hover > ul {
+            position: absolute;
+            display: block;
+            z-index: 10;
+        
+            li {
+                display: block;
+                padding: 5px 6px 7px 6px;
+            }
+        }
+    }
+}
+
+/* menu button */
+.typcn-th-menu {
+    font-size: 1.3rem;
+}
+
+.typcn-th-menu:before { 
+    content: '\e116';
+} 
+
+
