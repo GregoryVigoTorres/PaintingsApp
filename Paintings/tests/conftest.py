@@ -12,7 +12,7 @@ def pytest_unconfigure(config):
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
 
-    from Paintings.models.public import (Series, Image)
+    from Paintings.models.public import (Series, Image, Contact)
 
     img_root = Path(config.STATIC_IMAGE_ROOT)
     thumb_root = Path(config.STATIC_THUMBNAIL_ROOT)
@@ -39,6 +39,11 @@ def pytest_unconfigure(config):
     for i in series:
         session.delete(i)
 
+    # delete contact_info
+    contact_info = session.query(Contact).all()
+    for i in contact_info:
+        session.delete(i)
+
     session.commit()
 
 
@@ -47,7 +52,6 @@ def pytest_collection_modifyitems(session, config, items):
     # image tests need a series, so series tests need to be done first
     # ... tests probably shouldn't rely on data from previous tests...
     items = sorted(items, key=lambda i: 'series' not in i.name)
-
     session.items = items
 
 
