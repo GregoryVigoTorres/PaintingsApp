@@ -1,10 +1,10 @@
 
 from flask.ext.script import Manager
-from Paintings.App import create_app
-from Paintings.Manager.Users import (CreateUser, DeleteUser)
-from Paintings.Manager.InitApp import InitApp
-from Paintings.Manager.DbUtils import UpdateOrder
-from Paintings.Manager.site_utils import UnusedFiles
+from App.App import create_app
+from App.Manager.Users import (CreateUser, DeleteUser)
+from App.Manager.InitApp import InitApp
+from App.Manager.DbUtils import UpdateOrder
+from App.Manager.site_utils import UnusedFiles
 
 manager = Manager(create_app)
 manager.add_option('-c', '--config', dest='config', required=False)

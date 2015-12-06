@@ -5,7 +5,7 @@ import pytest
 import sys
 
 
-opts = ['-x', 'Paintings/tests',]
+opts = ['-x', 'App/tests',]
 
 
 if len(sys.argv) > 1:

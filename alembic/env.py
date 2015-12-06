@@ -19,7 +19,7 @@ import site
 import os.path
 parent_dir = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0]
 site.addsitedir(parent_dir)
-from Paintings import core, App
+from App import core, App
 
 # app must be instantiated in order to get correct metadata
 App.create_app()
