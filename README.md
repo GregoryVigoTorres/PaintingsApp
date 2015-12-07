@@ -4,33 +4,33 @@ The public interface was originally designed to present paintings, texts and lin
 Core functionality works, but there are still some things to do.
 
 **It uses**
--SQLAlchemy
--Postgres
--Alembic
--Flask blueprints
--Flask-security
--WTForms
--Pillow
--SCSS/flask-assets
--Pytest
--HTML5 canvas
--CSS3 flex-box
--JQuery
--AJAX
+- SQLAlchemy
+- Postgres
+- Alembic
+- Flask blueprints
+- Flask-security
+- WTForms
+- Pillow
+- SCSS/flask-assets
+- Pytest
+- HTML5 canvas
+- CSS3 flex-box
+- JQuery
+- AJAX
 
 
 **Admin Features**
--Upload images (automatic resizing and web optimization with Pillow) and add/edit information about them
--Add/edit texts or links
--Add/edit contact info
--Server side admin scripts
--Testing
+- Upload images (automatic resizing and web optimization with Pillow) and add/edit information about them
+- Add/edit texts or links
+- Add/edit contact info
+- Server side admin scripts
+- Testing
 
 
 **Public Features**
--View all information and images
--Custom JS slideshow
--Responsive design
+- View all information and images
+- Custom JS slideshow
+- Responsive design
     
     
     
