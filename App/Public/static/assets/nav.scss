@@ -23,6 +23,7 @@ nav {
         text-decoration: none;
         padding: 1rem 1.3rem 1rem 1.3rem;
         border: 1px solid $dark-gray;
+
         &:hover { 
             border: 1px solid #CECECE;
         }
@@ -120,6 +121,7 @@ nav.open {
             position: absolute;
             display: block;
             z-index: 10;
+            top: $nav-height;
         
             li {
                 display: block;

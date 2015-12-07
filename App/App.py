@@ -1,4 +1,3 @@
-# from pathlib import Path # for mk_tmp_dir
 
 from flask import (Flask, 
         current_app, 
@@ -19,7 +18,7 @@ from .app_setup import (init_db, setup_dirs)
 from .models.user import (User, Role, user_datastore)
 from .Security import user
 from .Admin import (index, series, images, texts, contact)
-# from App.Public import (index, contact, texts)
+
 from .Public import (index, contact, texts)
 from .lib.template_filters import fmt_datetime, none_as_str 
 
@@ -60,13 +59,16 @@ def create_app(config=None):
     security_bundle = Bundle('assets/security.scss', filters='scss', output='css/security.css')
     assets.register('security', security_bundle)
 
-    admin_bundle = Bundle('Admin/assets/admin_style.scss', filters='scss', output='static/admin.css')
-    assets.register('admin', admin_bundle)
+    admin_bundle = Bundle('Admin/assets/admin_style.scss',
+                          'Public/assets/properties.scss',
+                          'Public/assets/nav.scss',
+                          filters='scss', output='static/admin.css')
+    assets.register('admin', admin_bundle)                  
 
     public_bundle = Bundle('Public/assets/properties.scss', 
-                            'Public/assets/nav.scss', 
-                            'Public/assets/public.scss',
-                            'Public/assets/viewer.scss',
+                           'Public/assets/nav.scss', 
+                           'Public/assets/public.scss',
+                           'Public/assets/viewer.scss',
                            filters='scss', output='static/public.css')
     assets.register('public', public_bundle)
 
