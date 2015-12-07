@@ -77,9 +77,14 @@ def edit_text(text_id):
     """
        edit text
     """
-    text = Text.query.get(text_id)
+    try:
+        text = Text.query.get(text_id)
+    except:
+        flash('The text couldn\'t be found')
+        raise NotFound()
+    
     if not text:
-        raise NotFound
+        raise NotFound()
 
     if request.method == 'GET':
         form = TextForm(obj=text)
@@ -107,8 +112,12 @@ def edit_link(link_id):
     """
        edit link 
     """
+    try:
+        link = Link.query.get(link_id)
+    except:
+        flash('The link couldn\'t be found')
+        raise NotFound()
 
-    link = Link.query.get(link_id)
     if not link:
         raise NotFound
 
@@ -142,11 +151,16 @@ def delete_text(text_id):
        this is ajax
     """
     if not request.is_xhr:
-        raise NotFound
+        raise NotFound()
 
-    text = Text.query.get(text_id)
+    try:
+        text = Text.query.get(text_id)
+    except:
+        flash('The link couldn\'t be found')
+        raise NotFound()
+
     if not text:
-        raise NotFound
+        raise NotFound()
 
     msg = '{} has been permanently deleted'.format(text.title)
 
@@ -167,11 +181,17 @@ def delete_link(link_id):
        this is ajax
     """
     if not request.is_xhr:
-        raise NotFound
+        raise NotFound()
 
-    link = Link.query.get(link_id)
+    try:
+        link = Link.query.get(link_id)
+    except:
+        flash('The link couldn\'t be found')
+        raise NotFound()
+
+
     if not link:
-        raise NotFound
+        raise NotFound()
 
     msg = '{} has been permanently deleted'.format(link.label)
 

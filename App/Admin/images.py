@@ -31,14 +31,18 @@ def new_image(series_id):
         TODO:
         choose other series
     """
-    series = Series.query.filter_by(id=series_id).first()
+    try:
+        series = Series.query.filter_by(id=series_id).first()
+    except:
+        raise NotFound()
+    
     if not series:
         raise NotFound()
     
     form = ImageForm()
     tmpl_args = {'page_title':'add a new image to &ldquo;{}&rdquo;'.format(series.title)}
 
-    # this fixes a bug where the same id is 
+    # this fixes a bug where the same id is
     # getting used more than once in the image form
     form.id.data = uuid.uuid4()
 
@@ -65,7 +69,10 @@ def new_image(series_id):
 @admin_bp.route('/editimage/<image_id>', methods=['GET', 'POST'])
 @login_required
 def edit_image(image_id):
-    image = Image.query.filter_by(id=image_id).first()
+    try:
+        image = Image.query.filter_by(id=image_id).first()
+    except:
+        raise NotFound()
 
     if not image:
         raise NotFound()
@@ -108,9 +115,17 @@ def delete_image(image_id):
     if not request.is_xhr:
         raise NotFound
 
-    image = Image.query.get(image_id)
+    try:
+        image = Image.query.get(image_id)
+    except:
+        current_app.log_exception(sys.exc_info())
+        flash('The image could not be deleted')
+        return jsonify({'next':url_for('Admin.edit_image', image_id=image_id)})
+
     if not image:
-        raise NotFound
+        current_app.log_exception(sys.exc_info())
+        flash('The image could not be deleted')
+        return jsonify({'next':url_for('Admin.edit_image', image_id=image_id)})
 
     series_id = image.series.id
 

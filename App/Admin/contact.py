@@ -36,7 +36,12 @@ def contact():
 def edit_contact(_id):
     """edit/update contact or link to social media profile """
     tmpl_args = {'page_title':'edit contact info'}
-    contact_info = Contact.query.get_or_404(_id)
+
+    try:
+        contact_info = Contact.query.get_or_404(_id)
+    except:
+        flash('There was a database problem')
+        return redirect(url_for('Admin.contact'))
 
     if request.method == 'GET':
         form = ContactForm(obj=contact_info)

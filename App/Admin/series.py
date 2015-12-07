@@ -52,7 +52,11 @@ def newseries():
 @auth_token_required
 def delete_series(_id):
     """ ajax only """
-    series = Series.query.filter_by(id=_id).first()
+    try:
+        series = Series.query.filter_by(id=_id).first()
+    except:
+        current_app.log_exception(sys.exc_info())
+        return jsonify({'message':'series not found'})
 
     if not series:
         return jsonify({'message':'series not found'})
@@ -91,7 +95,12 @@ def save_image_order():
 
     series_id = request.json.get('series_id')
     updated_images = request.json.get('images') 
-    series = Series.query.get(series_id)
+
+    try:
+        series = Series.query.get(series_id)
+    except:
+        current_app.log_exception(sys.exc_info())
+        return jsonify({'message':'There was an error updating the image order'})
 
     for i in series.images:
         db.session.add(i)
@@ -110,12 +119,15 @@ def save_image_order():
 @json_token_required
 def edit_series(_id):
     """ edit an existing series by id """
-    series = db.session.query(Series).options(
-        joinedload(Series.images).joinedload(Image.medium)
-        ).filter_by(id=_id).first()
+    try:
+        series = db.session.query(Series).options(
+            joinedload(Series.images).joinedload(Image.medium)
+            ).filter_by(id=_id).first()
+    except:
+        flash('series not found')
+        return redirect(url_for('Admin.newseries'))
 
     if not series:
-        flash('Oops!')
         flash('series not found')
         return redirect(url_for('Admin.newseries'))
 
