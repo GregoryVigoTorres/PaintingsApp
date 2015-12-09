@@ -62,7 +62,10 @@ def new_text_link():
             db.session.add(model)
             db.session.commit()
             name = form.data.get('title') or form.data.get('label')
-            flash('<strong>{} has been added</strong>'.format(name))
+            flash('<strong>{}</strong> has been added'.format(name))
+            msg = '[{}] added to texts/links'.format(name)
+            current_app.logger.info(msg)
+
             return redirect(next_url)
 
     return render_template('admin_text.html', 
@@ -96,7 +99,10 @@ def edit_text(text_id):
         db.session.add(text)
         text = update_model_from_form(text, form)
         db.session.commit()
-        flash('<strong>&ldquo;{}&rdquo; has been updated</strong>'.format(text.title))
+        flash('<strong>&ldquo;{}&rdquo;</strong> has been updated'.format(text.title))
+        msg = 'Text [{}] updated'.format(text.title)
+        current_app.logger.info(msg)
+
         return redirect(url_for('Admin.edit_text', text_id=text_id))
 
     if len(form.errors):
@@ -132,6 +138,9 @@ def edit_link(link_id):
         link = update_model_from_form(link, form)
         db.session.commit()
         flash('<strong>&ldquo;{}&rdquo; has been updated</strong>'.format(link.label))
+        msg = 'Link [{}] updated'.format(link.label)
+        current_app.logger.info(msg)
+
         return redirect(url_for('Admin.edit_link', link_id=link_id))
 
     if len(form.errors):
@@ -169,6 +178,9 @@ def delete_text(text_id):
     db.session.commit()
     flash(msg)
 
+    msg = '[{}] deleted from texts'.format(text.title)
+    current_app.logger.info(msg)
+
     return jsonify({'next': url_for('Admin.texts_links')})
 
 
@@ -189,7 +201,6 @@ def delete_link(link_id):
         flash('The link couldn\'t be found')
         raise NotFound()
 
-
     if not link:
         raise NotFound()
 
@@ -199,5 +210,8 @@ def delete_link(link_id):
     db.session.delete(link)
     db.session.commit()
     flash(msg)
+
+    msg = '[{}] deleted from links'.format(link.label)
+    current_app.logger.info(msg)
 
     return jsonify({'next': url_for('Admin.texts_links')})

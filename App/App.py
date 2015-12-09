@@ -1,3 +1,4 @@
+from pathlib import Path
 
 from flask import (Flask, 
         current_app, 
@@ -6,19 +7,17 @@ from flask import (Flask,
         url_for, 
         render_template, 
         flash)
-from flask.ext.sqlalchemy import SQLAlchemy
 
+from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.security import (Security, SQLAlchemyUserDatastore)
 from flask_wtf.csrf import CsrfProtect
-
 from flask.ext.assets import (Environment, Bundle)
 
-from .core import (db, load_blueprints)
+from .core import (db, load_blueprints, setup_logger)
 from .app_setup import (init_db, setup_dirs)
 from .models.user import (User, Role, user_datastore)
 from .Security import user
 from .Admin import (index, series, images, texts, contact)
-
 from .Public import (index, contact, texts)
 from .lib.template_filters import fmt_datetime, none_as_str 
 
@@ -31,15 +30,22 @@ def create_app(config=None):
     app.config.from_object('config')
     app.config.from_pyfile('config.py')
 
+    setup_logger(app) 
+
     if config is not None:
         app.config.from_pyfile(config)
-        app.logger.info('loading config from: {}'.format(config))
+        app.logger.info('Started with config from: {}'.format(config))
+
+
+
+    log_path = Path(app.config['APP_LOGDIR'], app.config['APP_LOGFILE'])
+    app.logger.info('Log file path: {}'.format(log_path))
 
     db.init_app(app)
 
     load_blueprints(app)
     before_first_request_funcs = [setup_dirs(app), 
-                                  init_db(app)] 
+                                  init_db(app)]
 
     #Security
     csrf.init_app(app)

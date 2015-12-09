@@ -20,16 +20,10 @@ def setup_dirs(app):
                 dirpath.mkdir(parents=True)
         
         # touch log files
+        # App log file is created in core.setup_logger 
         uwsgi_log_fn = Path(app.config['APP_LOGDIR'], 'uwsgi.log')
         try:
             uwsgi_log_fn.touch(exist_ok=False)
             app.logger.info('touched {}'.format(uwsgi_log_fn))
-        except FileExistsError:
-            pass
-
-        app_log_fn = Path(app.config['APP_LOGDIR'], 'App.log')
-        try:
-            app_log_fn.touch(exist_ok=False)
-            app.logger.info('touched {}'.format(app_log_fn))
         except FileExistsError:
             pass

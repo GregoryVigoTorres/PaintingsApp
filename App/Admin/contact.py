@@ -1,3 +1,4 @@
+import sys
 
 from flask import (render_template,
                    redirect,
@@ -40,7 +41,7 @@ def edit_contact(_id):
     try:
         contact_info = Contact.query.get_or_404(_id)
     except:
-        flash('There was a database problem')
+        current_app.log_exception(sys.exc_info()) 
         return redirect(url_for('Admin.contact'))
 
     if request.method == 'GET':
@@ -73,8 +74,11 @@ def edit_contact(_id):
         if tmpl_args['type'] == 'profile':
             name = contact_info.name
 
-        flash('<strong>&ldquo;{}&rdquo; has been updated</strong>'.format(name))
+        flash('<strong>&ldquo;{}&rdquo;</strong> has been updated'.format(name))
         db.session.commit()
+
+        msg = '[{}] updated'.format(name)
+        current_app.logger.info(msg)
 
         return redirect(url_for('Admin.edit_contact', _id=_id))
 
@@ -103,6 +107,9 @@ def new_contact():
 
         db.session.commit()
         flash('<strong>{} has been added</strong>'.format(contact_info.name))
+        msg = '[{}] added to contact info'.format(contact_info.name)
+        current_app.logger.info(msg)
+
         return redirect(url_for('Admin.contact'))
 
     if len(form.errors):

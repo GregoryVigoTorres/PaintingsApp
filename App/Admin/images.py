@@ -54,6 +54,9 @@ def new_image(series_id):
             image.filename = filename
             db.session.commit()
             flash('{} <br>added to {}'.format(image.title, image.series.title))
+            msg = '[{}] added to [{}]'.format(image.title, image.series.title)
+            current_app.logger.info(msg)
+
         else:
             flash('There was a problem saving the image')
 
@@ -99,6 +102,8 @@ def edit_image(image_id):
 
         db.session.commit()
         flash('&ldquo;{}&rdquo; has been changed'.format(image.title))
+        msg = 'Image [{}] in [{}] modified'.format(image.title, series.title)
+        current_app.logger.info(msg)
 
         return redirect(url_for('Admin.edit_image', image_id=image.id))
 
@@ -142,6 +147,9 @@ def delete_image(image_id):
 
         flash('&ldquo;{}&rdquo; has been permanently deleted'.format(image.title))
         db.session.commit()
+
+        msg = '[{}] deleted from [{}]'.format(image.title, image.series.title)
+        current_app.logger.info(msg)
 
         return jsonify({'next': url_for('Admin.edit_series', _id=str(series_id))})
     except:

@@ -35,8 +35,11 @@ def newseries():
         db.session.add(series)
         series = update_model_from_form(series, form)
         msg = '<strong>{}</strong> has been added to series'.format(form.title.data)
-        current_app.logger.info(msg)
         flash(msg)
+
+        msg = '[{}] added to series'.format(form.title.data)
+        current_app.logger.info(msg)
+
         db.session.commit()
         form = SeriesForm()
 
@@ -82,6 +85,9 @@ def delete_series(_id):
     db.session.commit()
     flash('{} and {} images have been permanently deleted'.format(series.title, 
                                                                   len(series.images)))
+
+    msg = '[{}] and {} images permanently deleted'.format(series.title, len(series.images))
+    current_app.logger.info(msg)
 
     next_url = {'next':url_for('Admin.index')}
     return jsonify(next_url)
@@ -137,7 +143,10 @@ def edit_series(_id):
         updated_series = update_model_from_form(series, form)
         db.session.add(updated_series)
         db.session.commit()
+
         flash('{} has been modified'.format(updated_series.title))
+        msg = 'Series [{}] modified'.format(updated_series.title)
+        current_app.logger.info(msg)
 
         return redirect(url_for('Admin.edit_series', _id=_id))
 

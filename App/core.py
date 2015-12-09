@@ -1,4 +1,6 @@
 from functools import partial
+from pathlib import Path
+import logging
 
 from flask import (Blueprint, 
                    current_app, 
@@ -112,6 +114,29 @@ def add_auth_token():
     with current_app.app_context():
         if current_user and current_user.is_authenticated:
             return current_user.get_auth_token()
+
+def setup_logger(app):
+    """ Setup logging handlers FileLogger and EmailLogger """
+    if app.debug:
+        app.logger.setLevel(10)
+
+    log_fmt_str = '[{levelname}] {asctime} [{name}] {msg}'
+    log_fmt = logging.Formatter(fmt=log_fmt_str, style='{')
+    
+    log_path = Path(app.config['APP_LOGDIR'], app.config['APP_LOGFILE'])
+
+    if not log_path.exists():
+        log_path.touch()
+
+    fhandler = logging.handlers.RotatingFileHandler(str(log_path), 
+                                                    maxBytes=48600, 
+                                                    backupCount=3, 
+                                                    delay=True)
+    fhandler.setLevel(10)
+    fhandler.setFormatter(log_fmt)
+    if not app.debug:
+        # Only log to file if not in debug i.e. dev mode
+        app.logger.addHandler(fhandler)
 
 
 admin_bp.add_app_template_global(add_auth_token, name='get_auth_token')
