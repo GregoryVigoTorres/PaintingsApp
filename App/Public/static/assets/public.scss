@@ -47,10 +47,12 @@
     align-items: flex-start;
 
     .image {
-        margin: auto auto 2.3rem auto;
+        margin: 2.3rem auto 2.3rem auto;
 
         .show-hide-image-info {
             padding: 8px;
+            z-index: 12;
+            margin-left: 1rem;
             cursor: default;
             font-family: "BoldSans";
 
@@ -60,7 +62,7 @@
         }
 
         img {
-            padding: 2.5rem;
+            padding: 4rem;
         }
 
         .image-info {
@@ -70,6 +72,7 @@
                 padding: .3rem 1.3rem 1.3rem 1.3rem;
                 display: none;
                 position: absolute;
+                z-index: 10;
                 box-shadow: 5px 3px 4px  #4C4C4C;
                 background-color: white;
             }
@@ -189,3 +192,16 @@ h2.text, h3.text {
         display: none;
     }
 }
+
+@media screen and (max-width: 719px) {
+    #image-container .image .show-hide-image-info {
+        /* unset hover on mobile */
+        &:hover {
+            background: white;
+            color: black;
+        }
+    }
+}
+
+
+

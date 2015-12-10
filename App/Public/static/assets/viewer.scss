@@ -1,6 +1,8 @@
 @charset 'UTF-8';
 @import "colors";
 
+/* The viewer is only visible on desktop sized screens */
+
 @media screen and (min-width: 719px) {
     #image-container {
         flex-direction: row;
@@ -9,7 +11,7 @@
 
         .image {
             max-width: 85%;
-            margin: auto;
+            margin: 2.5rem auto auto auto;
 
             img {
                 max-width: 85%;
