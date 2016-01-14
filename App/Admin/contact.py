@@ -4,6 +4,7 @@ from flask import (render_template,
                    redirect,
                    request,
                    url_for,
+                   current_app,
                    flash)  
 
 from flask.ext.security.decorators import login_required
