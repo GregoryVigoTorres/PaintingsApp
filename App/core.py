@@ -26,6 +26,7 @@ def _bp_factory(mod_name, url_prefix, config_args=None, app=None, **kwargs):
 
     options = {'template_folder':'App/{}/templates'.format(mod_name), 
                'static_folder':'App/{}/static'.format(mod_name), 
+               'static_url_path':'/{}/static'.format(mod_name.lower()),
                'url_prefix':url_prefix}
 
     args_from_config = {}
@@ -70,7 +71,7 @@ def load_blueprints(app):
 
 
 admin_bp = _bp_factory('Admin', '/admin')
-public_bp = _bp_factory('Public', '/public')
+public_bp = _bp_factory('Public', None)
 
 thumbnails_part = partial(_bp_factory, 
                           'Thumbnails', 

@@ -82,7 +82,3 @@ def create_app(config=None):
     app.add_template_filter(none_as_str)
 
     return app
-
-
-app = create_app()
-
