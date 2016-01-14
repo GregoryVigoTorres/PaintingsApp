@@ -45,9 +45,10 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding-top: .3rem;
 
     .image {
-        margin: 2.3rem auto 2.3rem auto;
+        margin: auto;
 
         .show-hide-image-info {
             padding: 8px;
@@ -57,12 +58,12 @@
             font-family: "BoldSans";
 
             &:hover {
-                @include light-on-dark;
+                background-color: $light-gray;
             }
         }
 
         img {
-            padding: 4rem;
+            padding: 2.5rem;
         }
 
         .image-info {
@@ -83,7 +84,6 @@
                 }
             }
         } /* .image-info */
-
     } /* .image */
 }
 
@@ -197,11 +197,8 @@ h2.text, h3.text {
     #image-container .image .show-hide-image-info {
         /* unset hover on mobile */
         &:hover {
-            background: white;
+            background: none;
             color: black;
         }
     }
 }
-
-
-

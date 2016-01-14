@@ -7,11 +7,10 @@
     #image-container {
         flex-direction: row;
         flex-wrap: wrap;
-        padding: 2.5rem 2.5rem 15rem 2.5rem;
 
         .image {
             max-width: 85%;
-            margin: 2.5rem auto auto auto;
+            margin: auto;
 
             img {
                 max-width: 85%;
