@@ -1,20 +1,20 @@
-@media -sass-debug-info{filename{}line{font-family:\000035}}
+/* line 5 */
 body {
   font-size: 18px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\000039}}
+/* line 9 */
 ul {
   list-style: none;
   padding: 0;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000314}}
+/* line 14 */
 .bold {
   font-family: "BoldSans";
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000319}}
+/* line 18 */
 #overlay {
   display: none;
   opacity: 0.75;
@@ -27,18 +27,18 @@ ul {
   background-color: #484848;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000331}}
+/* line 30 */
 #close-overlay {
   padding: .7em;
   cursor: default;
   border: 1px solid inherit;
 }
-@media -sass-debug-info{filename{}line{font-family:\0000337}}
+/* line 35 */
 #close-overlay:hover {
   border: 1px solid black;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000342}}
+/* line 40 */
 #message-container {
   display: none;
   position: absolute;
@@ -52,51 +52,51 @@ ul {
   padding: 1.5em 2em .75em 2em;
   font-family: "BoldSans";
 }
-@media -sass-debug-info{filename{}line{font-family:\0000355}}
+/* line 53 */
 #message-container strong {
   color: black;
 }
-@media -sass-debug-info{filename{}line{font-family:\0000359}}
+/* line 57 */
 #message-container ul {
   padding: 0 0 0 0;
   margin: 1em 0 0 1.5em;
   list-style: none;
   color: #BC3333;
 }
-@media -sass-debug-info{filename{}line{font-family:\0000366}}
+/* line 64 */
 #message-container .button {
   padding: .3em 1em .3em 1em;
   margin: 0 0 0 1.5em;
 }
-@media -sass-debug-info{filename{}line{font-family:\0000370}}
+/* line 68 */
 #message-container .button:hover {
   background-color: #D6D6D6;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000376}}
+/* line 74 */
 div#container {
   margin: 0 2em 4em 2em;
 }
-@media -sass-debug-info{filename{}line{font-family:\0000380}}
+/* line 78 */
 div#container #series-list td {
   padding: 5px 12px 2px 0;
 }
-@media -sass-debug-info{filename{}line{font-family:\0000385}}
+/* line 83 */
 div#container a {
   box-shadow: inset 0px -3px rgba(37, 110, 222, 0.3);
 }
-@media -sass-debug-info{filename{}line{font-family:\0000388}}
+/* line 86 */
 div#container a:hover {
   box-shadow: inset 0px -3px rgba(37, 110, 222, 0.7);
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000394}}
+/* line 92 */
 .small-type {
   font-size: 85%;
   font-family: "MediumSans", "Sans";
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000399}}
+/* line 97 */
 #username {
   /* this is the root ul element */
   position: absolute;
@@ -107,11 +107,11 @@ div#container a:hover {
   text-align: right;
   /* child list */
 }
-@media -sass-debug-info{filename{}line{font-family:\00003109}}
+/* line 107 */
 #username #auth-username:hover {
   text-decoration: underline;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003114}}
+/* line 112 */
 #username li > ul {
   display: none;
   width: 100%;
@@ -119,52 +119,52 @@ div#container a:hover {
   text-align: center;
   background-color: #CECECE;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003121}}
+/* line 119 */
 #username li > ul a {
   color: #272727;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003123}}
+/* line 121 */
 #username li > ul a:hover {
   text-decoration: underline;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003130}}
+/* line 128 */
 #username li:hover ul {
   display: block;
 }
 
 /* admin-forms */
-@media -sass-debug-info{filename{}line{font-family:\00003138}}
+/* line 136 */
 input {
   border: 1px solid #000000;
   background-color: #ffffff;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003143}}
+/* line 141 */
 input[type="color"] {
   width: 3.5em;
   height: 2.5em;
   border: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003149}}
+/* line 147 */
 input[type="text"] {
   display: block;
   margin-bottom: 1.3rem;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003154}}
+/* line 152 */
 input.disabled {
   background-color: #AFAFAF;
   border: 1px solid #AFAFAF;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003159}}
+/* line 157 */
 textarea {
   background-color: white;
   border: 1px solid black;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003165}}
+/* line 163 */
 form button, form .button {
   background: #ffffff;
   border: 1px solid #000000;
@@ -173,71 +173,71 @@ form button, form .button {
   padding: 8px 10px 5px 10px;
   cursor: pointer;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003173}}
+/* line 171 */
 form button:hover, form .button:hover {
   background-color: #DDDF4B;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003180}}
+/* line 178 */
 .admin-form label {
   vertical-align: top;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003184}}
+/* line 182 */
 .admin-form button {
   display: inline-block;
   vertical-align: top;
   margin-right: 2em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003190}}
+/* line 188 */
 .admin-form #left-col, .admin-form #right-col {
   display: inline-block;
   vertical-align: top;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003195}}
+/* line 193 */
 .admin-form #left-col {
   margin-right: 3em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003199}}
+/* line 197 */
 .admin-form #dimensions-0, .admin-form #dimensions-1 {
   display: inline-block;
   margin-right: 1em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003204}}
+/* line 202 */
 .admin-form #dimensions-1 {
   margin-left: 1em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003208}}
+/* line 206 */
 .admin-form #padding-color-label-container {
   display: inline-block;
   vertical-align: top;
   width: 50%;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003214}}
+/* line 212 */
 .admin-form #padding-color-selector-container {
   display: inline-block;
   vertical-align: top;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003219}}
+/* line 217 */
 .admin-form canvas {
   border: 1px solid black;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003224}}
+/* line 222 */
 #show-images-for-series, #images-in-grid, #images-in-rows, #save-image-order {
   font-family: "BoldSans";
   cursor: default;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003228}}
+/* line 226 */
 #show-images-for-series:hover, #images-in-grid:hover, #images-in-rows:hover, #save-image-order:hover {
   text-decoration: underline;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003233}}
+/* line 231 */
 .series-image-controller {
   display: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003237}}
+/* line 235 */
 #save-image-order {
   background: #ffffff;
   border: 1px solid #000000;
@@ -246,51 +246,51 @@ form button:hover, form .button:hover {
   padding: 8px 10px 5px 10px;
   cursor: pointer;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003245}}
+/* line 243 */
 #save-image-order:hover {
   background-color: #DDDF4B;
 }
 
 /* little menu for sort by on series page*/
-@media -sass-debug-info{filename{}line{font-family:\00003251}}
+/* line 249 */
 #images_order_by {
   cursor: default;
   margin-top: .3rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003256}}
+/* line 254 */
 #images_order_by ul {
   position: absolute;
   padding: 0px;
   background-color: white;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003262}}
+/* line 260 */
 #images_order_by li ul li {
   display: none;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003266}}
+/* line 264 */
 #images_order_by li {
   font-family: "BoldSans";
 }
-@media -sass-debug-info{filename{}line{font-family:\00003269}}
+/* line 267 */
 #images_order_by li ul {
   background-color: #272727;
   color: #CECECE;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003274}}
+/* line 272 */
 #images_order_by li ul li {
   font-family: "MediumSans";
   padding: 4px 3px 2px 5px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003280}}
+/* line 278 */
 #images_order_by li:hover ul li {
   display: block;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003282}}
+/* line 280 */
 #images_order_by li:hover ul li:hover {
   text-decoration: underline;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003290}}
+/* line 288 */
 #series-image-container {
   display: none;
   flex-direction: row;
@@ -298,7 +298,7 @@ form button:hover, form .button:hover {
   justify-content: space-around;
   align-items: baseline;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003298}}
+/* line 296 */
 #series-image-container .container {
   margin: 2em;
   min-height: 350px;
@@ -307,23 +307,23 @@ form button:hover, form .button:hover {
   flex-direction: column;
   align-items: left;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003306}}
+/* line 304 */
 #series-image-container .container img {
   padding: 1.7em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003310}}
+/* line 308 */
 #series-image-container .container p {
   padding: 0 0 1em 0;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003314}}
+/* line 312 */
 #series-image-container .container ul {
   padding-left: 1.7em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003318}}
+/* line 316 */
 #series-image-container .container li {
   padding: 0;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003323}}
+/* line 321 */
 #series-image-container .in-rows {
   padding: 1.5em;
   margin: auto;
@@ -331,45 +331,45 @@ form button:hover, form .button:hover {
   flex-direction: row;
   align-items: flex-start;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003330}}
+/* line 328 */
 #series-image-container .in-rows ul {
   margin-top: 4em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003336}}
+/* line 334 */
 #series-image-container .odd {
   background-color: #DFDDDD;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003343}}
+/* line 341 */
 #image-form #file-upload input {
   display: none;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003348}}
+/* line 346 */
 #image-form #filename-container {
   width: 15em;
   word-wrap: break-word;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003354}}
+/* line 352 */
 #text-form-container {
   margin-top: 1.3rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003357}}
+/* line 355 */
 #text-form-container div {
   display: inline-block;
   vertical-align: top;
   padding-right: 4rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003362}}
+/* line 360 */
 #text-form-container div p {
   text-align: center;
   margin: 0 0 0 1rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003368}}
+/* line 366 */
 #text-form-container input[type=text] {
   margin-bottom: 1.3rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003372}}
+/* line 370 */
 #text-form-container textarea {
   margin: 1.3rem 0 1.3rem 0;
   padding: 1.2rem;
@@ -378,35 +378,35 @@ form button:hover, form .button:hover {
   resize: vertical;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003381}}
+/* line 379 */
 input#icon {
   display: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003386}}
+/* line 384 */
 p#file-upload img {
   max-height: 64px;
   max-width: 64px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003391}}
+/* line 389 */
 p#file-upload .no-icon {
   padding: .4rem;
   border: 1px solid black;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003397}}
+/* line 395 */
 .contact-table, .edit-texts-links {
   margin-bottom: 1.7rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003400}}
+/* line 398 */
 .contact-table thead tr td, .edit-texts-links thead tr td {
   padding: 0 0 .4rem 0;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003404}}
+/* line 402 */
 .contact-table td, .edit-texts-links td {
   padding: .2rem .5rem 0 1.5rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003407}}
+/* line 405 */
 .contact-table td img, .edit-texts-links td img {
   height: 1.3rem;
   max-width: 1.3rem;
