@@ -2,6 +2,10 @@ from functools import partial
 from pathlib import Path
 import logging
 
+from colorama import Fore, Back, Style
+from colorama import init as init_colorama
+init_colorama(autoreset=True)
+
 from flask import (Blueprint, 
                    current_app, 
                    request_finished, 
@@ -87,9 +91,16 @@ def setup_logger(app):
     if app.debug:
         app.logger.setLevel(10)
 
-    log_fmt_str = '[{levelname}] {asctime} [{name}] {msg}'
-    log_fmt = logging.Formatter(fmt=log_fmt_str, style='{')
+    # get fmt string from config
+    if app.config.get('LOG_FORMAT'):
+        log_fmt_str = app.config['LOG_FORMAT']
+    else:
+        log_fmt_str = '[{levelname}] {asctime} [{name}] {msg}'
     
+    log_fmt = logging.Formatter(fmt=log_fmt_str, style='{')
+    app.logger.handlers[0].setFormatter(log_fmt)
+
+    # file logging
     log_path = Path(app.config['APP_LOGDIR'], app.config['APP_LOGFILE'])
 
     if not log_path.exists():
@@ -104,8 +115,9 @@ def setup_logger(app):
     if not app.debug:
         # Only log to file if not in debug i.e. dev mode
         app.logger.addHandler(fhandler)
+        app.logger.info('Log file path: {}{}'.format(Fore.CYAN, log_path))
 
-
+# add template globals to blueprints
 admin_bp.add_app_template_global(get_auth_token, name='get_auth_token')
 admin_bp.add_app_template_global(get_all_series, name='all_series')
 request_finished.connect(no_cookie)

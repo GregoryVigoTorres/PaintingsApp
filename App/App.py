@@ -18,32 +18,33 @@ csrf = CsrfProtect()
 
 def create_app(config=None):
     """ config should be a python file """
-    from .core import (db, load_blueprints, setup_logger)
     from .app_setup import (init_db, setup_dirs)
-    from .models.user import (User, Role, user_datastore)
+    from .core import (db, load_blueprints, setup_logger)
     from .lib.template_filters import fmt_datetime, none_as_str 
+    from .models.user import (User, Role, user_datastore)
 
-    from .Security import user
     from .Admin import (index, series, images, texts, contact)
     from .Public import (index, contact, texts)
+    from .Security import user
 
     app = Flask(__name__.split('.')[0], instance_relative_config=True)
 
     app.config.from_object('config')
     app.config.from_pyfile('config.py')
 
-    setup_logger(app) 
-
     if config is not None:
         app.config.from_pyfile(config)
+        setup_logger(app) 
         app.logger.info('Started with config from: {}'.format(config))
+    else:
+        setup_logger(app) 
 
-    # logging
-    log_path = Path(app.config['APP_LOGDIR'], app.config['APP_LOGFILE'])
-    app.logger.info('Log file path: {}'.format(log_path))
-
+    # Flask.sqlalchemy
     db.init_app(app)
+
     load_blueprints(app)
+    
+    # make sure db tables and required directories exist
     before_first_request_funcs = [setup_dirs(app), 
                                   init_db(app)]
 

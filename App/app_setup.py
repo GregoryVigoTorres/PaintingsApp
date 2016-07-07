@@ -1,6 +1,10 @@
 from pathlib import Path
 from .core import db, admin_bp
 
+"""
+    These things should only ever need to run once when the App is installed
+"""
+
 def init_db(app): 
     with app.app_context(): 
         db.create_all() 
