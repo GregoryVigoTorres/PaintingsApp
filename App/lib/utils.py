@@ -1,8 +1,6 @@
 import itertools
 from flask import flash
 
-from App.models.public import Series
-from App.core import db
 
 def flash_form_errors(errors):
     flash('<p>Oops!</p>')
@@ -16,9 +14,4 @@ def flash_form_errors(errors):
             key = k.replace('_', ' ').title()
         flash('<strong>{}... </strong> {}'.format(key, msg))
 
-def get_all_series():
-    """ template global 
-    """
-    all_series = db.session.query(Series.title, Series.id).order_by(Series.order).all()
-    return all_series
 

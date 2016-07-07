@@ -10,12 +10,11 @@ from flask import (Blueprint,
                    session)
 
 from flask.ext.sqlalchemy import SQLAlchemy
-from flask_security.core import current_user
 from sqlalchemy.ext.declarative import declarative_base
 db = SQLAlchemy()
 Base = declarative_base()
 
-from App.lib.utils import get_all_series
+from App.lib.template_globals import get_all_series, get_auth_token
 
 
 def _bp_factory(mod_name, url_prefix, config_args=None, app=None, **kwargs):
@@ -100,12 +99,6 @@ def no_cookie(app, **kwargs):
         response = kwargs['response']
         del response.headers['Set-Cookie']
 
-def add_auth_token():
-    """ make current_user auth token available in templates """
-    __name__ = 'get_auth_token'
-    with current_app.app_context():
-        if current_user and current_user.is_authenticated:
-            return current_user.get_auth_token()
 
 def setup_logger(app):
     """ Setup logging handlers FileLogger and EmailLogger """
@@ -131,6 +124,6 @@ def setup_logger(app):
         app.logger.addHandler(fhandler)
 
 
-admin_bp.add_app_template_global(add_auth_token, name='get_auth_token')
+admin_bp.add_app_template_global(get_auth_token, name='get_auth_token')
 admin_bp.add_app_template_global(get_all_series, name='all_series')
 request_finished.connect(no_cookie)
