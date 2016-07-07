@@ -52,35 +52,17 @@ def load_blueprints(app):
     """
     with app.app_context():
         for i in Blueprints:
-            if isinstance(i, partial):
-                kwargs = {}
-                if i.keywords.get('config_args'):
-                    # get values from config_args to look up in app.config
-                    #  and use it to call target func
-                    for key, cf in i.keywords.get('config_args').items():
-                        val = app.config[cf]
-                        kwargs[key] = val
-
-                bp = i(app=app, **kwargs)
-                app.register_blueprint(bp)
-
             if isinstance(i, Blueprint):
                 app.register_blueprint(i)
 
 
+## mod_name, url_prefix
 admin_bp = _bp_factory('Admin', '/admin')
 public_bp = _bp_factory('Public', None)
+thumbnails_bp = _bp_factory('Thumbnails', '/images', config_args={'static_folder':'STATIC_THUMBNAIL_ROOT'}) 
+images_bp = _bp_factory('Images', '', config_args={'static_folder':'STATIC_IMAGE_ROOT'}) 
 
-thumbnails_part = partial(_bp_factory, 
-                          'Thumbnails', 
-                          '/images', 
-                          config_args={'static_folder':'STATIC_THUMBNAIL_ROOT'}) 
-
-images_part = partial(_bp_factory, 
-                      'Images', '', 
-                      config_args={'static_folder':'STATIC_IMAGE_ROOT'}) 
-
-Blueprints = [admin_bp, public_bp, images_part, thumbnails_part]
+Blueprints = [admin_bp, public_bp, images_bp, thumbnails_bp]
 
 
 def no_cookie(app, **kwargs):
