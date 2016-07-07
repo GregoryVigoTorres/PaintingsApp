@@ -16,9 +16,11 @@ from flask.ext.assets import (Environment, Bundle)
 from .core import (db, load_blueprints, setup_logger)
 from .app_setup import (init_db, setup_dirs)
 from .models.user import (User, Role, user_datastore)
+
 from .Security import user
 from .Admin import (index, series, images, texts, contact)
 from .Public import (index, contact, texts)
+
 from .lib.template_filters import fmt_datetime, none_as_str 
 
 csrf = CsrfProtect()
@@ -51,31 +53,11 @@ def create_app(config=None):
     security.init_app(app, user_datastore, register_blueprint=False)
 
     # Assets
-    assets = Environment()
-    assets.init_app(app)
-
-    jquery = Bundle('js/jquery-2.1.3.min.js', output='js/JQuery.js')
-    assets.register('jquery', jquery)
-
-    css = Bundle('css/normalize.css', output='css/base.css')
-    assets.register('css', css)
-
-    security_bundle = Bundle('assets/security.scss', filters='scss', output='css/security.css')
-    assets.register('security', security_bundle)
-
-    admin_bundle = Bundle('Admin/assets/admin_style.scss',
-                          'Public/assets/properties.scss',
-                          'Public/assets/nav.scss',
-                          filters='scss', output='static/admin.css')
-    assets.register('admin', admin_bundle)                  
-
-    public_bundle = Bundle('Public/assets/properties.scss', 
-                           'Public/assets/nav.scss', 
-                           'Public/assets/public.scss',
-                           'Public/assets/viewer.scss',
-                           filters='scss', output='static/public.css')
-    assets.register('public', public_bundle)
-
+    assets = Environment(app=app)
+    ## TODO add app js to bundles
+    assets.from_yaml('assets.yml')
+    
+    # template filters
     app.add_template_filter(fmt_datetime)
     app.add_template_filter(none_as_str)
 

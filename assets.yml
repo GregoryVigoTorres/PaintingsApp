@@ -1,0 +1,33 @@
+
+jquery:
+    output: js/JQuery.js
+    contents:
+        - js/jquery-2.1.3.min.js
+
+css:
+    output: css/base.css
+    contents:
+        - css/normalize.css
+
+public:
+    filters: 'scss,cssmin'
+    output: static/public.css
+    contents:
+        - Public/assets/properties.scss
+        - Public/assets/nav.scss
+        - Public/assets/public.scss
+        - Public/assets/viewer.scss
+
+admin:
+    filters: 'scss,cssmin'
+    output: static/admin.css
+    contents: 
+        - Admin/assets/admin_style.scss
+        - Public/assets/properties.scss
+        - Public/assets/nav.scss 
+
+security:
+    filters: 'scss,cssmin'
+    output: css/security.css
+    contents:
+        - assets/security.scss

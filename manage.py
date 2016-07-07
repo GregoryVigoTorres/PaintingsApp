@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 
 from flask.ext.script import Manager
 from App.App import create_app
