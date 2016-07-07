@@ -4,7 +4,6 @@
     <meta charset='UTF-8'>
     <meta name='viewport' content="width=device-width, initial-scale=1, maximum-scale=1, height=device-height">
     <title>GregoryVigoTorres</title>
-    <!-- <link href="/static/css/jquery&#45;ui.min.css" media='all' type="text/css" rel="stylesheet"> -->
     <link href="/static/css/properties.css" media='all' type="text/css" rel="stylesheet">
 
     {% assets "css" %}
@@ -33,6 +32,7 @@
                         </li>
                     {% endfor %}
                     <li><a href="{{ url_for('Admin.newseries') }}">add a new series</a></li>
+                    <li><a href="{{ url_for('Admin.index') }}">edit series</a></li>
                 </ul>
             </li> 
             <li><a href="{{ url_for('Admin.texts_links') }}">texts &#38; links</a></li>
