@@ -15,8 +15,7 @@ from sqlalchemy.ext.declarative import declarative_base
 db = SQLAlchemy()
 Base = declarative_base()
 
-# There is a circular import here
-from App.models.public import Series
+from App.lib.utils import get_all_series
 
 
 def _bp_factory(mod_name, url_prefix, config_args=None, app=None, **kwargs):
@@ -100,14 +99,6 @@ def no_cookie(app, **kwargs):
     if bp != 'Admin' or has_csrf is None:
         response = kwargs['response']
         del response.headers['Set-Cookie']
-
-
-def get_all_series():
-    """ template global 
-    """
-    all_series = db.session.query(Series.title, Series.id).order_by(Series.order).all()
-    return all_series
-
 
 def add_auth_token():
     """ make current_user auth token available in templates """

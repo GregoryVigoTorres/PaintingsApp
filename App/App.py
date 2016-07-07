@@ -36,8 +36,6 @@ def create_app(config=None):
         app.config.from_pyfile(config)
         app.logger.info('Started with config from: {}'.format(config))
 
-
-
     log_path = Path(app.config['APP_LOGDIR'], app.config['APP_LOGFILE'])
     app.logger.info('Log file path: {}'.format(log_path))
 

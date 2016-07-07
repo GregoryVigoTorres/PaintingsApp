@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import ARRAY
 from sqlalchemy.schema import Sequence
 
-from ..core import db
+from App.core import db
 
 
 class Series(db.Model):
