@@ -42,6 +42,7 @@ def newseries():
 
         db.session.commit()
         form = SeriesForm()
+        return redirect(url_for('.index'))
 
     if len(form.errors) > 0:
         flash_form_errors(form.errors)
