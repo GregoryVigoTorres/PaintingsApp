@@ -33,17 +33,6 @@ def _bp_factory(mod_name, url_prefix, config_args=None, app=None, **kwargs):
 
     args_from_config = {}
 
-    if app and config_args:
-        # get values from app.config that need app context
-        # and update options dict 
-        for opt_name, val_name in config_args.items():
-            conf_val = config_args.get(val_name)
-            if conf_val:
-                args_from_config[opt_name] = conf_val
-       
-    if args_from_config:
-        options.update(args_from_config)
-
     if kwargs:
         options.update(kwargs)
 
@@ -63,8 +52,9 @@ def load_blueprints(app):
 ## mod_name, url_prefix
 admin_bp = _bp_factory('Admin', '/admin')
 public_bp = _bp_factory('Public', None)
-thumbnails_bp = _bp_factory('Thumbnails', '/images', config_args={'static_folder':'STATIC_THUMBNAIL_ROOT'}) 
-images_bp = _bp_factory('Images', '', config_args={'static_folder':'STATIC_IMAGE_ROOT'}) 
+## don't use values from app.config
+thumbnails_bp = _bp_factory('Thumbnails', '/images', static_folder='images/thumbnails') 
+images_bp = _bp_factory('Images', '', static_folder='images')
 
 Blueprints = [admin_bp, public_bp, images_bp, thumbnails_bp]
 

@@ -39,14 +39,14 @@
     </div>
 
     <div id='series-image-container'>
-            {% for i in series.images %}
+        {% for i in series.images %}
             <div class='container' style="order:{{ i.order }};" 
                 data-originalOrder="{{ i.order }}"
                 data-imageid="{{ i.id }}">
                 <p>
                     <img src="{{ url_for('Thumbnails.static', filename=i.filename) }}" 
                          alt="image not found"
-                         style='background-color: {{ i.padding_color }};'>
+                         style="background-color: {{ i.padding_color }};">
                 </p> 
                 <ul>
                     <li class="title">{{ i.title }}</li>

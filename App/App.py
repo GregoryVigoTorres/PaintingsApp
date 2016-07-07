@@ -13,6 +13,9 @@ from flask.ext.security import (Security, SQLAlchemyUserDatastore)
 from flask_wtf.csrf import CsrfProtect
 from flask.ext.assets import (Environment, Bundle)
 
+from colorama import Fore, Back, Style
+from colorama import init as init_colorama
+init_colorama(autoreset=True)
 
 csrf = CsrfProtect()
 
@@ -63,5 +66,6 @@ def create_app(config=None):
     app.add_template_filter(fmt_datetime)
     app.add_template_filter(none_as_str)
 
+    # print(app.url_map)
 
     return app
