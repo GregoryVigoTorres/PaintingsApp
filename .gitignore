@@ -22,3 +22,5 @@ alembic/README
 alembic/versions
 pylintrc
 nginx_conf
+tags
+
