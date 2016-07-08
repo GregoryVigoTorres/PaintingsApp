@@ -28,7 +28,7 @@
             <ul>
                 {% for s in all_series() %}
                     <li>
-                        <a href="{{ url_for('Public.index', _id=s.id) }}">{{ s.title }}</a>
+                        <a href="{{ url_for('Public.index', title=s.title) }}">{{ s.title }}</a>
                     </li>
                 {% endfor %}
             </ul>
