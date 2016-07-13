@@ -80,6 +80,7 @@ nav.open {
         height: $nav-height;
         vertical-align: unset;
         position: fixed;
+        z-index: 10;
 
         a {
             padding: 0 0 0 0;

@@ -64,6 +64,9 @@
 
         img {
             padding: 2.5rem;
+            &:hover {
+                opacity: 0.85;
+            }
         }
 
         .image-info {
@@ -199,6 +202,12 @@ h2.text, h3.text {
         &:hover {
             background: none;
             color: black;
+        }
+    }
+    
+    #image-container .image {
+        img:hover {
+            opacity: 1;
         }
     }
 }
