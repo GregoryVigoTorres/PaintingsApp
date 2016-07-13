@@ -2,13 +2,12 @@ var Ptgs = function() {
     "use-strict";
     document.addEventListener('DOMContentLoaded', function() {
         Ptgs.eventHandlers();
-        // Ptgs.infoContainers = document.getElementsByClassName('info-table-container');
         Ptgs.openInfoContainers = [];
     });
 };
 
 Ptgs.prototype.eventHandlers = function() {
-    function toggleContainers(eve) {
+    function toggleInfoContainers(eve) {
         /* hide all image info containers except the current one */
         for(i=0; i<Ptgs.openInfoContainers.length; i++) {  
             elem = Ptgs.openInfoContainers[i];
@@ -22,7 +21,7 @@ Ptgs.prototype.eventHandlers = function() {
     };
     
     $('.show-hide-image-info').on('click', function(event) {
-        toggleContainers(event);
+        toggleInfoContainers(event);
     });
 
     $('#menu-button-container').on('click', function(event) {
@@ -140,6 +139,10 @@ Ptgs.prototype.reverseViewer = function(event) {
 };
 
 Ptgs.prototype.openViewer = function(thumbnail) {
+    for (i=0; i<Ptgs.openInfoContainers.length; i++) {
+        $(Ptgs.openInfoContainers[i]).slideUp(10);
+    };
+
     var $container = $('.viewer-container');
     var $closeButton = $('#close-viewer');
     $('.viewer').show();
