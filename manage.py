@@ -4,7 +4,7 @@ from flask.ext.script import Manager
 from App.App import create_app
 from App.Manager.Users import (CreateUser, DeleteUser)
 from App.Manager.DbUtils import UpdateOrder, BulkImageUpload, UpdatePrismDate
-from App.Manager.site_utils import UnusedFiles
+from App.Manager.site_utils import UnusedFiles, ValidatePrismTitles
 
 manager = Manager(create_app)
 manager.add_option('-c', '--config', dest='config', required=False)
@@ -14,6 +14,7 @@ manager.add_command('update_image_order', UpdateOrder)
 manager.add_command('remove_unused_files', UnusedFiles)
 manager.add_command('upload_images', BulkImageUpload)
 manager.add_command('update_prism_date', UpdatePrismDate)
+manager.add_command('validate_prism_titles', ValidatePrismTitles)
 
 if __name__ == '__main__':
     manager.run()
