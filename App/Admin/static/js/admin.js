@@ -577,7 +577,7 @@ AdminController.prototype.orderSeriesImagesByTitle = function() {
     var containerElems = [];
     var startIndex = 0;
     /* make this available to validate Prism titles */
-    var prismRe = /(\d{2})(\d{2})\.(\d{4})\.(\d{2})\.(\d{2})\.(\d{2})/;
+    var prismRe = /(\d{2})(\d{2})\.?(\d{4})\.?(\d{2})\.?(\d{2})\.?(\d{2})/;
 
     function prismTitleSort() {
         /* this has no error checking for malformed titles! */
