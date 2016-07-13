@@ -8,7 +8,7 @@
 }
 
 nav {
-    position: absolute;
+    position: fixed;
     top: 0px;
     min-width: 252px;
     max-width: 299px;
@@ -68,6 +68,10 @@ nav.open {
 
     $nav-height: 2.3rem;
 
+    body {
+        padding-top: $nav-height;
+    }
+
     nav {
         min-width: 100%;
         /* unset height values for responsive menu */
@@ -75,7 +79,7 @@ nav.open {
         min-height: $nav-height;
         height: $nav-height;
         vertical-align: unset;
-        position: static;
+        position: fixed;
 
         a {
             padding: 0 0 0 0;
