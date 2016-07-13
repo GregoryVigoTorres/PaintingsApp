@@ -1,14 +1,28 @@
-
 var Ptgs = function() {
     "use-strict";
     document.addEventListener('DOMContentLoaded', function() {
         Ptgs.eventHandlers();
+        // Ptgs.infoContainers = document.getElementsByClassName('info-table-container');
+        Ptgs.openInfoContainers = [];
     });
 };
 
 Ptgs.prototype.eventHandlers = function() {
+    function toggleContainers(eve) {
+        /* hide all image info containers except the current one */
+        for(i=0; i<Ptgs.openInfoContainers.length; i++) {  
+            elem = Ptgs.openInfoContainers[i];
+            if (elem != eve.target.nextElementSibling) {
+                $(elem).slideUp(80);
+            };
+        };
+
+        $(eve.target.nextElementSibling).slideToggle(80);
+        Ptgs.openInfoContainers.push(eve.target.nextElementSibling);
+    };
+    
     $('.show-hide-image-info').on('click', function(event) {
-        $(this).siblings().slideToggle(80);
+        toggleContainers(event);
     });
 
     $('#menu-button-container').on('click', function(event) {
