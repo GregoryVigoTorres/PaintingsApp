@@ -69,50 +69,16 @@ footer {
   padding: 3rem 1rem 1.3rem 1rem;
 }
 
-@media screen and (max-width: 899px) {
-@media -sass-debug-info{filename{}line{font-family:\000035}}
-  nav {
-    transform: translate(-300px, 0);
-  }
-}
-@media -sass-debug-info{filename{}line{font-family:\0000310}}
+@media -sass-debug-info{filename{}line{font-family:\000036}}
 nav {
   position: fixed;
   top: 0px;
-  min-width: 252px;
-  max-width: 299px;
-  min-height: 100%;
-  vertical-align: top;
+  left: 0px;
   font-family: "BoldSans";
   letter-spacing: 3px;
-  color: #CECECE;
-  background-color: #272727;
-}
-@media -sass-debug-info{filename{}line{font-family:\0000321}}
-nav a {
-  color: #CECECE;
-  text-decoration: none;
-  padding: 1rem 1.3rem 1rem 1.3rem;
-  border: 1px solid #272727;
-}
-@media -sass-debug-info{filename{}line{font-family:\0000327}}
-nav a:hover {
-  border: 1px solid #CECECE;
-}
-@media -sass-debug-info{filename{}line{font-family:\0000330}}
-nav a:visited {
-  color: #CECECE;
-}
-@media -sass-debug-info{filename{}line{font-family:\0000335}}
-nav ul {
-  padding: 1.5rem 0 1.5rem 0;
-}
-@media -sass-debug-info{filename{}line{font-family:\0000338}}
-nav ul li {
-  min-height: 3.5rem;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000344}}
+@media -sass-debug-info{filename{}line{font-family:\0000315}}
 nav.open {
   transform: translate(0px, 0px);
   z-index: 9;
@@ -120,103 +86,114 @@ nav.open {
 }
 
 @media screen and (max-width: 899px) {
-@media -sass-debug-info{filename{}line{font-family:\0000351}}
+@media -sass-debug-info{filename{}line{font-family:\0000322}}
   #menu-button-container {
     display: inline-block;
     position: fixed;
     right: 0px;
     top: 0px;
-    z-index: 10;
+    z-index: 15;
     vertical-align: top;
     padding: 1.5rem;
     opacity: 0.80;
     color: #CECECE;
     background-color: #272727;
   }
+
+@media -sass-debug-info{filename{}line{font-family:\0000334}}
+  nav {
+    transform: translate(-300px, 0);
+    color: #CECECE;
+    background-color: #272727;
+    min-width: 50%;
+    max-width: 85%;
+    min-height: 100%;
+    vertical-align: top;
+  }
+@media -sass-debug-info{filename{}line{font-family:\0000344}}
+  nav ul ul {
+    margin-left: 24px;
+    display: none;
+  }
+@media -sass-debug-info{filename{}line{font-family:\0000349}}
+  nav ul ul.visible {
+    display: block;
+  }
+@media -sass-debug-info{filename{}line{font-family:\0000353}}
+  nav li, nav a {
+    color: #fff;
+    padding: 12px 14px;
+  }
 }
 @media screen and (min-width: 900px) {
-@media -sass-debug-info{filename{}line{font-family:\0000365}}
+@media -sass-debug-info{filename{}line{font-family:\0000362}}
   #menu-button-container {
     display: none;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000371}}
+@media -sass-debug-info{filename{}line{font-family:\0000366}}
   body {
     padding-top: 2.3rem;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000375}}
+@media -sass-debug-info{filename{}line{font-family:\0000370}}
   nav {
     min-width: 100%;
-    /* unset height values for responsive menu */
-    max-height: 2.3rem;
-    min-height: 2.3rem;
-    height: 2.3rem;
-    vertical-align: unset;
-    position: fixed;
+    background-color: #fff;
+    border: 2px solid #000;
     z-index: 10;
+    padding: 0 0 0 1.3rem;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000385}}
-  nav a {
-    padding: 0 0 0 0;
-    border: none;
-    cursor: default;
-  }
-@media -sass-debug-info{filename{}line{font-family:\0000390}}
-  nav a:hover {
-    border: none;
-  }
-@media -sass-debug-info{filename{}line{font-family:\0000395}}
+@media -sass-debug-info{filename{}line{font-family:\0000378}}
   nav ul {
-    color: #CECECE;
-    background-color: #272727;
-  }
-@media -sass-debug-info{filename{}line{font-family:\0000399}}
-  nav li {
-    height: 2.3rem;
-  }
-@media -sass-debug-info{filename{}line{font-family:\00003103}}
-  nav li:hover {
-    background-color: #585858;
-  }
-@media -sass-debug-info{filename{}line{font-family:\00003107}}
-  nav ul li {
-    cursor: default;
-    min-height: 1rem;
-    padding-left: 1.3rem;
-    padding-top: .2rem;
-  }
-@media -sass-debug-info{filename{}line{font-family:\00003114}}
-  nav ul, nav li {
     display: inline-block;
-    padding: 0 1.3rem 0 0;
+    position: relative;
+    background-color: #fff;
   }
-@media -sass-debug-info{filename{}line{font-family:\00003119}}
-  nav li ul {
+@media -sass-debug-info{filename{}line{font-family:\0000383}}
+  nav ul li {
+    display: inline-block;
+    position: relative;
+    padding: 13px 24px;
+  }
+@media -sass-debug-info{filename{}line{font-family:\0000388}}
+  nav ul li a {
+    display: inline-block;
+  }
+@media -sass-debug-info{filename{}line{font-family:\0000392}}
+  nav ul li ul {
     display: none;
-    padding-right: 0;
-    padding-bottom: 8px;
-  }
-@media -sass-debug-info{filename{}line{font-family:\00003125}}
-  nav li:hover > ul {
     position: absolute;
-    display: block;
-    z-index: 10;
-    top: 2.3rem;
+    top: 100%;
+    left: 0;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    width: max-content;
   }
-@media -sass-debug-info{filename{}line{font-family:\00003131}}
-  nav li:hover > ul li {
+@media -sass-debug-info{filename{}line{font-family:\00003102}}
+  nav ul li:hover {
+    background-color: #CECECE;
+  }
+@media -sass-debug-info{filename{}line{font-family:\00003104}}
+  nav ul li:hover ul {
     display: block;
-    padding: 5px 6px 7px 6px;
+  }
+@media -sass-debug-info{filename{}line{font-family:\00003109}}
+  nav ul li ul > li {
+    display: block;
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
   }
 }
 /* menu button */
-@media -sass-debug-info{filename{}line{font-family:\00003140}}
+@media -sass-debug-info{filename{}line{font-family:\00003122}}
 .typcn-th-menu {
   font-size: 1.3rem;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003144}}
+@media -sass-debug-info{filename{}line{font-family:\00003126}}
 .typcn-th-menu:before {
   content: '\e116';
 }
@@ -465,7 +442,7 @@ h2.text, h3.text {
 
 @media -sass-debug-info{filename{}line{font-family:\0000321}}
   #overlay {
-    z-index: 9;
+    z-index: 14;
     display: none;
     height: 100%;
     width: 100%;
@@ -498,7 +475,7 @@ h2.text, h3.text {
 @media -sass-debug-info{filename{}line{font-family:\0000350}}
   #image-info {
     display: none;
-    z-index: 12;
+    z-index: 15;
     position: absolute;
     bottom: 7px;
     color: #272727;
@@ -517,7 +494,7 @@ h2.text, h3.text {
 
 @media -sass-debug-info{filename{}line{font-family:\0000369}}
   .viewer-open {
-    z-index: 10;
+    z-index: 15;
     text-align: center;
     position: fixed;
     top: 0px;
@@ -533,14 +510,14 @@ h2.text, h3.text {
 
 @media -sass-debug-info{filename{}line{font-family:\0000384}}
   #viewer-canvas {
-    z-index: 12;
+    z-index: 15;
     opacity: 1.0;
     background: white;
   }
 
 @media -sass-debug-info{filename{}line{font-family:\0000390}}
   #viewer-count {
-    z-index: 12;
+    z-index: 15;
     position: fixed;
     bottom: 5%;
     left: 47%;

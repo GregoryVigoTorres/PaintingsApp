@@ -1,46 +1,17 @@
 //@import "properties";
 @import "colors";
 
-@media screen and (max-width: 899px) {
-    nav {
-        transform: translate(-300px, 0);
-    }
-}
+$nav-height: 2.3rem;
 
 nav {
     position: fixed;
     top: 0px;
-    min-width: 252px;
-    max-width: 299px;
-    min-height: 100%;
-    vertical-align: top;
+    left: 0px;
     font-family: "BoldSans";
     letter-spacing: 3px;
-    @include light-on-dark;
-
-    a {
-        color: #CECECE;
-        text-decoration: none;
-        padding: 1rem 1.3rem 1rem 1.3rem;
-        border: 1px solid $dark-gray;
-
-        &:hover { 
-            border: 1px solid #CECECE;
-        }
-        &:visited {
-            color: #CECECE;
-        }
-    }
-
-    ul {
-        padding: 1.5rem 0 1.5rem 0;
-
-        li {
-            min-height: 3.5rem;
-        }
-    }
 }
 
+// Only for Mobile
 nav.open {
     transform: translate(0px, 0px);
     z-index: 9;
@@ -53,20 +24,44 @@ nav.open {
         position: fixed;
         right: 0px;
         top: 0px;
-        z-index: 10;
+        z-index: 15;
         vertical-align: top;
         padding: 1.5rem;
         opacity: 0.80;
         @include light-on-dark;
     }
+
+    nav {
+        transform: translate(-300px, 0);
+
+        @include light-on-dark;
+        min-width: 50%;
+        max-width: 85%;
+        min-height: 100%;
+        vertical-align: top;
+
+        // mobile menu
+        ul ul {
+            margin-left: 24px;
+            display: none;
+        }
+
+        ul ul.visible {
+            display: block;
+        }
+
+        li, a {
+            color: #fff;
+            padding: 12px 14px;
+        }
+    }
 }
 
+// nav drop down for widescreen in here
 @media screen and (min-width: 900px) {
     #menu-button-container {
         display: none;
     }
-
-    $nav-height: 2.3rem;
 
     body {
         padding-top: $nav-height;
@@ -74,63 +69,50 @@ nav.open {
 
     nav {
         min-width: 100%;
-        /* unset height values for responsive menu */
-        max-height: $nav-height;
-        min-height: $nav-height;
-        height: $nav-height;
-        vertical-align: unset;
-        position: fixed;
+        background-color: #fff;
+        border: 2px solid #000;
+
         z-index: 10;
-
-        a {
-            padding: 0 0 0 0;
-            border: none;
-            cursor: default;
-
-            &:hover {
-                 border: none;
-            }
-        }
+        padding: 0 0 0 1.3rem;
 
         ul {
-            @include light-on-dark;
-        }
-
-        li {
-            height: $nav-height;
-        }
-
-        li:hover {
-            background-color: $medium-gray;
-        }
-
-        ul li {
-            cursor: default;
-            min-height: 1rem;
-            padding-left: 1.3rem;
-            padding-top: .2rem;
-        }
-
-        ul, li {
             display: inline-block;
-            padding: 0 1.3rem 0 0;
-        }
+            position: relative;
+            background-color: #fff;
 
-        li ul {
-            display: none;
-            padding-right: 0;
-            padding-bottom: 8px;
-        }
-
-        li:hover > ul {
-            position: absolute;
-            display: block;
-            z-index: 10;
-            top: $nav-height;
-        
             li {
-                display: block;
-                padding: 5px 6px 7px 6px;
+                display: inline-block;
+                position: relative;
+                padding: 13px 24px;
+
+                a {
+                    display: inline-block;
+                }
+
+                ul {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    padding: 0 0 0 0;
+                    margin: 0 0 0 0;
+                    width: max-content;
+                }
+
+                &:hover {
+                    background-color: $light-gray;
+                    ul {
+                        display: block;
+                    }
+                }
+
+                ul > li {
+                    display: block;
+                    border-left: 2px solid #000;
+                    border-right: 2px solid #000;
+                    border-top: 1px solid #000;
+                    border-bottom: 1px solid #000;
+                }
             }
         }
     }

@@ -20,7 +20,6 @@
 </head>
 <body>
     <div id="outer-container">
-    {% block nav %}
     <nav>
     <ul>
         <li>series
@@ -33,7 +32,7 @@
             </ul>
         </li>
         <li><a href="{{ url_for('Public.text_link') }}">texts &amp; links</a></li>
-        <li><a href="{{ url_for('Public.contact') }}">Contact</a></li>
+        <li><a href="{{ url_for('Public.contact') }}">contact</a></li>
     </ul>
     </nav>
 
@@ -42,7 +41,7 @@
     <div id="menu-button-container">
         <span class="icon typcn typcn-th-menu" aria-hidden="true" icon-data=""></span>
     </div> 
-    {% endblock %}
+
     {% block image_viewer %}{% endblock %}
     {% block container %}{% endblock %}
     <footer>

@@ -23,10 +23,16 @@ Ptgs.prototype.eventHandlers = function() {
     $('.show-hide-image-info').on('click', function(event) {
         toggleInfoContainers(event);
     });
-
+    
     $('#menu-button-container').on('click', function(event) {
         $('nav').toggleClass('open');
         $('body').scrollTop(0); 
+    });
+
+    $('nav ul li').on('click', function(event) {
+        var elem = event.target;
+        var menuItems = elem.getElementsByTagName('ul');
+        $(menuItems).toggleClass('visible');
     });
 
     $(document).scroll(function(event) {
