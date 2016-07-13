@@ -18,8 +18,11 @@
         }
     }
 
+    /* this is the z-index of the nav */
+    $bottom-index: 10;
+
     #overlay {
-        z-index: 9;
+        z-index: $bottom-index+1;
         display: none;
         height:100%;
         width: 100%;
@@ -32,7 +35,7 @@
 
     #close-viewer {
         display: none;
-        z-index: 15;
+        z-index: $bottom-index+2;
         font-family: "BoldSans";
         font-size: 1.5rem;
         position: absolute;
@@ -49,7 +52,7 @@
 
     #image-info {
         display: none; 
-        z-index: 12;
+        z-index: $bottom-index+2;
         position: absolute;
         bottom: 7px;
         color: $dark-gray;
@@ -67,7 +70,7 @@
     }
 
     .viewer-open {
-        z-index: 10;
+        z-index: $bottom-index+2;
         text-align: center;
         position: fixed;
         top: 0px;
@@ -82,13 +85,13 @@
     }
 
     #viewer-canvas {
-        z-index: 12;
+        z-index: $bottom-index+2;
         opacity: 1.0;
         background: white;
     }
 
     #viewer-count {
-        z-index: 12;
+        z-index: $bottom-index+2;
         position: fixed;
         bottom: 5%;
         left: 47%;
@@ -106,7 +109,7 @@
     } 
 
     #back-arrow-container, #forward-arrow-container {
-        z-index: 15;
+        z-index: $bottom-index+2;
         height: 4.6rem;
         padding: 1.3rem 1rem;
         text-align: center;

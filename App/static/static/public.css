@@ -440,9 +440,10 @@ h2.text, h3.text {
     max-width: 85%;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000321}}
+  /* this is the z-index of the nav */
+@media -sass-debug-info{filename{}line{font-family:\0000324}}
   #overlay {
-    z-index: 14;
+    z-index: 11;
     display: none;
     height: 100%;
     width: 100%;
@@ -453,10 +454,10 @@ h2.text, h3.text {
     left: 0;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000333}}
+@media -sass-debug-info{filename{}line{font-family:\0000336}}
   #close-viewer {
     display: none;
-    z-index: 15;
+    z-index: 12;
     font-family: "BoldSans";
     font-size: 1.5rem;
     position: absolute;
@@ -467,34 +468,34 @@ h2.text, h3.text {
     color: white;
     cursor: default;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000345}}
+@media -sass-debug-info{filename{}line{font-family:\0000348}}
   #close-viewer:hover {
     opacity: 0.6;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000350}}
+@media -sass-debug-info{filename{}line{font-family:\0000353}}
   #image-info {
     display: none;
-    z-index: 15;
+    z-index: 12;
     position: absolute;
     bottom: 7px;
     color: #272727;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000357}}
+@media -sass-debug-info{filename{}line{font-family:\0000360}}
   #image-info .small-font {
     padding-right: 1rem;
     padding-left: 2.3rem;
     text-align: right;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000363}}
+@media -sass-debug-info{filename{}line{font-family:\0000366}}
   #image-info td {
     padding: 2px 26px 2px 6px;
     text-align: left;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000369}}
+@media -sass-debug-info{filename{}line{font-family:\0000372}}
   .viewer-open {
-    z-index: 15;
+    z-index: 12;
     text-align: center;
     position: fixed;
     top: 0px;
@@ -503,21 +504,21 @@ h2.text, h3.text {
     -moz-user-select: none;
     -webkit-user-select: none;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000379}}
+@media -sass-debug-info{filename{}line{font-family:\0000382}}
   .viewer-open canvas {
     margin: auto;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000384}}
+@media -sass-debug-info{filename{}line{font-family:\0000387}}
   #viewer-canvas {
-    z-index: 15;
+    z-index: 12;
     opacity: 1.0;
     background: white;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000390}}
+@media -sass-debug-info{filename{}line{font-family:\0000393}}
   #viewer-count {
-    z-index: 15;
+    z-index: 12;
     position: fixed;
     bottom: 5%;
     left: 47%;
@@ -526,21 +527,21 @@ h2.text, h3.text {
     text-align: center;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\00003100}}
+@media -sass-debug-info{filename{}line{font-family:\00003103}}
   .typcn-arrow-left-thick:before {
     content: '\e00d';
     /* '' */
   }
 
-@media -sass-debug-info{filename{}line{font-family:\00003104}}
+@media -sass-debug-info{filename{}line{font-family:\00003107}}
   .typcn-arrow-right-thick:before {
     content: '\e01a';
     /* '' */
   }
 
-@media -sass-debug-info{filename{}line{font-family:\00003108}}
+@media -sass-debug-info{filename{}line{font-family:\00003111}}
   #back-arrow-container, #forward-arrow-container {
-    z-index: 15;
+    z-index: 12;
     height: 4.6rem;
     padding: 1.3rem 1rem;
     text-align: center;
@@ -551,17 +552,17 @@ h2.text, h3.text {
     top: 175px;
     cursor: default;
   }
-@media -sass-debug-info{filename{}line{font-family:\00003119}}
+@media -sass-debug-info{filename{}line{font-family:\00003122}}
   #back-arrow-container:hover, #forward-arrow-container:hover {
     opacity: 0.6;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\00003124}}
+@media -sass-debug-info{filename{}line{font-family:\00003127}}
   #back-arrow-container {
     left: 0px;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\00003128}}
+@media -sass-debug-info{filename{}line{font-family:\00003131}}
   #forward-arrow-container {
     right: 0px;
   }
