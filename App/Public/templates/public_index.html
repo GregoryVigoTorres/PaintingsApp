@@ -17,34 +17,23 @@
 
 {% block container %}
 
-<h2>{{ series.title }}</h2>
+<h2>{% if images.length %}{{ images[0].series.title }}{% endif %}</h2>
 
-<div id="image-container">
-{% for i in series.images %}
-    <div class='image' style="order:{{ loop.index }};" >
-        <img src="{{ url_for('Thumbnails.static', filename=i.filename) }}" 
-            alt="{{ i.title }}"
-            style="background-color:{{ i.padding_color }};"
-            data-order="{{ loop.index }}"
-            >
-        <div class="image-info">
-        <span class="show-hide-image-info">+</span>
-        <div class='info-table-container' data-order="{{ loop.index }}" >
-            <table>
-                <tbody>
-                    <tr><td class='small-font'>title</td> <td>{{ i.title|none_as_str }}</td></tr>
-                    <tr><td class='small-font'>date</td> <td>{{ i.date|none_as_str}}</td></tr>
-                    <tr><td class='small-font'>dims.</td> <td>{{ i.dimensions[0]|none_as_str }} x {{ i.dimensions[1]|none_as_str }}</td></tr>
-                    <tr><td class='small-font'>medium</td> <td>{{ i.medium|none_as_str }}</td></tr>
-                </tbody>
-            </table>
-        </div>
-        </div>
-    </div>
+{% include 'image_container.html' %}
 
-
-{% endfor %}
+<div id='pagination-container'>
+    <!-- 
+        load images via ajax 
+        make sure SOMETHING appears even when javascript is disabled, 
+        load MORE images via ajax, render in image_container partial
+        check class vs id in image_container
+        get current url in order to get more pages in the same series
+    -->
+    <p>
+        <a href="{{ request.url|prev_page_url }}">prev</a>
+        << 1-10 of {{ img_count }} >> 
+        <a href="{{ request.url|next_page_url }}">next</a>
+    </p>
 </div>
-
 
 {% endblock %}

@@ -1,0 +1,26 @@
+<div id="image-container">
+{% for i in images %}
+    <div class='image' style="order:{{ loop.index }};" >
+        <img src="{{ url_for('Thumbnails.static', filename=i.filename) }}" 
+            alt="{{ i.title }}"
+            style="background-color:{{ i.padding_color }};"
+            data-order="{{ loop.index }}"
+            >
+        <div class="image-info">
+        <span class="show-hide-image-info">+</span>
+        <div class='info-table-container' data-order="{{ loop.index }}" >
+            <table>
+                <tbody>
+                    <tr><td class='small-font'>order</td> <td>{{ i.order }}</td></tr>
+                    <tr><td class='small-font'>title</td> <td>{{ i.title|none_as_str }}</td></tr>
+                    <tr><td class='small-font'>date</td> <td>{{ i.date|none_as_str}}</td></tr>
+                    <tr><td class='small-font'>dims.</td> <td>{{ i.dimensions[0]|none_as_str }} x {{ i.dimensions[1]|none_as_str }}</td></tr>
+                    <tr><td class='small-font'>medium</td> <td>{{ i.medium|none_as_str }}</td></tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+

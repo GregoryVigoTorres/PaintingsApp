@@ -1,4 +1,4 @@
-from functools import partial
+# from functools import partial
 from pathlib import Path
 import logging
 
@@ -18,7 +18,9 @@ from sqlalchemy.ext.declarative import declarative_base
 db = SQLAlchemy()
 Base = declarative_base()
 
-from App.lib.template_globals import get_all_series, get_auth_token
+from App.lib.template_globals import (
+    get_all_series, 
+    get_auth_token)
 
 
 def _bp_factory(mod_name, url_prefix, config_args=None, app=None, **kwargs):
