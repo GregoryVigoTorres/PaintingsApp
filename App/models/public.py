@@ -20,7 +20,7 @@ class Series(db.Model):
     images = db.relationship('Image',
             backref='series',
             cascade='all, delete, delete-orphan',
-            lazy='joined',
+            lazy='dynamic',
             order_by='Image.order')
 
     def __repr__(self):
