@@ -89,9 +89,29 @@
     } /* .image */
 }
 
+/* widescreen default */
 #pagination-container {
     text-align: center;
-    border: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+
+    a {
+        display: inline-block;
+        margin-right: 2rem;
+        padding: 3px;
+        
+        &:hover {
+            background-color: rgba(37, 110, 222, 0.3);
+        }
+    }
+
+    a.current-page {
+        color: #E92323; //red
+
+        &:hover {
+            background-color: rgba(233, 35, 35, 0.3);
+        }
+    }
 }
 
 .viewer {

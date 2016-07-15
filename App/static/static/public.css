@@ -294,76 +294,95 @@ nav.open {
 @media -sass-debug-info{filename{}line{font-family:\0000392}}
 #pagination-container {
   text-align: center;
-  border: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+@media -sass-debug-info{filename{}line{font-family:\0000397}}
+#pagination-container a {
+  display: inline-block;
+  margin-right: 2rem;
+  padding: 3px;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003102}}
+#pagination-container a:hover {
+  background-color: rgba(37, 110, 222, 0.3);
+}
+@media -sass-debug-info{filename{}line{font-family:\00003107}}
+#pagination-container a.current-page {
+  color: #E92323;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003110}}
+#pagination-container a.current-page:hover {
+  background-color: rgba(233, 35, 35, 0.3);
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000397}}
+@media -sass-debug-info{filename{}line{font-family:\00003116}}
 .viewer {
   display: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003101}}
+@media -sass-debug-info{filename{}line{font-family:\00003120}}
 #overlay {
   display: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003105}}
+@media -sass-debug-info{filename{}line{font-family:\00003124}}
 #content-container {
   margin: 2.3rem;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003109}}
+@media -sass-debug-info{filename{}line{font-family:\00003128}}
 .contact-info-table, .text-link-table {
   max-width: 80%;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003112}}
+@media -sass-debug-info{filename{}line{font-family:\00003131}}
 .contact-info-table tr td:first-of-type, .text-link-table tr td:first-of-type {
   text-align: right;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003116}}
+@media -sass-debug-info{filename{}line{font-family:\00003135}}
 .contact-info-table td, .text-link-table td {
   padding: 3px 0 8px 12px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003119}}
+@media -sass-debug-info{filename{}line{font-family:\00003138}}
 .contact-info-table td img, .text-link-table td img {
   max-height: .85rem;
   vertical-align: baseline;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003124}}
+@media -sass-debug-info{filename{}line{font-family:\00003143}}
 .contact-info-table td a, .text-link-table td a {
   box-shadow: inset 0px -3px rgba(37, 110, 222, 0.3);
 }
-@media -sass-debug-info{filename{}line{font-family:\00003127}}
+@media -sass-debug-info{filename{}line{font-family:\00003146}}
 .contact-info-table td a:hover, .text-link-table td a:hover {
   box-shadow: inset 0px -3px rgba(37, 110, 222, 0.7);
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003134}}
+@media -sass-debug-info{filename{}line{font-family:\00003153}}
 .text-link-table {
   margin-bottom: 2.2rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003137}}
+@media -sass-debug-info{filename{}line{font-family:\00003156}}
 .text-link-table tr td:first-of-type {
   text-align: left;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003141}}
+@media -sass-debug-info{filename{}line{font-family:\00003160}}
 .text-link-table td {
   padding-right: 18px;
   vertical-align: top;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003146}}
+@media -sass-debug-info{filename{}line{font-family:\00003165}}
 .text-link-table thead {
   font-family: "BoldSans";
   font-size: 105%;
   color: #585858;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003152}}
+@media -sass-debug-info{filename{}line{font-family:\00003171}}
 .text-link-table .description {
   border: 1px solid #CECECE;
   font-family: "LightItalic";
   cursor: default;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003157}}
+@media -sass-debug-info{filename{}line{font-family:\00003176}}
 .text-link-table .description div {
   max-width: 9rem;
   max-height: 3rem;
@@ -372,12 +391,12 @@ nav.open {
   white-space: nowrap;
   overflow: hidden;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003166}}
+@media -sass-debug-info{filename{}line{font-family:\00003185}}
 .text-link-table .description:hover {
   border: 1px solid #272727;
   color: #272727;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003173}}
+@media -sass-debug-info{filename{}line{font-family:\00003192}}
 .text-link-table .show-description div {
   max-height: 19rem !Important;
   max-width: 19rem !Important;
@@ -386,7 +405,7 @@ nav.open {
   overflow: auto !Important;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003183}}
+@media -sass-debug-info{filename{}line{font-family:\00003202}}
 #text-body {
   white-space: pre-line;
   padding: 1.3rem;
@@ -395,30 +414,30 @@ nav.open {
   border: 1px solid #CECECE;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003191}}
+@media -sass-debug-info{filename{}line{font-family:\00003210}}
 h2.text, h3.text {
   color: #585858;
 }
 
 @media screen and (max-width: 390px) {
   /* this is to make the text/links table smaller */
-@media -sass-debug-info{filename{}line{font-family:\00003197}}
+@media -sass-debug-info{filename{}line{font-family:\00003216}}
   .description, .date {
     display: none;
   }
 }
 @media screen and (max-width: 719px) {
-@media -sass-debug-info{filename{}line{font-family:\00003203}}
+@media -sass-debug-info{filename{}line{font-family:\00003222}}
   #image-container .image .show-hide-image-info {
     /* unset hover on mobile */
   }
-@media -sass-debug-info{filename{}line{font-family:\00003205}}
+@media -sass-debug-info{filename{}line{font-family:\00003224}}
   #image-container .image .show-hide-image-info:hover {
     background: none;
     color: black;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\00003212}}
+@media -sass-debug-info{filename{}line{font-family:\00003231}}
   #image-container .image img:hover {
     opacity: 1;
   }
