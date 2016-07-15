@@ -11,11 +11,13 @@ def fmt_datetime(dtime):
     except AttributeError:
         return ''
 
+
 def none_as_str(value):
     if not value:
         return ''
     else:
         return value
+
 
 def get_page_url(url, page):
     """ E.g. first, last or page3 """
@@ -33,7 +35,7 @@ def get_page_url(url, page):
     return page_url
 
 
-def prev_page_url(url, page=None):
+def prev_page_url(url):
     pu = urlsplit(url)
     qs = parse_qs(pu.query)
 
@@ -58,7 +60,7 @@ def prev_page_url(url, page=None):
     return prev_url
 
 
-def next_page_url(url, page=None):
+def next_page_url(url):
     """ returns current url with
         next page or page 1 
     """

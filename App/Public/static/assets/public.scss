@@ -89,7 +89,9 @@
     } /* .image */
 }
 
-/* widescreen default */
+/* widescreen default 
+ * Don't show all pages on mobile
+ */
 #pagination-container {
     text-align: center;
     border-top: 1px solid black;
@@ -111,6 +113,10 @@
         &:hover {
             background-color: rgba(233, 35, 35, 0.3);
         }
+    }
+
+    .mobile-pages {
+        display: none;
     }
 }
 
@@ -219,18 +225,46 @@ h2.text, h3.text {
     }
 }
 
+/* small/med screen 
+ * Pagination things and 
+ * image container centering
+ */
 @media screen and (max-width: 719px) {
+    /* unset hover on mobile */
     #image-container .image .show-hide-image-info {
-        /* unset hover on mobile */
         &:hover {
             background: none;
             color: black;
         }
     }
-    
-    #image-container .image {
-        img:hover {
-            opacity: 1;
+
+    #image-container {
+        align-items: space-around;
+
+        .image {
+            margin: auto;
+
+            img {
+                &:hover {
+                    opacity: 1;
+                }
+            }
         }
     }
+
+    #pagination-container {
+        a:not(.mobile-pages) {
+            display: none;
+        }
+
+        a {
+            margin: 0 0 0 0;
+        }
+
+        .mobile-pages {
+            display: inline-block;
+            padding: 8px;
+        }
+    }
+    
 }

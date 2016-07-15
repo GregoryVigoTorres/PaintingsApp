@@ -28,16 +28,22 @@
 {% include 'image_container.html' %}
 
 <div id='pagination-container'>
+    <!-- next and previous for mobile only -->
     <p>
         {% if page > 0 %}
+            <a class="mobile-pages" href="{{ request.url|prev_page_url }}">&lt;&lt;</a>
             <a href="{{ request.url|get_page_url(0) }}">&lt;&lt;</a>&nbsp;&nbsp;
         {% endif %}
-        
+
+        <span class="mobile-pages">{{ page+1 }} of {{ last_page+1 }}</span>
+
         {% for i in range(last_page+1) %}
             <a {% if i == page %}class="current-page"{% endif %} href="{{ request.url|get_page_url(i) }}">{{ i+1 }}</a>
         {% endfor %}
 
+
         {% if page < last_page %}
+            &nbsp;&nbsp;<a class="mobile-pages" href="{{ request.url|next_page_url }}">&gt;&gt;</a>
             &nbsp;&nbsp;<a href="{{ request.url|get_page_url(last_page) }}">&gt;&gt;</a>
         {% endif %}
     </p>

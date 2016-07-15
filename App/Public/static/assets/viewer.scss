@@ -1,8 +1,10 @@
 @charset 'UTF-8';
 @import "colors";
 
-/* The viewer is only visible on desktop sized screens */
-
+/* The viewer is only visible on desktop sized screens 
+ * There are also default #image-container styles in public.scss
+ * And there are some mobile styles near the end of public.scss.
+ */
 @media screen and (min-width: 719px) {
     #image-container {
         flex-direction: row;

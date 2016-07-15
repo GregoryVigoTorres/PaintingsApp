@@ -291,98 +291,105 @@ nav.open {
   padding: 0 .4rem 0 .4rem;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000392}}
+/* widescreen default 
+ * Don't show all pages on mobile
+ */
+@media -sass-debug-info{filename{}line{font-family:\0000395}}
 #pagination-container {
   text-align: center;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
-@media -sass-debug-info{filename{}line{font-family:\0000397}}
+@media -sass-debug-info{filename{}line{font-family:\00003100}}
 #pagination-container a {
   display: inline-block;
   margin-right: 2rem;
   padding: 3px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003102}}
+@media -sass-debug-info{filename{}line{font-family:\00003105}}
 #pagination-container a:hover {
   background-color: rgba(37, 110, 222, 0.3);
 }
-@media -sass-debug-info{filename{}line{font-family:\00003107}}
+@media -sass-debug-info{filename{}line{font-family:\00003110}}
 #pagination-container a.current-page {
   color: #E92323;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003110}}
+@media -sass-debug-info{filename{}line{font-family:\00003113}}
 #pagination-container a.current-page:hover {
   background-color: rgba(233, 35, 35, 0.3);
 }
+@media -sass-debug-info{filename{}line{font-family:\00003118}}
+#pagination-container .mobile-pages {
+  display: none;
+}
 
-@media -sass-debug-info{filename{}line{font-family:\00003116}}
+@media -sass-debug-info{filename{}line{font-family:\00003123}}
 .viewer {
   display: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003120}}
+@media -sass-debug-info{filename{}line{font-family:\00003127}}
 #overlay {
   display: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003124}}
+@media -sass-debug-info{filename{}line{font-family:\00003131}}
 #content-container {
   margin: 2.3rem;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003128}}
+@media -sass-debug-info{filename{}line{font-family:\00003135}}
 .contact-info-table, .text-link-table {
   max-width: 80%;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003131}}
+@media -sass-debug-info{filename{}line{font-family:\00003138}}
 .contact-info-table tr td:first-of-type, .text-link-table tr td:first-of-type {
   text-align: right;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003135}}
+@media -sass-debug-info{filename{}line{font-family:\00003142}}
 .contact-info-table td, .text-link-table td {
   padding: 3px 0 8px 12px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003138}}
+@media -sass-debug-info{filename{}line{font-family:\00003145}}
 .contact-info-table td img, .text-link-table td img {
   max-height: .85rem;
   vertical-align: baseline;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003143}}
+@media -sass-debug-info{filename{}line{font-family:\00003150}}
 .contact-info-table td a, .text-link-table td a {
   box-shadow: inset 0px -3px rgba(37, 110, 222, 0.3);
 }
-@media -sass-debug-info{filename{}line{font-family:\00003146}}
+@media -sass-debug-info{filename{}line{font-family:\00003153}}
 .contact-info-table td a:hover, .text-link-table td a:hover {
   box-shadow: inset 0px -3px rgba(37, 110, 222, 0.7);
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003153}}
+@media -sass-debug-info{filename{}line{font-family:\00003160}}
 .text-link-table {
   margin-bottom: 2.2rem;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003156}}
+@media -sass-debug-info{filename{}line{font-family:\00003163}}
 .text-link-table tr td:first-of-type {
   text-align: left;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003160}}
+@media -sass-debug-info{filename{}line{font-family:\00003167}}
 .text-link-table td {
   padding-right: 18px;
   vertical-align: top;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003165}}
+@media -sass-debug-info{filename{}line{font-family:\00003172}}
 .text-link-table thead {
   font-family: "BoldSans";
   font-size: 105%;
   color: #585858;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003171}}
+@media -sass-debug-info{filename{}line{font-family:\00003178}}
 .text-link-table .description {
   border: 1px solid #CECECE;
   font-family: "LightItalic";
   cursor: default;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003176}}
+@media -sass-debug-info{filename{}line{font-family:\00003183}}
 .text-link-table .description div {
   max-width: 9rem;
   max-height: 3rem;
@@ -391,12 +398,12 @@ nav.open {
   white-space: nowrap;
   overflow: hidden;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003185}}
+@media -sass-debug-info{filename{}line{font-family:\00003192}}
 .text-link-table .description:hover {
   border: 1px solid #272727;
   color: #272727;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003192}}
+@media -sass-debug-info{filename{}line{font-family:\00003199}}
 .text-link-table .show-description div {
   max-height: 19rem !Important;
   max-width: 19rem !Important;
@@ -405,7 +412,7 @@ nav.open {
   overflow: auto !Important;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003202}}
+@media -sass-debug-info{filename{}line{font-family:\00003209}}
 #text-body {
   white-space: pre-line;
   padding: 1.3rem;
@@ -414,54 +421,80 @@ nav.open {
   border: 1px solid #CECECE;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003210}}
+@media -sass-debug-info{filename{}line{font-family:\00003217}}
 h2.text, h3.text {
   color: #585858;
 }
 
 @media screen and (max-width: 390px) {
   /* this is to make the text/links table smaller */
-@media -sass-debug-info{filename{}line{font-family:\00003216}}
+@media -sass-debug-info{filename{}line{font-family:\00003223}}
   .description, .date {
     display: none;
   }
 }
+/* small/med screen 
+ * Pagination things and 
+ * image container centering
+ */
 @media screen and (max-width: 719px) {
-@media -sass-debug-info{filename{}line{font-family:\00003222}}
-  #image-container .image .show-hide-image-info {
-    /* unset hover on mobile */
-  }
-@media -sass-debug-info{filename{}line{font-family:\00003224}}
+  /* unset hover on mobile */
+@media -sass-debug-info{filename{}line{font-family:\00003235}}
   #image-container .image .show-hide-image-info:hover {
     background: none;
     color: black;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\00003231}}
+@media -sass-debug-info{filename{}line{font-family:\00003241}}
+  #image-container {
+    align-items: space-around;
+  }
+@media -sass-debug-info{filename{}line{font-family:\00003244}}
+  #image-container .image {
+    margin: auto;
+  }
+@media -sass-debug-info{filename{}line{font-family:\00003248}}
   #image-container .image img:hover {
     opacity: 1;
+  }
+
+@media -sass-debug-info{filename{}line{font-family:\00003256}}
+  #pagination-container a:not(.mobile-pages) {
+    display: none;
+  }
+@media -sass-debug-info{filename{}line{font-family:\00003260}}
+  #pagination-container a {
+    margin: 0 0 0 0;
+  }
+@media -sass-debug-info{filename{}line{font-family:\00003264}}
+  #pagination-container .mobile-pages {
+    display: inline-block;
+    padding: 8px;
   }
 }
 
 @charset "UTF-8";
-/* The viewer is only visible on desktop sized screens */
+/* The viewer is only visible on desktop sized screens 
+ * There are also default #image-container styles in public.scss
+ * And there are some mobile styles near the end of public.scss.
+ */
 @media screen and (min-width: 719px) {
-@media -sass-debug-info{filename{}line{font-family:\000037}}
+@media -sass-debug-info{filename{}line{font-family:\000039}}
   #image-container {
     flex-direction: row;
     flex-wrap: wrap;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000311}}
+@media -sass-debug-info{filename{}line{font-family:\0000313}}
   #image-container .image {
     max-width: 85%;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000314}}
+@media -sass-debug-info{filename{}line{font-family:\0000316}}
   #image-container .image img {
     max-width: 85%;
   }
 
   /* this is the z-index of the nav */
-@media -sass-debug-info{filename{}line{font-family:\0000323}}
+@media -sass-debug-info{filename{}line{font-family:\0000325}}
   #overlay {
     z-index: 11;
     display: none;
@@ -474,7 +507,7 @@ h2.text, h3.text {
     left: 0;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000335}}
+@media -sass-debug-info{filename{}line{font-family:\0000337}}
   #close-viewer {
     display: none;
     z-index: 12;
@@ -488,12 +521,12 @@ h2.text, h3.text {
     color: white;
     cursor: default;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000347}}
+@media -sass-debug-info{filename{}line{font-family:\0000349}}
   #close-viewer:hover {
     opacity: 0.6;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000352}}
+@media -sass-debug-info{filename{}line{font-family:\0000354}}
   #image-info {
     display: none;
     z-index: 12;
@@ -501,19 +534,19 @@ h2.text, h3.text {
     bottom: 7px;
     color: #272727;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000359}}
+@media -sass-debug-info{filename{}line{font-family:\0000361}}
   #image-info .small-font {
     padding-right: 1rem;
     padding-left: 2.3rem;
     text-align: right;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000365}}
+@media -sass-debug-info{filename{}line{font-family:\0000367}}
   #image-info td {
     padding: 2px 26px 2px 6px;
     text-align: left;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000371}}
+@media -sass-debug-info{filename{}line{font-family:\0000373}}
   .viewer-open {
     z-index: 12;
     text-align: center;
@@ -524,19 +557,19 @@ h2.text, h3.text {
     -moz-user-select: none;
     -webkit-user-select: none;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000381}}
+@media -sass-debug-info{filename{}line{font-family:\0000383}}
   .viewer-open canvas {
     margin: auto;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000386}}
+@media -sass-debug-info{filename{}line{font-family:\0000388}}
   #viewer-canvas {
     z-index: 12;
     opacity: 1.0;
     background: white;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000392}}
+@media -sass-debug-info{filename{}line{font-family:\0000394}}
   #viewer-count {
     z-index: 12;
     position: fixed;
@@ -547,19 +580,19 @@ h2.text, h3.text {
     text-align: center;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\00003102}}
+@media -sass-debug-info{filename{}line{font-family:\00003104}}
   .typcn-arrow-left-thick:before {
     content: '\e00d';
     /* '' */
   }
 
-@media -sass-debug-info{filename{}line{font-family:\00003106}}
+@media -sass-debug-info{filename{}line{font-family:\00003108}}
   .typcn-arrow-right-thick:before {
     content: '\e01a';
     /* '' */
   }
 
-@media -sass-debug-info{filename{}line{font-family:\00003110}}
+@media -sass-debug-info{filename{}line{font-family:\00003112}}
   #back-arrow-container, #forward-arrow-container {
     z-index: 12;
     height: 4.6rem;
@@ -572,17 +605,17 @@ h2.text, h3.text {
     top: 175px;
     cursor: default;
   }
-@media -sass-debug-info{filename{}line{font-family:\00003121}}
+@media -sass-debug-info{filename{}line{font-family:\00003123}}
   #back-arrow-container:hover, #forward-arrow-container:hover {
     opacity: 0.6;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\00003126}}
+@media -sass-debug-info{filename{}line{font-family:\00003128}}
   #back-arrow-container {
     left: 0px;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\00003130}}
+@media -sass-debug-info{filename{}line{font-family:\00003132}}
   #forward-arrow-container {
     right: 0px;
   }
