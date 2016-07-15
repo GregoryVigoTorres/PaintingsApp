@@ -1,22 +1,22 @@
-/* line 5 */
+@media -sass-debug-info{filename{}line{font-family:\000035}}
 * {
   box-sizing: border-box;
 }
 
-/* line 9 */
+@media -sass-debug-info{filename{}line{font-family:\000039}}
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* line 15 */
+@media -sass-debug-info{filename{}line{font-family:\0000315}}
 a {
   color: #256EDE;
   text-decoration: none;
   font-family: "BoldSans";
 }
-/* line 20 */
+@media -sass-debug-info{filename{}line{font-family:\0000320}}
 a:visited {
   color: #256EDE;
 }
@@ -30,7 +30,7 @@ a:visited {
   src: url("/static/fonts/typicon/typicons.eot?#iefix") format("embedded-opentype"), url("/static/fonts/typicon/typicons.woff") format("woff"), url("/static/fonts/typicon/typicons.ttf") format("truetype"), url("/static/fonts/typicon/typicons.svg#typicons") format("svg");
 }
 /* :before psuedo-selector inserts and styles icon */
-/* line 38 */
+@media -sass-debug-info{filename{}line{font-family:\0000338}}
 .typcn:before {
   font-family: 'typicons';
   font-style: normal;
@@ -47,26 +47,26 @@ a:visited {
   text-rendering: optimizeLegibility;
 }
 
-/* line 54 */
+@media -sass-debug-info{filename{}line{font-family:\0000354}}
 header {
   font-size: 1.2rem;
   color: #585858;
   margin: 1.3rem;
 }
 
-/* line 60 */
+@media -sass-debug-info{filename{}line{font-family:\0000360}}
 h2, h3 {
   margin: 1.3rem 0 .3rem 1.3rem;
 }
 
-/* line 64 */
+@media -sass-debug-info{filename{}line{font-family:\0000364}}
 footer {
   text-align: center;
-  height: 7.5rem;
+  height: 15rem;
   bottom: 0;
   background-color: #CECECE;
   color: #272727;
-  padding: 3rem 1rem 1.3rem 1rem;
+  padding: 13rem 1rem 4rem 1rem;
 }
 
 @media -sass-debug-info{filename{}line{font-family:\000036}}
@@ -140,7 +140,7 @@ nav.open {
   nav {
     min-width: 100%;
     background-color: #fff;
-    border: 2px solid #000;
+    border-bottom: 2px solid #000;
     z-index: 10;
     padding: 0 0 0 1.3rem;
   }
@@ -241,7 +241,7 @@ nav.open {
 @media -sass-debug-info{filename{}line{font-family:\0000339}}
 #content-container, #image-container {
   min-height: 100%;
-  padding-bottom: 15rem;
+  padding-bottom: 5rem;
 }
 
 @media -sass-debug-info{filename{}line{font-family:\0000344}}

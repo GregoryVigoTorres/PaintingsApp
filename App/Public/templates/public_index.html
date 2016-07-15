@@ -17,22 +17,25 @@
 
 {% block container %}
 
-<h2>{% if images.length %}{{ images[0].series.title }}{% endif %}</h2>
+<h2>
+    {% if images %}
+        {{ images[0].series.title }}
+    {% else %}
+        There's nothing here
+    {% endif %}
+</h2>
 
 {% include 'image_container.html' %}
 
 <div id='pagination-container'>
-    <!-- 
-        load images via ajax 
-        make sure SOMETHING appears even when javascript is disabled, 
-        load MORE images via ajax, render in image_container partial
-        check class vs id in image_container
-        get current url in order to get more pages in the same series
-    -->
     <p>
-        <a href="{{ request.url|prev_page_url }}">prev</a>
-        << 1-10 of {{ img_count }} >> 
-        <a href="{{ request.url|next_page_url }}">next</a>
+        {% if page > 0 %}
+            <a href="{{ request.url|prev_page_url }}">&lt;&lt;</a>
+        {% endif %}
+        &nbsp;&nbsp;page {{ page+1 }} of {{ last_page }} &nbsp;&nbsp;
+        {% if page < last_page %}
+            <a href="{{ request.url|next_page_url }}">&gt;&gt;</a>
+        {% endif %}
     </p>
 </div>
 

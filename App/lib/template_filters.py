@@ -43,7 +43,6 @@ def prev_page_url(url, page=None):
     return prev_url
 
 
-
 def next_page_url(url, page=None):
     """ returns current url with
         next page or page 1 
