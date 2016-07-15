@@ -9,6 +9,25 @@ from flask import current_app
 from App.core import db
 from App.models.public import Image, Series
 
+
+class SeriesManipulator(Command):
+    def choose_series(self):
+        """ choose series from user input """
+        series_objs = Series.query.order_by('order').all()
+
+        for i in series_objs:
+            print('{}] {}'.format(i.order, i.title))
+
+        series_order = input('Choose a series> ')
+        _series = [i for i in series_objs if i.order == int(series_order)]
+
+        if not _series:
+            print('{} is not a valid series'.format(series_order))
+            return None
+
+        return _series[0]
+
+
 class UnusedFiles(Command):
     def __init__(self):
         self.app = current_app
@@ -31,6 +50,31 @@ class UnusedFiles(Command):
             i.unlink()
 
 
+class RetitlePrisms(SeriesManipulator):
+    def retitle_image(self, image):
+        """ Image obj """
+        title = image.title
+        # split title and join with dots
+        a = title[0:4]
+        b = title[4:8]
+        c = title[8:]
+        new_title = '.'.join([a,b,c])
+
+        db.session.add(image)
+        print(image.order, title, new_title)
+        image.title = new_title
+
+
+    def run(self):
+        """ put dots in prism titles """
+        series = self.choose_series()
+        for i in series.images:
+            self.retitle_image(i)
+        
+        db.session.commit()
+
+
+# REFACTOR me to subclass SeriesManipulator and validate titles with dots
 class ValidatePrismTitles(Command):
     def validate_title(self, image):
         title = image.title
@@ -73,6 +117,8 @@ class ValidatePrismTitles(Command):
         Only makes sure that values are within bounds 
         and there are no extra characters
         """
+        # This is all in choose_series
+        # Refactor and test
         series_objs = Series.query.order_by('order').all()
 
         for i in series_objs:
