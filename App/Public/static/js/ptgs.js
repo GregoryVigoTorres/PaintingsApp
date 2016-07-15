@@ -36,11 +36,13 @@ Ptgs.prototype.eventHandlers = function() {
     });
 
     $(document).scroll(function(event) {
-        var docPos = $('body').scrollTop();
-        if (docPos > 325) {
-            $('#up-button').fadeIn(55);
-        } else {
-            $('#up-button').fadeOut(55);
+        if ($('body').width() < 719 ) {
+            var docPos = $('body').scrollTop();
+            if (docPos > 325) {
+                $('#up-button').fadeIn(55);
+            } else {
+                $('#up-button').fadeOut(55);
+            };
         };
     });
 

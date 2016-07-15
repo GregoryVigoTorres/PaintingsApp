@@ -18,6 +18,7 @@ nav.open {
     overflow-y: scroll;
 }
 
+// mobile
 @media screen and (max-width: 899px) {
     #menu-button-container {
         display: inline-block;
@@ -31,6 +32,16 @@ nav.open {
         @include light-on-dark;
     }
 
+    #mobile-header {
+        display: block;
+        font-size: 1.3rem;
+        font-family: "MediumSans";
+        color: $medium-gray;
+
+        // same as h2 for title 
+        margin: 1.3rem 0 0 1.3rem;
+     }
+
     nav {
         transform: translate(-300px, 0);
 
@@ -39,6 +50,11 @@ nav.open {
         max-width: 85%;
         min-height: 100%;
         vertical-align: top;
+        padding: 7px;
+
+        #header {
+            display: none;
+        }
 
         // mobile menu
         ul ul {
@@ -64,7 +80,11 @@ nav.open {
     }
 
     body {
-        padding-top: $nav-height;
+        padding-top: $nav-height+2;
+    }
+
+    #mobile-header {
+        display: none;
     }
 
     nav {
@@ -74,6 +94,12 @@ nav.open {
 
         z-index: 10;
         padding: 0 0 0 1.3rem;
+
+        #header {
+            color: $medium-gray;
+            font-family: "MediumSans";
+            margin-right: 2rem;
+        }
 
         ul {
             display: inline-block;
@@ -126,5 +152,4 @@ nav.open {
 .typcn-th-menu:before { 
     content: '\e116';
 } 
-
 

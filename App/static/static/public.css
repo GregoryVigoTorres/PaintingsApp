@@ -51,7 +51,6 @@ a:visited {
 header {
   font-size: 1.2rem;
   color: #585858;
-  margin: 1.3rem;
 }
 
 @media -sass-debug-info{filename{}line{font-family:\0000360}}
@@ -83,7 +82,7 @@ nav.open {
 }
 
 @media screen and (max-width: 899px) {
-@media -sass-debug-info{filename{}line{font-family:\0000322}}
+@media -sass-debug-info{filename{}line{font-family:\0000323}}
   #menu-button-container {
     display: inline-block;
     position: fixed;
@@ -97,7 +96,16 @@ nav.open {
     background-color: #272727;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000334}}
+@media -sass-debug-info{filename{}line{font-family:\0000335}}
+  #mobile-header {
+    display: block;
+    font-size: 1.3rem;
+    font-family: "MediumSans";
+    color: #585858;
+    margin: 1.3rem 0 0 1.3rem;
+  }
+
+@media -sass-debug-info{filename{}line{font-family:\0000345}}
   nav {
     transform: translate(-300px, 0);
     color: #CECECE;
@@ -106,34 +114,44 @@ nav.open {
     max-width: 85%;
     min-height: 100%;
     vertical-align: top;
+    padding: 7px;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000344}}
+@media -sass-debug-info{filename{}line{font-family:\0000355}}
+  nav #header {
+    display: none;
+  }
+@media -sass-debug-info{filename{}line{font-family:\0000360}}
   nav ul ul {
     margin-left: 24px;
     display: none;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000349}}
+@media -sass-debug-info{filename{}line{font-family:\0000365}}
   nav ul ul.visible {
     display: block;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000353}}
+@media -sass-debug-info{filename{}line{font-family:\0000369}}
   nav li, nav a {
     color: #fff;
     padding: 12px 14px;
   }
 }
 @media screen and (min-width: 900px) {
-@media -sass-debug-info{filename{}line{font-family:\0000362}}
+@media -sass-debug-info{filename{}line{font-family:\0000378}}
   #menu-button-container {
     display: none;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000366}}
+@media -sass-debug-info{filename{}line{font-family:\0000382}}
   body {
-    padding-top: 2.3rem;
+    padding-top: 4.3rem;
   }
 
-@media -sass-debug-info{filename{}line{font-family:\0000370}}
+@media -sass-debug-info{filename{}line{font-family:\0000386}}
+  #mobile-header {
+    display: none;
+  }
+
+@media -sass-debug-info{filename{}line{font-family:\0000390}}
   nav {
     min-width: 100%;
     background-color: #fff;
@@ -141,23 +159,29 @@ nav.open {
     z-index: 10;
     padding: 0 0 0 1.3rem;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000378}}
+@media -sass-debug-info{filename{}line{font-family:\0000398}}
+  nav #header {
+    color: #585858;
+    font-family: "MediumSans";
+    margin-right: 2rem;
+  }
+@media -sass-debug-info{filename{}line{font-family:\00003104}}
   nav ul {
     display: inline-block;
     position: relative;
     background-color: #fff;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000383}}
+@media -sass-debug-info{filename{}line{font-family:\00003109}}
   nav ul li {
     display: inline-block;
     position: relative;
     padding: 13px 24px;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000388}}
+@media -sass-debug-info{filename{}line{font-family:\00003114}}
   nav ul li a {
     display: inline-block;
   }
-@media -sass-debug-info{filename{}line{font-family:\0000392}}
+@media -sass-debug-info{filename{}line{font-family:\00003118}}
   nav ul li ul {
     display: none;
     position: absolute;
@@ -167,15 +191,15 @@ nav.open {
     margin: 0 0 0 0;
     width: max-content;
   }
-@media -sass-debug-info{filename{}line{font-family:\00003102}}
+@media -sass-debug-info{filename{}line{font-family:\00003128}}
   nav ul li:hover {
     background-color: #CECECE;
   }
-@media -sass-debug-info{filename{}line{font-family:\00003104}}
+@media -sass-debug-info{filename{}line{font-family:\00003130}}
   nav ul li:hover ul {
     display: block;
   }
-@media -sass-debug-info{filename{}line{font-family:\00003109}}
+@media -sass-debug-info{filename{}line{font-family:\00003135}}
   nav ul li ul > li {
     display: block;
     border-left: 2px solid #000;
@@ -185,12 +209,12 @@ nav.open {
   }
 }
 /* menu button */
-@media -sass-debug-info{filename{}line{font-family:\00003122}}
+@media -sass-debug-info{filename{}line{font-family:\00003148}}
 .typcn-th-menu {
   font-size: 1.3rem;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003126}}
+@media -sass-debug-info{filename{}line{font-family:\00003152}}
 .typcn-th-menu:before {
   content: '\e116';
 }
