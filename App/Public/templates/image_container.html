@@ -11,7 +11,6 @@
         <div class='info-table-container' data-order="{{ loop.index }}" >
             <table>
                 <tbody>
-                    <tr><td class='small-font'>order</td> <td>{{ i.order }}</td></tr>
                     <tr><td class='small-font'>title</td> <td>{{ i.title|none_as_str }}</td></tr>
                     <tr><td class='small-font'>date</td> <td>{{ i.date|none_as_str}}</td></tr>
                     <tr><td class='small-font'>dims.</td> <td>{{ i.dimensions[0]|none_as_str }} x {{ i.dimensions[1]|none_as_str }}</td></tr>

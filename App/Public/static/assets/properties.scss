@@ -63,8 +63,6 @@ h2, h3 {
 
 footer {
     text-align: center;
-    height: $footer-height;
     bottom: 0; 
-    @include dark-on-light;
-    padding: 13rem 1rem 4rem 1rem;
+    padding: 8rem 1rem 2rem 1rem;
 }
