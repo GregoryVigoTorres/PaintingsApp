@@ -30,12 +30,14 @@
 <div id='pagination-container'>
     <p>
         {% if page > 0 %}
+            <a href="{{ request.url|get_page_url(0) }}">first</a>&nbsp;&nbsp;
             <a href="{{ request.url|prev_page_url }}">&lt;&lt;</a>
         {% endif %}
         <!-- app page is 0 indexed for offset -->
         &nbsp;&nbsp;page {{ page+1 }} of {{ last_page+1 }} &nbsp;&nbsp;
         {% if page < last_page %}
             <a href="{{ request.url|next_page_url }}">&gt;&gt;</a>
+            &nbsp;&nbsp;<a href="{{ request.url|get_page_url(last_page) }}">last</a>
         {% endif %}
     </p>
 </div>

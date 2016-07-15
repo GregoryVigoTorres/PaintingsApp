@@ -27,7 +27,8 @@ def create_app(config=None):
         fmt_datetime, 
         none_as_str,
         next_page_url,
-        prev_page_url)
+        prev_page_url,
+        get_page_url)
     from .models.user import (User, Role, user_datastore)
 
     from .Admin import (index, series, images, texts, contact)
@@ -71,6 +72,7 @@ def create_app(config=None):
     app.add_template_filter(none_as_str)
     app.add_template_filter(next_page_url)
     app.add_template_filter(prev_page_url)
+    app.add_template_filter(get_page_url)
 
     # print(app.url_map)
 

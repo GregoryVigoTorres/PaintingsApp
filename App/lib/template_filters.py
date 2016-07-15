@@ -17,6 +17,21 @@ def none_as_str(value):
     else:
         return value
 
+def get_page_url(url, page):
+    """ E.g. first, last or page3 """
+    pu = urlsplit(url)
+    qs = parse_qs(pu.query)
+
+    if qs is None:
+        qs = {'page':page}
+    else:
+        qs.update({'page':page})
+
+    query = urlencode(qs, doseq=True)
+    page_url = urlunsplit((pu.scheme, pu.netloc, pu.path, query, pu.fragment))
+
+    return page_url
+
 
 def prev_page_url(url, page=None):
     pu = urlsplit(url)

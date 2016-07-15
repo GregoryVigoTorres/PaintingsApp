@@ -42,6 +42,8 @@ def index(title=None):
     images = sq.images.order_by(Image.order).offset(Limit*page).limit(Limit).all()
 
     last_page = int(img_count/Limit)
+    if img_count % Limit == 0:
+        last_page -= 1
 
     return render_template('public_index.html', 
                            images=images, 
