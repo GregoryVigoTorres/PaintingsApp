@@ -33,10 +33,8 @@ def new_image(series_id):
     """
     try:
         series = Series.query.filter_by(id=series_id).first()
+        assert series
     except:
-        raise NotFound()
-    
-    if not series:
         raise NotFound()
     
     form = ImageForm()

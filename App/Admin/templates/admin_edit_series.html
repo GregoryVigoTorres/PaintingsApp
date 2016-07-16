@@ -14,9 +14,9 @@
 {% endblock %}
 
 {% block images %}
-{% if series.images|length > 0 %}
+{% if images|length > 0 %}
     <div>
-        <span id='show-images-for-series'>show</span> {{ series.images|length }} images
+        <span id='show-images-for-series'>show</span> {{ images|length }} images
         in a <span id='images-in-grid'>grid</span> or in <span id='images-in-rows'>rows</span>
         <p class="series-image-controller">
             <span id="save-image-order" 
@@ -39,7 +39,7 @@
     </div>
 
     <div id='series-image-container'>
-        {% for i in series.images %}
+        {% for i in images %}
             <div class='container' style="order:{{ i.order }};" 
                 data-originalOrder="{{ i.order }}"
                 data-imageid="{{ i.id }}">

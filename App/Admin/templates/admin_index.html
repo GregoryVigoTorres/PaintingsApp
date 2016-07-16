@@ -9,9 +9,8 @@
     <tbody>
         {% for s in series %}
         <tr>
-            <td><a href="{{ url_for('Admin.edit_series', _id=s.id) }}">{{ s.title }}</a></td>
-            <td>has {{ s.images|length }} images</td>
-            {# <td><a href="{{ url_for('Admin.edit_series', _id=s.id) }}">edit</a></td> #}
+            <td>edit <a href="{{ url_for('Admin.edit_series', _id=s.id) }}">{{ s.title }}</a></td>
+            <td>having {{ s.images.all()|length }} images</td>
         </tr>
 
         {% endfor %}

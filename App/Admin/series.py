@@ -1,4 +1,5 @@
 import sys
+import logging
 from pathlib import Path
 
 from flask import (render_template,
@@ -125,12 +126,21 @@ def save_image_order():
 @login_required
 @json_token_required
 def edit_series(_id):
-    """ edit an existing series by id """
+    """ Edit an existing series by id. 
+
+        Since Images are loaded dynamically so
+        they can be offset and limited, 
+        images.medium have to loaded joined
+        otherwise, they can't be accessed in the
+        template, for some reason.
+    """
     try:
-        series = db.session.query(Series).options(
-            joinedload(Series.images).joinedload(Image.medium)
-            ).filter_by(id=_id).first()
-    except:
+        series = db.session.query(Series).\
+                filter_by(id=_id).first()
+
+        images = series.images.options(joinedload(Image.medium)).all()
+    except Exception as E:
+        current_app.logger.debug(E)
         flash('series not found')
         return redirect(url_for('Admin.newseries'))
 
@@ -157,5 +167,6 @@ def edit_series(_id):
 
     return render_template('admin_edit_series.html', 
                            series=series, 
+                           images=images,
                            form=form, 
                            title='Edit {}'.format(series.title))
