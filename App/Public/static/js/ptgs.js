@@ -62,28 +62,35 @@ Ptgs.prototype.eventHandlers = function() {
 };
 
 Ptgs.prototype.scaleViewerImage = function(img) {
-    var imgXY = [parseInt(img.width), parseInt(img.height)];                                                                                  
-    var imgMaxDim = Math.max(imgXY[0], imgXY[1]);
-    var maxImgSize = Math.max([Ptgs.canv.height, Ptgs.canv.width]);
-    /* 25px padding inside canvas */
+    /* at least 25px padding inside canvas */
     var minPadding = 25;
-    var availSpace = Math.max(Ptgs.canv.width, Ptgs.canv.height)-(minPadding*2);
-    if (imgMaxDim > maxImgSize) {
-        /* scale image if it's bigger than 450px */
-        var scaleRatio = imgMaxDim/availSpace;
-        var scaledXY = imgXY.map(function(val, ind, arr) {
-        return val/scaleRatio;
-        });
-    } else {
-        var scaledXY = imgXY;
-    }
-    /* img position */
-    var imgPos = scaledXY.map(function(val, ind, arr) {
-        var padding = [Ptgs.canv.width, Ptgs.canv.height][ind]-val;
-        return padding/2;
-    });
+    var imgWH = [parseInt(img.width), parseInt(img.height)];                                                                     
     
-    return {'imgPos':imgPos, 'scaledXY':scaledXY};
+    var canv_wh = [parseInt(Ptgs.canv.width, 10), parseInt(Ptgs.canv.height, 10)];
+    var canv_padded_wh = canv_wh.map(function(i) { return i-(minPadding*2) });
+    
+    /* OJO max allowed image size is the smallest canvas dimension */
+    var max_scaled_dim = Math.min.apply(this, canv_padded_wh);
+
+    var doScale = imgWH.some(function(val, ind, arr) { 
+        return val > max_scaled_dim;
+    });
+
+    if (doScale) {
+        var scaleRatio = max_scaled_dim / Math.max.apply(this, imgWH);  
+
+        var imgWH = imgWH.map(function(val, ind, arr) {
+            return Math.round(val * scaleRatio);
+        }); 
+    };
+
+    /* position of image centered on canvas */
+    var offset = [];
+    for (i=0; i<2; i++) {
+        offset.push((canv_wh[i] - imgWH[i]) / 2);
+    };
+
+    return {'imgPos': offset, 'scaledXY': imgWH};
 };
 
 Ptgs.prototype.loadViewerImageInfo = function() {
