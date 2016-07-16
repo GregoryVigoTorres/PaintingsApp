@@ -75,9 +75,14 @@ class RetitlePrisms(SeriesManipulator):
 
 
 # REFACTOR me to subclass SeriesManipulator and validate titles with dots
-class ValidatePrismTitles(Command):
+class ValidatePrismTitles(SeriesManipulator):
     def validate_title(self, image):
+        """ titles may have dots 
+            I currently haven't really decided exactly 
+            where the dots will finally go.
+        """
         title = image.title
+        title = title.replace('.', '')
         valid = True
         reason = None
 
@@ -110,30 +115,13 @@ class ValidatePrismTitles(Command):
             else:
                 print('{} ({}) is not a valid title'.format(title, image.filename))
 
-
     def run(self):
         """
         ddmmyyyyhhmmss
         Only makes sure that values are within bounds 
         and there are no extra characters
         """
-        print('This is broken because the naming convention changed')
-        return None
-        # This is all in choose_series
-        # Refactor and test
-        series_objs = Series.query.order_by('order').all()
-
-        for i in series_objs:
-            print('{}] {}'.format(i.order, i.title))
-
-        series_order = input('Choose a series> ')
-        _series = [i for i in series_objs if i.order == int(series_order)]
-
-        if not _series:
-            print('{} is not a valid series'.format(series_order))
-            return None
-
-        series = _series[0]
+        series = self.choose_series()
 
         for i in series.images.all():
             self.validate_title(i)
