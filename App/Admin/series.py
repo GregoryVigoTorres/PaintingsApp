@@ -69,8 +69,9 @@ def delete_series(_id):
     img_path = Path(current_app.config['STATIC_IMAGE_ROOT'])
     thumb_path = Path(current_app.config['STATIC_THUMBNAIL_ROOT'])
 
+    image_count = len(series.images.all())
     # remove the images in this series as well
-    for i in series.images:
+    for i in series.images.all():
         i_path = Path(img_path, i.filename)
 
         if i_path.exists():
@@ -85,10 +86,11 @@ def delete_series(_id):
 
     db.session.delete(series)
     db.session.commit()
-    flash('{} and {} images have been permanently deleted'.format(series.title, 
-                                                                  len(series.images)))
 
-    msg = '[{}] and {} images permanently deleted'.format(series.title, len(series.images))
+    flash('{} and {} images have been permanently deleted'.format(series.title, 
+                                                                  image_count))
+
+    msg = '[{}] and {} images permanently deleted'.format(series.title, image_count)
     current_app.logger.info(msg)
 
     next_url = {'next':url_for('Admin.index')}
@@ -110,7 +112,7 @@ def save_image_order():
         current_app.log_exception(sys.exc_info())
         return jsonify({'message':'There was an error updating the image order'})
 
-    for i in series.images:
+    for i in series.images.all():
         db.session.add(i)
         i.order = updated_images.get(str(i.id))
 
