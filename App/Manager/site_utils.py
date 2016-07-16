@@ -68,7 +68,7 @@ class RetitlePrisms(SeriesManipulator):
     def run(self):
         """ put dots in prism titles """
         series = self.choose_series()
-        for i in series.images:
+        for i in series.images.all():
             self.retitle_image(i)
         
         db.session.commit()
@@ -117,6 +117,8 @@ class ValidatePrismTitles(Command):
         Only makes sure that values are within bounds 
         and there are no extra characters
         """
+        print('This is broken because the naming convention changed')
+        return None
         # This is all in choose_series
         # Refactor and test
         series_objs = Series.query.order_by('order').all()
@@ -133,7 +135,7 @@ class ValidatePrismTitles(Command):
 
         series = _series[0]
 
-        for i in series.images:
+        for i in series.images.all():
             self.validate_title(i)
         print('All titles in {} validated'.format(series.title))
 

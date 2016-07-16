@@ -54,7 +54,11 @@ class UpdatePrismDate(Command):
         """ 
         choose series
         has to be prisms type series
+        This is broken because the naming convention changed
         """
+        print('This is broken because the naming convention changed')
+        return None
+
         series_objs = Series.query.order_by('order').all()
         for i in series_objs:
             print('{}] {}'.format(i.order, i.title))
@@ -67,7 +71,7 @@ class UpdatePrismDate(Command):
             return None
         series = _series[0]
 
-        for i in series.images:
+        for i in series.images.all():
             try:
                 date = int(i.title[4:8])
                 i.date = date
