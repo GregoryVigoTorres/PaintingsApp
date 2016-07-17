@@ -456,10 +456,17 @@ AdminController.prototype.loadImagePreview = function(imgURL, Filename) {
     };
 };
 
-AdminController.prototype.reorderSeriesTable = function(event) {
-    // var action = event.target.innerText;
-    // get action from class name
+AdminController.prototype.saveSeriesOrder = function(event) {
+    var currentId = event.target.parentElement.dataset.seriesid;
 
+    function getTitle(row) {
+        titleCell = row.children[3];
+        return titleCell.children[0].innerHTML;
+    };
+
+};
+
+AdminController.prototype.reorderSeriesTable = function(event) {
     if (event.target.classList.contains('up-order')) {
         action = 'up'
     };
@@ -471,15 +478,9 @@ AdminController.prototype.reorderSeriesTable = function(event) {
     if (!action) { return };
 
     var currentRow = event.target.parentElement;
-    // var currentId = event.target.parentElement.dataset.seriesid;
 
     var seriesTable = document.querySelector('#series-list tbody');
     var seriesRows = Array.from(seriesTable.getElementsByTagName('tr'));
-
-    // function getTitle(row) {
-    //     titleCell = row.children[3];
-    //     return titleCell.children[0].innerHTML;
-    // };
 
     var alreadySorted = false;
     var sortedRows = Array.from(seriesRows);
@@ -494,6 +495,7 @@ AdminController.prototype.reorderSeriesTable = function(event) {
             alreadySorted = true;
             return 1; // b before a
         };
+
         return 0;
     });
 
