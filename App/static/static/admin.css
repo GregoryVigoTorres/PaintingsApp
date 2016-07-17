@@ -1,1 +1,649 @@
-body{font-size:18px}ul{list-style:none;padding:0}.bold{font-family:"BoldSans"}#overlay{display:none;opacity:.75;position:fixed;top:0;left:0;width:110%;height:110%;z-index:1;background-color:#484848}#close-overlay{padding:.7em;cursor:default;border:1px solid inherit}#close-overlay:hover{border:1px solid black}#message-container{display:none;position:absolute;top:3em;left:33%;width:33%;background-color:#fff;box-shadow:5px 8px 4px black;z-index:3;cursor:default;padding:1.5em 2em .75em 2em;font-family:"BoldSans"}#message-container strong{color:black}#message-container ul{padding:0;margin:1em 0 0 1.5em;list-style:none;color:#BC3333}#message-container .button{padding:.3em 1em .3em 1em;margin:0 0 0 1.5em}#message-container .button:hover{background-color:#D6D6D6}div#container{margin:0 2em 4em 2em}div#container #series-list td{padding:5px 12px 2px 0}div#container a{box-shadow:inset 0 -3px rgba(37,110,222,0.3)}div#container a:hover{box-shadow:inset 0 -3px rgba(37,110,222,0.7)}.small-type{font-size:85%;font-family:"MediumSans","Sans"}#username{position:absolute;right:1em;display:inline-block;margin:0;font-size:85%;text-align:right}#username #auth-username:hover{text-decoration:underline}#username li>ul{display:none;width:100%;padding:4px 0 2px 0;text-align:center;background-color:#CECECE}#username li>ul a{color:#272727}#username li>ul a:hover{text-decoration:underline}#username li:hover ul{display:block}input{border:1px solid #000;background-color:#fff}input[type="color"]{width:3.5em;height:2.5em;border:none}input[type="text"]{display:block;margin-bottom:1.3rem}input.disabled{background-color:#AFAFAF;border:1px solid #AFAFAF}textarea{background-color:white;border:1px solid black}form button,form .button{background:#fff;border:1px solid #000;font-family:"BoldSans","sans";margin:1.5em 1.5em .5em 0;padding:8px 10px 5px 10px;cursor:pointer}form button:hover,form .button:hover{background-color:#DDDF4B}.admin-form label{vertical-align:top}.admin-form button{display:inline-block;vertical-align:top;margin-right:2em}.admin-form #left-col,.admin-form #right-col{display:inline-block;vertical-align:top}.admin-form #left-col{margin-right:3em}.admin-form #dimensions-0,.admin-form #dimensions-1{display:inline-block;margin-right:1em}.admin-form #dimensions-1{margin-left:1em}.admin-form #padding-color-label-container{display:inline-block;vertical-align:top;width:50%}.admin-form #padding-color-selector-container{display:inline-block;vertical-align:top}.admin-form canvas{border:1px solid black}#show-images-for-series,#images-in-grid,#images-in-rows,#save-image-order{font-family:"BoldSans";cursor:default}#show-images-for-series:hover,#images-in-grid:hover,#images-in-rows:hover,#save-image-order:hover{text-decoration:underline}.series-image-controller{display:none}#save-image-order{background:#fff;border:1px solid #000;font-family:"BoldSans","sans";margin:1.5em 1.5em .5em 0;padding:8px 10px 5px 10px;cursor:pointer}#save-image-order:hover{background-color:#DDDF4B}#images_order_by{cursor:default;margin-top:.3rem}#images_order_by ul{position:absolute;padding:0;background-color:white}#images_order_by li ul li{display:none}#images_order_by li{font-family:"BoldSans"}#images_order_by li ul{background-color:#272727;color:#CECECE}#images_order_by li ul li{font-family:"MediumSans";padding:4px 3px 2px 5px}#images_order_by li:hover ul li{display:block}#images_order_by li:hover ul li:hover{text-decoration:underline}#series-image-container{display:none;flex-direction:row;flex-wrap:wrap;justify-content:space-around;align-items:baseline}#series-image-container .container{margin:2em;min-height:350px;font-size:85%;display:flex;flex-direction:column;align-items:left}#series-image-container .container img{padding:1.7em}#series-image-container .container p{padding:0 0 1em 0}#series-image-container .container ul{padding-left:1.7em}#series-image-container .container li{padding:0}#series-image-container .in-rows{padding:1.5em;margin:auto;width:98%;flex-direction:row;align-items:flex-start}#series-image-container .in-rows ul{margin-top:4em}#series-image-container .odd{background-color:#DFDDDD}#image-form #file-upload input{display:none}#image-form #filename-container{width:15em;word-wrap:break-word}#text-form-container{margin-top:1.3rem}#text-form-container div{display:inline-block;vertical-align:top;padding-right:4rem}#text-form-container div p{text-align:center;margin:0 0 0 1rem}#text-form-container input[type=text]{margin-bottom:1.3rem}#text-form-container textarea{margin:1.3rem 0 1.3rem 0;padding:1.2rem;font-family:"MediumSans";width:90%;resize:vertical}input#icon{display:none}p#file-upload img{max-height:64px;max-width:64px}p#file-upload .no-icon{padding:.4rem;border:1px solid black}.contact-table,.edit-texts-links{margin-bottom:1.7rem}.contact-table thead tr td,.edit-texts-links thead tr td{padding:0 0 .4rem 0}.contact-table td,.edit-texts-links td{padding:.2rem .5rem 0 1.5rem}.contact-table td img,.edit-texts-links td img{height:1.3rem;max-width:1.3rem}@media -sass-debug-info{filename{}line{font-family:\000035}}*{box-sizing:border-box}@media -sass-debug-info{filename{}line{font-family:\000039}}ul{list-style:none;padding:0;margin:0}@media -sass-debug-info{filename{}line{font-family:\0000315}}a{color:#256EDE;text-decoration:none;font-family:"BoldSans"}@media -sass-debug-info{filename{}line{font-family:\0000320}}a:visited{color:#256EDE}@font-face{font-family:'typicons';font-weight:normal;font-style:normal;src:url("/static/fonts/typicon/typicons.eot");src:url("/static/fonts/typicon/typicons.eot?#iefix") format("embedded-opentype"),url("/static/fonts/typicon/typicons.woff") format("woff"),url("/static/fonts/typicon/typicons.ttf") format("truetype"),url("/static/fonts/typicon/typicons.svg#typicons") format("svg")}@media -sass-debug-info{filename{}line{font-family:\0000338}}.typcn:before{font-family:'typicons';font-style:normal;font-weight:normal;speak:none;display:inline-block;text-decoration:inherit;width:1em;height:1em;font-size:1em;text-align:center;-webkit-font-smoothing:antialiased;font-smoothing:antialiased;text-rendering:optimizeLegibility}@media -sass-debug-info{filename{}line{font-family:\0000354}}header{font-size:1.2rem;color:#585858}@media -sass-debug-info{filename{}line{font-family:\0000360}}h2,h3{margin:1.3rem 0 .3rem 1.3rem}@media -sass-debug-info{filename{}line{font-family:\0000364}}footer{text-align:center;bottom:0;padding:8rem 1rem 2rem 1rem}@media -sass-debug-info{filename{}line{font-family:\000036}}nav{position:fixed;top:0;left:0;font-family:"BoldSans";letter-spacing:3px}@media -sass-debug-info{filename{}line{font-family:\0000315}}nav.open{transform:translate(0px,0px);z-index:9;overflow-y:scroll}@media screen and (max-width:899px){@media -sass-debug-info{filename{}line{font-family:\0000323}}#menu-button-container{display:inline-block;position:fixed;right:0;top:0;z-index:15;vertical-align:top;padding:1.5rem;opacity:.80;color:#CECECE;background-color:#272727}@media -sass-debug-info{filename{}line{font-family:\0000335}}#mobile-header{display:block;font-size:1.3rem;font-family:"MediumSans";color:#585858;margin:1.3rem 0 0 1.3rem}@media -sass-debug-info{filename{}line{font-family:\0000345}}nav{transform:translate(-300px,0);color:#CECECE;background-color:#272727;min-width:50%;max-width:85%;min-height:100%;vertical-align:top;padding:7px}@media -sass-debug-info{filename{}line{font-family:\0000355}}nav #header{display:none}@media -sass-debug-info{filename{}line{font-family:\0000360}}nav ul ul{margin-left:24px;display:none}@media -sass-debug-info{filename{}line{font-family:\0000365}}nav ul ul.visible{display:block}@media -sass-debug-info{filename{}line{font-family:\0000369}}nav li,nav a{color:#fff;padding:12px 14px}}@media screen and (min-width:900px){@media -sass-debug-info{filename{}line{font-family:\0000378}}#menu-button-container{display:none}@media -sass-debug-info{filename{}line{font-family:\0000382}}body{padding-top:4.3rem}@media -sass-debug-info{filename{}line{font-family:\0000386}}#mobile-header{display:none}@media -sass-debug-info{filename{}line{font-family:\0000390}}nav{min-width:100%;background-color:#fff;border-bottom:2px solid #000;z-index:10;padding:0 0 0 1.3rem}@media -sass-debug-info{filename{}line{font-family:\0000398}}nav #header{color:#585858;font-family:"MediumSans";margin-right:2rem}@media -sass-debug-info{filename{}line{font-family:\00003104}}nav ul{display:inline-block;position:relative;background-color:#fff}@media -sass-debug-info{filename{}line{font-family:\00003109}}nav ul li{display:inline-block;position:relative;padding:13px 24px}@media -sass-debug-info{filename{}line{font-family:\00003114}}nav ul li a{display:inline-block}@media -sass-debug-info{filename{}line{font-family:\00003118}}nav ul li ul{display:none;position:absolute;top:100%;left:0;padding:0;margin:0;width:max-content}@media -sass-debug-info{filename{}line{font-family:\00003128}}nav ul li:hover{background-color:#CECECE}@media -sass-debug-info{filename{}line{font-family:\00003130}}nav ul li:hover ul{display:block}@media -sass-debug-info{filename{}line{font-family:\00003135}}nav ul li ul>li{display:block;border-left:2px solid #000;border-right:2px solid #000;border-top:1px solid #000;border-bottom:1px solid #000}}@media -sass-debug-info{filename{}line{font-family:\00003148}}.typcn-th-menu{font-size:1.3rem}@media -sass-debug-info{filename{}line{font-family:\00003152}}.typcn-th-menu:before{content:'\e116'}
+@media -sass-debug-info{filename{}line{font-family:\000035}}
+body {
+  font-size: 18px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\000039}}
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000314}}
+.bold {
+  font-family: "BoldSans";
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000318}}
+#overlay {
+  display: none;
+  opacity: 0.75;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 110%;
+  height: 110%;
+  z-index: 1;
+  background-color: #484848;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000330}}
+#close-overlay {
+  padding: .7em;
+  cursor: default;
+  border: 1px solid inherit;
+}
+@media -sass-debug-info{filename{}line{font-family:\0000335}}
+#close-overlay:hover {
+  border: 1px solid black;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000340}}
+#message-container {
+  display: none;
+  position: absolute;
+  top: 3em;
+  left: 33%;
+  width: 33%;
+  background-color: #ffffff;
+  box-shadow: 5px 8px 4px black;
+  z-index: 3;
+  cursor: default;
+  padding: 1.5em 2em .75em 2em;
+  font-family: "BoldSans";
+}
+@media -sass-debug-info{filename{}line{font-family:\0000353}}
+#message-container strong {
+  color: black;
+}
+@media -sass-debug-info{filename{}line{font-family:\0000357}}
+#message-container ul {
+  padding: 0 0 0 0;
+  margin: 1em 0 0 1.5em;
+  list-style: none;
+  color: #BC3333;
+}
+@media -sass-debug-info{filename{}line{font-family:\0000364}}
+#message-container .button {
+  padding: .3em 1em .3em 1em;
+  margin: 0 0 0 1.5em;
+}
+@media -sass-debug-info{filename{}line{font-family:\0000368}}
+#message-container .button:hover {
+  background-color: #D6D6D6;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000374}}
+div#container {
+  margin: 0 2em 4em 2em;
+}
+@media -sass-debug-info{filename{}line{font-family:\0000378}}
+div#container #series-list td {
+  padding: 5px 12px 2px 0;
+}
+@media -sass-debug-info{filename{}line{font-family:\0000382}}
+div#container #series-list tr:hover {
+  background-color: #D1D89A;
+}
+@media -sass-debug-info{filename{}line{font-family:\0000386}}
+div#container #series-list .up-order, div#container #series-list .down-order {
+  color: #7B7B7B;
+  cursor: pointer;
+  padding: 2px 2px;
+}
+@media -sass-debug-info{filename{}line{font-family:\0000391}}
+div#container #series-list .up-order:hover, div#container #series-list .down-order:hover {
+  color: #CECECE;
+  background-color: #8F974A;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003100}}
+div#container a {
+  box-shadow: inset 0px -3px rgba(37, 110, 222, 0.3);
+}
+@media -sass-debug-info{filename{}line{font-family:\00003103}}
+div#container a:hover {
+  box-shadow: inset 0px -3px rgba(37, 110, 222, 0.7);
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003109}}
+.small-type {
+  font-size: 85%;
+  font-family: "MediumSans", "Sans";
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003114}}
+#username {
+  /* this is the root ul element */
+  position: absolute;
+  right: 1em;
+  display: inline-block;
+  margin: 0px;
+  font-size: 85%;
+  text-align: right;
+  /* child list */
+}
+@media -sass-debug-info{filename{}line{font-family:\00003124}}
+#username #auth-username:hover {
+  text-decoration: underline;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003129}}
+#username li > ul {
+  display: none;
+  width: 100%;
+  padding: 4px 0 2px 0;
+  text-align: center;
+  background-color: #CECECE;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003136}}
+#username li > ul a {
+  color: #272727;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003138}}
+#username li > ul a:hover {
+  text-decoration: underline;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003145}}
+#username li:hover ul {
+  display: block;
+}
+
+/* admin-forms */
+@media -sass-debug-info{filename{}line{font-family:\00003153}}
+input {
+  border: 1px solid #000000;
+  background-color: #ffffff;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003158}}
+input[type="color"] {
+  width: 3.5em;
+  height: 2.5em;
+  border: none;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003164}}
+input[type="text"] {
+  display: block;
+  margin-bottom: 1.3rem;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003169}}
+input.disabled {
+  background-color: #AFAFAF;
+  border: 1px solid #AFAFAF;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003174}}
+textarea {
+  background-color: white;
+  border: 1px solid black;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003180}}
+form button, form .button {
+  background: #ffffff;
+  border: 1px solid #000000;
+  font-family: "BoldSans", "sans";
+  margin: 1.5em 1.5em .5em 0;
+  padding: 8px 10px 5px 10px;
+  cursor: pointer;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003188}}
+form button:hover, form .button:hover {
+  background-color: #DDDF4B;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003195}}
+.admin-form label {
+  vertical-align: top;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003199}}
+.admin-form button {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 2em;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003205}}
+.admin-form #left-col, .admin-form #right-col {
+  display: inline-block;
+  vertical-align: top;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003210}}
+.admin-form #left-col {
+  margin-right: 3em;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003214}}
+.admin-form #dimensions-0, .admin-form #dimensions-1 {
+  display: inline-block;
+  margin-right: 1em;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003219}}
+.admin-form #dimensions-1 {
+  margin-left: 1em;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003223}}
+.admin-form #padding-color-label-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003229}}
+.admin-form #padding-color-selector-container {
+  display: inline-block;
+  vertical-align: top;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003234}}
+.admin-form canvas {
+  border: 1px solid black;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003239}}
+#show-images-for-series, #images-in-grid, #images-in-rows, #save-image-order {
+  font-family: "BoldSans";
+  cursor: default;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003243}}
+#show-images-for-series:hover, #images-in-grid:hover, #images-in-rows:hover, #save-image-order:hover {
+  text-decoration: underline;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003248}}
+.series-image-controller {
+  display: none;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003252}}
+#save-image-order {
+  background: #ffffff;
+  border: 1px solid #000000;
+  font-family: "BoldSans", "sans";
+  margin: 1.5em 1.5em .5em 0;
+  padding: 8px 10px 5px 10px;
+  cursor: pointer;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003260}}
+#save-image-order:hover {
+  background-color: #DDDF4B;
+}
+
+/* little menu for sort by on series page*/
+@media -sass-debug-info{filename{}line{font-family:\00003266}}
+#images_order_by {
+  cursor: default;
+  margin-top: .3rem;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003271}}
+#images_order_by ul {
+  position: absolute;
+  padding: 0px;
+  background-color: white;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003277}}
+#images_order_by li ul li {
+  display: none;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003281}}
+#images_order_by li {
+  font-family: "BoldSans";
+}
+@media -sass-debug-info{filename{}line{font-family:\00003284}}
+#images_order_by li ul {
+  background-color: #272727;
+  color: #CECECE;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003289}}
+#images_order_by li ul li {
+  font-family: "MediumSans";
+  padding: 4px 3px 2px 5px;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003295}}
+#images_order_by li:hover ul li {
+  display: block;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003297}}
+#images_order_by li:hover ul li:hover {
+  text-decoration: underline;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003305}}
+#series-image-container {
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003313}}
+#series-image-container .container {
+  margin: 2em;
+  min-height: 350px;
+  font-size: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003321}}
+#series-image-container .container img {
+  padding: 1.7em;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003325}}
+#series-image-container .container p {
+  padding: 0 0 1em 0;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003329}}
+#series-image-container .container ul {
+  padding-left: 1.7em;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003333}}
+#series-image-container .container li {
+  padding: 0;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003338}}
+#series-image-container .in-rows {
+  padding: 1.5em;
+  margin: auto;
+  width: 98%;
+  flex-direction: row;
+  align-items: flex-start;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003345}}
+#series-image-container .in-rows ul {
+  margin-top: 4em;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003351}}
+#series-image-container .odd {
+  background-color: #DFDDDD;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003358}}
+#image-form #file-upload input {
+  display: none;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003363}}
+#image-form #filename-container {
+  width: 15em;
+  word-wrap: break-word;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003369}}
+#text-form-container {
+  margin-top: 1.3rem;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003372}}
+#text-form-container div {
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 4rem;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003377}}
+#text-form-container div p {
+  text-align: center;
+  margin: 0 0 0 1rem;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003383}}
+#text-form-container input[type=text] {
+  margin-bottom: 1.3rem;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003387}}
+#text-form-container textarea {
+  margin: 1.3rem 0 1.3rem 0;
+  padding: 1.2rem;
+  font-family: "MediumSans";
+  width: 90%;
+  resize: vertical;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003396}}
+input#icon {
+  display: none;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003401}}
+p#file-upload img {
+  max-height: 64px;
+  max-width: 64px;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003406}}
+p#file-upload .no-icon {
+  padding: .4rem;
+  border: 1px solid black;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003412}}
+.contact-table, .edit-texts-links {
+  margin-bottom: 1.7rem;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003415}}
+.contact-table thead tr td, .edit-texts-links thead tr td {
+  padding: 0 0 .4rem 0;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003419}}
+.contact-table td, .edit-texts-links td {
+  padding: .2rem .5rem 0 1.5rem;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003422}}
+.contact-table td img, .edit-texts-links td img {
+  height: 1.3rem;
+  max-width: 1.3rem;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\000035}}
+* {
+  box-sizing: border-box;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\000039}}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000315}}
+a {
+  color: #256EDE;
+  text-decoration: none;
+  font-family: "BoldSans";
+}
+@media -sass-debug-info{filename{}line{font-family:\0000320}}
+a:visited {
+  color: #256EDE;
+}
+
+/* other fonts are in global (not buleprint) properties */
+@font-face {
+  font-family: 'typicons';
+  font-weight: normal;
+  font-style: normal;
+  src: url("/static/fonts/typicon/typicons.eot");
+  src: url("/static/fonts/typicon/typicons.eot?#iefix") format("embedded-opentype"), url("/static/fonts/typicon/typicons.woff") format("woff"), url("/static/fonts/typicon/typicons.ttf") format("truetype"), url("/static/fonts/typicon/typicons.svg#typicons") format("svg");
+}
+/* :before psuedo-selector inserts and styles icon */
+@media -sass-debug-info{filename{}line{font-family:\0000338}}
+.typcn:before {
+  font-family: 'typicons';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  height: 1em;
+  font-size: 1em;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000354}}
+header {
+  font-size: 1.2rem;
+  color: #585858;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000360}}
+h2, h3 {
+  margin: 1.3rem 0 .3rem 1.3rem;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000364}}
+footer {
+  text-align: center;
+  bottom: 0;
+  padding: 8rem 1rem 2rem 1rem;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\000036}}
+nav {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  font-family: "BoldSans";
+  letter-spacing: 3px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000315}}
+nav.open {
+  transform: translate(0px, 0px);
+  z-index: 9;
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 899px) {
+@media -sass-debug-info{filename{}line{font-family:\0000323}}
+  #menu-button-container {
+    display: inline-block;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    z-index: 15;
+    vertical-align: top;
+    padding: 1.5rem;
+    opacity: 0.80;
+    color: #CECECE;
+    background-color: #272727;
+  }
+
+@media -sass-debug-info{filename{}line{font-family:\0000335}}
+  #mobile-header {
+    display: block;
+    font-size: 1.3rem;
+    font-family: "MediumSans";
+    color: #585858;
+    margin: 1.3rem 0 0 1.3rem;
+  }
+
+@media -sass-debug-info{filename{}line{font-family:\0000345}}
+  nav {
+    transform: translate(-300px, 0);
+    color: #CECECE;
+    background-color: #272727;
+    min-width: 50%;
+    max-width: 85%;
+    min-height: 100%;
+    vertical-align: top;
+    padding: 7px;
+  }
+@media -sass-debug-info{filename{}line{font-family:\0000355}}
+  nav #header {
+    display: none;
+  }
+@media -sass-debug-info{filename{}line{font-family:\0000360}}
+  nav ul ul {
+    margin-left: 24px;
+    display: none;
+  }
+@media -sass-debug-info{filename{}line{font-family:\0000365}}
+  nav ul ul.visible {
+    display: block;
+  }
+@media -sass-debug-info{filename{}line{font-family:\0000369}}
+  nav li, nav a {
+    color: #fff;
+    padding: 12px 14px;
+  }
+}
+@media screen and (min-width: 900px) {
+@media -sass-debug-info{filename{}line{font-family:\0000378}}
+  #menu-button-container {
+    display: none;
+  }
+
+@media -sass-debug-info{filename{}line{font-family:\0000382}}
+  body {
+    padding-top: 4.3rem;
+  }
+
+@media -sass-debug-info{filename{}line{font-family:\0000386}}
+  #mobile-header {
+    display: none;
+  }
+
+@media -sass-debug-info{filename{}line{font-family:\0000390}}
+  nav {
+    min-width: 100%;
+    background-color: #fff;
+    border-bottom: 2px solid #000;
+    z-index: 10;
+    padding: 0 0 0 1.3rem;
+  }
+@media -sass-debug-info{filename{}line{font-family:\0000398}}
+  nav #header {
+    color: #585858;
+    font-family: "MediumSans";
+    margin-right: 2rem;
+  }
+@media -sass-debug-info{filename{}line{font-family:\00003104}}
+  nav ul {
+    display: inline-block;
+    position: relative;
+    background-color: #fff;
+  }
+@media -sass-debug-info{filename{}line{font-family:\00003109}}
+  nav ul li {
+    display: inline-block;
+    position: relative;
+    padding: 13px 24px;
+  }
+@media -sass-debug-info{filename{}line{font-family:\00003114}}
+  nav ul li a {
+    display: inline-block;
+  }
+@media -sass-debug-info{filename{}line{font-family:\00003118}}
+  nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    width: max-content;
+  }
+@media -sass-debug-info{filename{}line{font-family:\00003128}}
+  nav ul li:hover {
+    background-color: #CECECE;
+  }
+@media -sass-debug-info{filename{}line{font-family:\00003130}}
+  nav ul li:hover ul {
+    display: block;
+  }
+@media -sass-debug-info{filename{}line{font-family:\00003135}}
+  nav ul li ul > li {
+    display: block;
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+  }
+}
+/* menu button */
+@media -sass-debug-info{filename{}line{font-family:\00003148}}
+.typcn-th-menu {
+  font-size: 1.3rem;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003152}}
+.typcn-th-menu:before {
+  content: '\e116';
+}

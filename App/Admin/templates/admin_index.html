@@ -1,16 +1,22 @@
-
 {% extends 'admin_base.html' %}
 {% block container %}
 
 <h2>series</h2>
 
 <p>Add a <a href="{{ url_for('.newseries') }}">new</a> series</p>
+<p><a href="#">Save</a> series order</p>
+
 <table id="series-list">
     <tbody>
         {% for s in series %}
-        <tr>
+        <tr data-seriesid="{{ s.id }}">
+            <td>[{{ s.order }}]&nbsp;&nbsp;</td>
+            <td class="up-order">up</td>
+            <td>&nbsp;</td>
+            <td class="down-order">down</td>
+            <td>&nbsp;</td>
             <td>edit <a href="{{ url_for('Admin.edit_series', _id=s.id) }}">{{ s.title }}</a></td>
-            <td>having {{ s.images.all()|length }} images</td>
+            <td>({{ s.images.all()|length }} images)</td>
         </tr>
 
         {% endfor %}

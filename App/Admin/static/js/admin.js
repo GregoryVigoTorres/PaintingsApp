@@ -221,6 +221,8 @@ AdminController.prototype.addEventHandlers = function() {
 
     $('input#icon').on('change', App.showIconPreview);
 
+    $('#series-list .up-order').on('click',   function(event) { App.reorderSeriesTable(event) });
+    $('#series-list .down-order').on('click', function(event) { App.reorderSeriesTable(event) });
 
     /* debug */
     if (App.debug) {
@@ -228,7 +230,7 @@ AdminController.prototype.addEventHandlers = function() {
             console.log(event);
         });
     };
-};
+}; // event handlers
 
 AdminController.prototype.confirmSubmit = function(event) {
     var submitConfirmedForm = function() {
@@ -451,6 +453,52 @@ AdminController.prototype.loadImagePreview = function(imgURL, Filename) {
         ctx.drawImage(img, imgPos[0], imgPos[1], scaledXY[0], scaledXY[1]);
         App.updatePreviewBackground();
         App.showImageFilename(Filename);
+    };
+};
+
+AdminController.prototype.reorderSeriesTable = function(event) {
+    // var action = event.target.innerText;
+    // get action from class name
+
+    if (event.target.classList.contains('up-order')) {
+        action = 'up'
+    };
+
+    if (event.target.classList.contains('down-order')) {
+        action = 'down';
+    };
+
+    if (!action) { return };
+
+    var currentRow = event.target.parentElement;
+    // var currentId = event.target.parentElement.dataset.seriesid;
+
+    var seriesTable = document.querySelector('#series-list tbody');
+    var seriesRows = Array.from(seriesTable.getElementsByTagName('tr'));
+
+    // function getTitle(row) {
+    //     titleCell = row.children[3];
+    //     return titleCell.children[0].innerHTML;
+    // };
+
+    var alreadySorted = false;
+    var sortedRows = Array.from(seriesRows);
+
+    sortedRows.sort(function(a, b) {
+        if (!alreadySorted && b == currentRow && action === 'up') {
+            alreadySorted = true;
+            return 1; // a before b
+        };
+
+        if (!alreadySorted && a == currentRow && action === 'down') {
+            alreadySorted = true;
+            return 1; // b before a
+        };
+        return 0;
+    });
+
+    for (i=0; i<seriesRows.length; i++) {
+        seriesTable.appendChild(sortedRows[i]);
     };
 };
 

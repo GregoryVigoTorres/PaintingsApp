@@ -78,6 +78,23 @@ div#container {
         td {
             padding: 5px 12px 2px 0;
         }
+
+        tr:hover {
+            background-color: #D1D89A;
+        }
+
+        .up-order, .down-order {
+            color: #7B7B7B;
+            cursor: pointer;
+            padding: 2px 2px;
+
+            &:hover {
+                color: $light-fg;
+                // background-color: #B5B5B5;
+                background-color: #8F974A;
+                // text-decoration: underline;
+            }
+        }
     }
 
     a {
