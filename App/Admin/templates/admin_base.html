@@ -32,8 +32,8 @@
                             <a href="{{ url_for('Admin.edit_series', _id=ser.id) }}">{{ ser.title }}</a>
                         </li>
                     {% endfor %}
-                    <li><a href="{{ url_for('Admin.newseries') }}">add a new series</a></li>
-                    <li><a href="{{ url_for('Admin.index') }}">all series</a></li>
+                    <li><a style="color:black;" href="{{ url_for('Admin.newseries') }}">add a new series</a></li>
+                    <li><a style="color:black;" href="{{ url_for('Admin.index') }}">all series</a></li>
                 </ul>
             </li> 
             <li><a href="{{ url_for('Admin.texts_links') }}">texts &#38; links</a></li>
