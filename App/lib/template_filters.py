@@ -1,6 +1,8 @@
 import logging
 from urllib.parse import urlsplit, urlunsplit, parse_qs, urlencode
 
+from App.core import db
+
 def fmt_datetime(dtime):
     """ returns formatted datetime for date_created
         fails silently
@@ -85,3 +87,11 @@ def next_page_url(url):
     next_url = urlunsplit((pu.scheme, pu.netloc, pu.path, query, pu.fragment))
 
     return next_url
+
+
+def get_images(series):
+    """ Because series.images is loaded dynamically and 
+        is thus a query object, return a list
+    """
+    db.session.add(series)
+    return series.images.all()

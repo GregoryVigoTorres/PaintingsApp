@@ -18,13 +18,11 @@
             <td class="down-order">down</td>
             <td>&nbsp;</td>
             <td>edit <a href="{{ url_for('Admin.edit_series', _id=s.id) }}">{{ s.title }}</a></td>
-            <td>({{ s.images.all()|length }} images)</td>
+            <td>({{ s|get_images|length }} images)</td>
         </tr>
-
         {% endfor %}
     </tbody>
 </table>
-
 
 {% endblock %}
 
