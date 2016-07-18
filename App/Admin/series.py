@@ -8,9 +8,11 @@ from flask import (render_template,
                    url_for,
                    current_app,
                    flash,
+                   session,
                    jsonify)
 
 from flask.ext.security.decorators import (login_required, auth_token_required)
+from flask.ext.login import current_user
 
 from werkzeug.exceptions import NotFound 
 
@@ -55,6 +57,7 @@ def newseries():
 
 @admin_bp.route('/deleteseries/<_id>', methods=['POST'])
 @auth_token_required
+@login_required
 def delete_series(_id):
     """ ajax only """
     try:
@@ -96,9 +99,10 @@ def delete_series(_id):
     next_url = {'next':url_for('Admin.index')}
     return jsonify(next_url)
 
+
 @admin_bp.route('/saveimageorder', methods=['POST'])
-@login_required
 @auth_token_required
+@login_required
 def save_image_order():
     if not request.is_xhr:
         raise NotFound
@@ -124,9 +128,32 @@ def save_image_order():
         return jsonify({'message':'There was an error updating the image order'})
 
 
+@admin_bp.route('/updateseriesorder', methods=['POST'])
+@auth_token_required
+@login_required
+def update_series_order():
+    """ AJAX """
+    if not request.is_xhr:
+        abort(401)
+
+    series_data = request.get_json()
+    
+    if not series_data:
+        return jsonify({'error':'no data'})
+
+    for _id, order in series_data.items():
+        series = Series.query.get(_id)
+        series.order = int(order) 
+    
+    db.session.commit()
+
+    return jsonify({
+        'message': 'Series order updated'
+    })
+
+
 @admin_bp.route('/editseries/<_id>', methods=['GET', 'POST'])
 @login_required
-@json_token_required
 def edit_series(_id):
     """ Edit an existing series by id. 
 

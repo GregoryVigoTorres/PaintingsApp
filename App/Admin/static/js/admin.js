@@ -93,19 +93,22 @@ var AdminController = function() {
         App.addEventHandlers();
 
         /* AJAX setup */
+        var headers = {};
         var csrfToken = $('input[name=csrf_token]').val();
         if (csrfToken) {
-            $.ajaxSetup({
-                headers:{'X-CSRFToken':csrfToken},
-            });
+            headers['X-CSRFToken'] = csrfToken;
         };
 
-        var authToken = $('input[name=auth_token]').val();
-        if (authToken) {
-            $.ajaxSetup({
-                headers:{'Authentication-Token':authToken},
-            });
+        var at = document.getElementsByTagName('meta');
+        for (i=0; i<at.length; i++) {
+            if (at[i].name === 'Authentication-Token') {
+                headers['Authentication-Token'] = at[i].content;
+            };
         };
+
+        $.ajaxSetup({
+            headers: headers,
+        });
     });
 }; /* App init */
 
@@ -223,6 +226,7 @@ AdminController.prototype.addEventHandlers = function() {
 
     $('#series-list .up-order').on('click',   function(event) { App.reorderSeriesTable(event) });
     $('#series-list .down-order').on('click', function(event) { App.reorderSeriesTable(event) });
+    $('#save-series-order').on('click', function(event) { App.saveSeriesOrder(event) });
 
     /* debug */
     if (App.debug) {
@@ -457,13 +461,30 @@ AdminController.prototype.loadImagePreview = function(imgURL, Filename) {
 };
 
 AdminController.prototype.saveSeriesOrder = function(event) {
+    event.preventDefault();
     var currentId = event.target.parentElement.dataset.seriesid;
+    var seriesRows = document.getElementById('series-list').getElementsByTagName('tr');
+    var seriesData = {};
 
-    function getTitle(row) {
-        titleCell = row.children[3];
-        return titleCell.children[0].innerHTML;
+    for (i=0; i<seriesRows.length; i++ ) {
+        var id = seriesRows[i].dataset.seriesid;
+        seriesData[id] = i.toString();
     };
-
+    
+    $.ajax({
+        url:'/admin/updateseriesorder',
+        method: 'post',
+        dataType: 'json',
+        data: JSON.stringify(seriesData),
+        contentType: 'application/json',
+        success: function(response, status, jqXHR) {
+            App.modalDialog(response);
+        },
+        error: function(jqXHR, status, response) {
+            console.log(jqXHR);
+            App.modalDialog({'message':'There was a problem updating the series order'});
+        }
+    });
 };
 
 AdminController.prototype.reorderSeriesTable = function(event) {
@@ -478,7 +499,6 @@ AdminController.prototype.reorderSeriesTable = function(event) {
     if (!action) { return };
 
     var currentRow = event.target.parentElement;
-
     var seriesTable = document.querySelector('#series-list tbody');
     var seriesRows = Array.from(seriesTable.getElementsByTagName('tr'));
 
@@ -499,8 +519,14 @@ AdminController.prototype.reorderSeriesTable = function(event) {
         return 0;
     });
 
+    order_rx = /\d+/;
+
     for (i=0; i<seriesRows.length; i++) {
         seriesTable.appendChild(sortedRows[i]);
+        // show new order in sorted rows
+        ord_cell = sortedRows[i].cells[0];
+        new_order = ord_cell.innerText.replace(order_rx, i+1);
+        ord_cell.innerText = new_order;
     };
 };
 

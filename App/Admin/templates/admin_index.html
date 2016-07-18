@@ -4,13 +4,15 @@
 <h2>series</h2>
 
 <p>Add a <a href="{{ url_for('.newseries') }}">new</a> series</p>
-<p><a href="#">Save</a> series order</p>
+<p><a id="save-series-order" href="#">Save</a> series order</p>
+
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
 <table id="series-list">
     <tbody>
         {% for s in series %}
         <tr data-seriesid="{{ s.id }}">
-            <td>[{{ s.order }}]&nbsp;&nbsp;</td>
+            <td>[{{ s.order+1 }}]&nbsp;&nbsp;</td>
             <td class="up-order">up</td>
             <td>&nbsp;</td>
             <td class="down-order">down</td>
