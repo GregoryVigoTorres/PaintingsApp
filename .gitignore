@@ -24,4 +24,5 @@ alembic/versions
 pylintrc
 nginx_conf
 tags
+prisms.txt
 
