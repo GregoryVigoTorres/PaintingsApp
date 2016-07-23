@@ -5,9 +5,10 @@ import re
 
 from flask import (current_app, flash, session)
 
-from flask.ext.security.utils import (get_message, verify_and_update_password)
+# from flask.ext.security.utils import (get_message, verify_and_update_password)
+from flask_security.utils import (get_message, verify_and_update_password)
 
-from flask.ext.wtf import Form
+from flask_wtf import Form
 from wtforms import (HiddenField, 
                     StringField, 
                     PasswordField
@@ -25,7 +26,7 @@ from wtforms.validators import (DataRequired,
                                 Optional,
                                 )
 
-from ..models.user import User
+from App.models.user import User
 
 
 class LoginForm(Form):
@@ -33,6 +34,7 @@ class LoginForm(Form):
 
     username = StringField()
     password = PasswordField()
+    next = HiddenField()
 
     def validate(self):
         """ this is a slimmed down version of the default validate function

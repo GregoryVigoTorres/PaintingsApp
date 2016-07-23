@@ -8,9 +8,9 @@ from flask import (render_template,
         current_app)
 
 from .forms import LoginForm
-from flask.ext import security
-from flask.ext.security.decorators import (login_required, anonymous_user_required)
-from flask.ext.security.utils import (login_user, logout_user)
+
+from flask_security.decorators import (login_required, anonymous_user_required)
+from flask_security.utils import (login_user, logout_user)
 from flask_login import current_user
 
 from ..core import admin_bp 

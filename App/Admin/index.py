@@ -1,10 +1,10 @@
 
 from flask import render_template
 
-from flask.ext.security.decorators import login_required
+from flask_security.decorators import login_required
 
-from ..core import admin_bp
-from ..models.public import Series
+from App.core import admin_bp
+from App.models.public import Series
 
 
 @admin_bp.route('/index')

@@ -7,7 +7,7 @@ from flask import (render_template,
                    current_app,
                    flash)  
 
-from flask.ext.security.decorators import login_required
+from flask_security.decorators import login_required
 
 from App.Admin.forms.contact import ContactForm
 from .utils import (update_model_from_form,
