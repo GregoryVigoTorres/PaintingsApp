@@ -6,7 +6,7 @@ from wtforms import (HiddenField,
                     DateTimeField,
                     )
 
-from flask.ext.wtf import Form
+from flask_wtf import Form
 from wtforms.validators import (DataRequired,
                                 InputRequired,
                                 )

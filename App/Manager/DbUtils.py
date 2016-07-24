@@ -9,7 +9,7 @@ import logging
 import os
 import uuid
 
-from flask.ext.script import (Command, prompt, prompt_pass)
+from flask_script import (Command, prompt, prompt_pass)
 from flask import current_app
 from sqlalchemy import or_
 from werkzeug.datastructures import FileStorage

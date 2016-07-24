@@ -5,8 +5,8 @@ from pathlib import Path
 from functools import wraps
 
 from flask import (current_app, request, _request_ctx_stack)
-from flask.ext.security.decorators import _get_unauthorized_response
-from flask.ext.principal import (Identity, identity_changed)
+from flask_security.decorators import _get_unauthorized_response
+from flask_principal import (Identity, identity_changed)
 from werkzeug import MultiDict
 from werkzeug.local import LocalProxy
 

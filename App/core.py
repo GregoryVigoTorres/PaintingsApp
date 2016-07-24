@@ -1,4 +1,3 @@
-# from functools import partial
 from pathlib import Path
 import logging
 
@@ -13,8 +12,9 @@ from flask import (Blueprint,
                    _request_ctx_stack,
                    session)
 
-from flask.ext.sqlalchemy import SQLAlchemy
-from sqlalchemy.ext.declarative import declarative_base
+from flask_sqlalchemy import SQLAlchemy as SQLAlchemy
+from flask_sqlalchemy import declarative_base
+
 db = SQLAlchemy()
 Base = declarative_base()
 

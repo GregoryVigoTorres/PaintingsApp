@@ -1,7 +1,7 @@
 from sqlalchemy_utils import UUIDType
 from sqlalchemy.orm import relationship 
-from flask.ext.security import UserMixin, RoleMixin
-from flask.ext.security import SQLAlchemyUserDatastore
+from flask_security import UserMixin, RoleMixin
+from flask_security import SQLAlchemyUserDatastore
 
 import uuid
 import datetime

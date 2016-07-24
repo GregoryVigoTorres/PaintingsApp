@@ -11,7 +11,7 @@ from flask import (render_template,
                    current_app)
 
 
-from flask.ext.security.decorators import (login_required, auth_token_required) 
+from flask_security.decorators import (login_required, auth_token_required) 
 
 from werkzeug.exceptions import NotFound 
 

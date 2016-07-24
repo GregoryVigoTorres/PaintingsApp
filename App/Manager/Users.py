@@ -2,8 +2,8 @@
 Create and delete users and (eventually) change user passwords
 """
 
-from flask.ext.script import (Command, prompt, prompt_pass)
-from flask.ext.security.utils import encrypt_password
+from flask_script import (Command, prompt, prompt_pass)
+from flask_security.utils import encrypt_password
 from flask import current_app
 from sqlalchemy import or_
 

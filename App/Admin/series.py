@@ -11,8 +11,8 @@ from flask import (render_template,
                    session,
                    jsonify)
 
-from flask.ext.security.decorators import (login_required, auth_token_required)
-from flask.ext.login import current_user
+from flask_security.decorators import (login_required, auth_token_required)
+from flask_login import current_user
 
 from werkzeug.exceptions import NotFound 
 

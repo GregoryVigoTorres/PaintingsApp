@@ -3,7 +3,7 @@ from pathlib import Path
 import os
 from itertools import chain
 
-from flask.ext.script import (Command, prompt, prompt_pass)
+from flask_script import (Command, prompt, prompt_pass)
 from flask import current_app
 
 from App.core import db

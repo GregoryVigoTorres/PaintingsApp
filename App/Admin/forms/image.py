@@ -7,7 +7,7 @@ import colour
 
 from flask import (current_app, flash)
 
-from flask.ext.wtf import Form
+from flask_wtf import Form
 from flask_wtf.file import (FileField, FileAllowed)
 from wtforms_components import ColorField
 from wtforms import (TextField, 
