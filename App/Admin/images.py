@@ -67,6 +67,17 @@ def new_image(series_id):
     return render_template('admin_image.html', form=form, series=series, **tmpl_args)
 
 
+def upload_many_images():
+    """
+    Upload all images in a directory.
+    Define a naming convention or use default prism naming convention.
+    Choose padding color and dimensions applied to all images.
+    Series must already exist, for simplicty's sake.
+    """
+
+    return jsonfiy({'message':'something happened'})
+
+
 @admin_bp.route('/editimage/<image_id>', methods=['GET', 'POST'])
 @login_required
 def edit_image(image_id):
