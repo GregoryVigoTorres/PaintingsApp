@@ -434,6 +434,7 @@ AdminController.prototype.showLongUploadMessage = function(eve) {
     var fileCount = fileUpload.files.length;
     var message = `Uploading ${fileCount} files. This may take a while`
     this.modalDialog({'message': message}, 'OK');
+    eve.target.submit();
 };
 
 AdminController.prototype.showMultipleImageFilenames = function() {
