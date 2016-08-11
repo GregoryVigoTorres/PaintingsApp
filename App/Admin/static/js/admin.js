@@ -136,8 +136,14 @@ AdminController.prototype.addEventHandlers = function() {
         App.eventHandlers.handleImageFile.call(this);
     });
 
+    // for bulk image upload
     $('#images').on('change', function(event) {
         App.showMultipleImageFilenames.call(this);
+    });
+
+    // show a message when bulk images form is submitted
+    $('#bulk-image-form').on('submit', function(eve) {
+        App.showLongUploadMessage.call(App, eve);
     });
 
     $('#padding_color').on('change', function(event) {
@@ -260,7 +266,6 @@ AdminController.prototype.confirmSubmit = function(event) {
                 },
         });
     };
-
 
     this.modalDialog(
             {'message':'Are you sure?'},
@@ -422,6 +427,14 @@ AdminController.prototype.updatePreviewBackground = function() {
     var paddingColor = $('#padding_color').val() || '#ffffff';
     this.imagePreviewCanvas.style.backgroundColor = paddingColor;
     $('span#padding-color').html(paddingColor);
+};
+
+AdminController.prototype.showLongUploadMessage = function(eve) {
+    eve.preventDefault();
+    var fileUpload = document.getElementById('images');
+    var fileCount = fileUpload.files.length;
+    var message = `Uploading ${fileCount} files. This may take a while`
+    this.modalDialog({'message': message}, 'OK');
 };
 
 AdminController.prototype.showMultipleImageFilenames = function() {
@@ -787,7 +800,6 @@ AdminController.prototype.saveImageOrder = function(event) {
         },
     });
 };
-
 
 AdminController.prototype.showIconPreview = function() {
     /* this is for the contact info icon file upload */

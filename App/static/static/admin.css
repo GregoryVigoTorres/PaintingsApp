@@ -356,11 +356,11 @@ form button:hover, form .button:hover {
 }
 
 @media -sass-debug-info{filename{}line{font-family:\00003355}}
-#image-form #file-upload input {
+#image-form #file-upload input, #bulk-image-form #file-upload input {
   display: none;
 }
 @media -sass-debug-info{filename{}line{font-family:\00003360}}
-#image-form #filename-container {
+#image-form #filename-container, #bulk-image-form #filename-container {
   width: 15em;
   word-wrap: break-word;
 }
