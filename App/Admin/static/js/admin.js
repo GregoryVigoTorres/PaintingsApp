@@ -77,7 +77,6 @@ if (!Array.from) {
   }());
 }
 
-'use-strict'
 
 var AdminController = function() {
     /*
@@ -832,5 +831,6 @@ AdminController.prototype.showIconPreview = function() {
 
 
 (function() {
+    'use-strict'
     window.App = new AdminController();
 })();
