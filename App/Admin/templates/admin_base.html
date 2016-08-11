@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset='UTF-8'>
     <meta name='viewport' content="width=device-width, initial-scale=1, maximum-scale=1, height=device-height">
-    <meta name="Authentication-Token" content="{{ get_auth_token() }}"
+    <meta name="Authentication-Token" content="{{ get_auth_token() }}">
     <title>GregoryVigoTorres</title>
     <link href="/static/css/properties.css" media='all' type="text/css" rel="stylesheet">
 
@@ -18,8 +18,6 @@
     {% assets "jquery" %}
         <script src="{{ ASSET_URL }}"></script>
     {% endassets %}
-    
-
 </head>
 <body>
     <nav>
@@ -35,7 +33,7 @@
                     <li><a style="color:black;" href="{{ url_for('Admin.newseries') }}">add a new series</a></li>
                     <li><a style="color:black;" href="{{ url_for('Admin.index') }}">all series</a></li>
                 </ul>
-            </li> 
+            </li>
             <li><a href="{{ url_for('Admin.texts_links') }}">texts &#38; links</a></li>
             <li><a href="{{ url_for('Admin.contact') }}">contact</a></li>
         </ul>
@@ -48,7 +46,6 @@
                 </ul>
             </li>
         </ul>
-
     </nav>
 
     <div id='overlay'>
@@ -75,7 +72,7 @@
     </div>
 
     <div id="container">
-        {% block container %}{% endblock %} 
+        {% block container %}{% endblock %}
     </div>
 </body>
 <script type="text/javascript" src="{{ url_for('Admin.static', filename='js/admin.js') }}"></script>

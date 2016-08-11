@@ -1,7 +1,6 @@
 $light-fg: #CECECE;
 $dark-bg: #272727;
 
-
 body {
     font-size: 18px;
 }
@@ -26,7 +25,7 @@ ul {
     z-index: 1;
     background-color: #484848;
 }
-  
+
 #close-overlay {
     padding: .7em;
     cursor: default;
@@ -42,7 +41,7 @@ ul {
     position: absolute;
     top: 3em;
     left: 33%;
-    width: 33%; 
+    width: 33%;
     background-color:#ffffff;
     box-shadow: 5px 8px 4px black;
     z-index: 3;
@@ -66,7 +65,7 @@ ul {
         margin: 0 0 0 1.5em;
 
         &:hover {
-            background-color:#D6D6D6; 
+            background-color:#D6D6D6;
         }
     }
 }
@@ -96,10 +95,10 @@ div#container {
     }
 
     a {
-        box-shadow: inset 0px -3px rgba(37, 110, 222, 0.3);  
-        
+        box-shadow: inset 0px -3px rgba(37, 110, 222, 0.3);
+
         &:hover {
-            box-shadow: inset 0px -3px rgba(37, 110, 222, 0.7);  
+            box-shadow: inset 0px -3px rgba(37, 110, 222, 0.7);
         }
     }
 }
@@ -217,7 +216,7 @@ form {
     #dimensions-1 {
         margin-left: 1em;
     }
-    
+
     #padding-color-label-container {
         display: inline-block;
         vertical-align: top;
@@ -264,7 +263,7 @@ form {
 #images_order_by {
     // display: none;
     cursor: default;
-    margin-top: .3rem; 
+    margin-top: .3rem;
 
     ul {
         position: absolute;
@@ -291,7 +290,7 @@ form {
 
         &:hover {
             ul li {
-                display: block; 
+                display: block;
                 &:hover {
                     text-decoration: underline;
                 }
@@ -327,7 +326,7 @@ form {
         ul {
             padding-left: 1.7em;
         }
-        
+
         li {
             padding: 0;
         }
@@ -339,7 +338,7 @@ form {
         width: 98%;
         flex-direction: row;
         align-items: flex-start;
-        
+
         ul {
             margin-top: 4em;
         }

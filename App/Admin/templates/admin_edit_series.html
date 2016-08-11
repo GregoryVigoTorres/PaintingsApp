@@ -1,16 +1,16 @@
 {% extends 'admin_series.html' %}
 
 {% block delete_button %}
-<button type="submit" 
-        id="delete" 
+<button type="submit"
+        id="delete"
         class="confirm-submit"
         name="delete"
         formaction="{{ url_for('Admin.delete_series', _id=form.id.data) }}">delete</button>
 {% endblock %}
 
-
 {% block add_image_button %}
-<p>add an <a href="{{ url_for('Admin.new_image', series_id=form.id.data) }}">image</a></p>
+    <p>add an <a href="{{ url_for('Admin.new_image', series_id=form.id.data) }}">image</a></p>
+    <p><a href="{{ url_for('Admin.bulk_upload', series_id=form.id.data) }}">upload</a> a lot of images from a directory</p>
 {% endblock %}
 
 {% block images %}
@@ -19,11 +19,11 @@
         <span id='show-images-for-series'>show</span> {{ images|length }} images
         in a <span id='images-in-grid'>grid</span> or in <span id='images-in-rows'>rows</span>
         <p class="series-image-controller">
-            <span id="save-image-order" 
+            <span id="save-image-order"
                   data-url="{{ url_for('Admin.save_image_order') }}"
                   data-seriesid="{{ series.id }}">
                 save order
-            </span> 
+            </span>
 
             <ul id="images_order_by" class='series-image-controller'>
                 <li>sort by:
@@ -40,14 +40,14 @@
 
     <div id='series-image-container'>
         {% for i in images %}
-            <div class='container' style="order:{{ i.order }};" 
+            <div class='container' style="order:{{ i.order }};"
                 data-originalOrder="{{ i.order }}"
                 data-imageid="{{ i.id }}">
                 <p>
-                    <img src="{{ url_for('Thumbnails.static', filename=i.filename) }}" 
+                    <img src="{{ url_for('Thumbnails.static', filename=i.filename) }}"
                          alt="image not found"
                          style="background-color: {{ i.padding_color }};">
-                </p> 
+                </p>
                 <ul>
                     <li class="title">{{ i.title }}</li>
                     <li class="medium">{{ i.medium.name }}</li>

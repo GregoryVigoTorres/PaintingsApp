@@ -35,7 +35,7 @@ if (!Array.from) {
       var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
       var T;
       if (typeof mapFn !== 'undefined') {
-        // 5. else      
+        // 5. else
         // 5. a If IsCallable(mapfn) is false, throw a TypeError exception.
         if (!isCallable(mapFn)) {
           throw new TypeError('Array.from: when provided, the second argument must be a function');
@@ -117,12 +117,12 @@ AdminController.prototype.eventHandlers = {
     handleImageFile: function() {
         var imagePreviewFn = this.files[0].name;
         var imgUrl = window.URL.createObjectURL(this.files[0]);
-        App.loadImagePreview(imgUrl, imagePreviewFn);        
+        App.loadImagePreview(imgUrl, imagePreviewFn);
     },
 };
 
 AdminController.prototype.addEventHandlers = function() {
-    $('.ajax-submit').on('submit', function(event) { 
+    $('.ajax-submit').on('submit', function(event) {
         event.preventDefault();
         App.submitForm(document.activeElement);
     });
@@ -136,8 +136,12 @@ AdminController.prototype.addEventHandlers = function() {
         App.eventHandlers.handleImageFile.call(this);
     });
 
+    $('#images').on('change', function(event) {
+        App.showMultipleImageFilenames.call(this);
+    });
+
     $('#padding_color').on('change', function(event) {
-        App.updatePreviewBackground(); 
+        App.updatePreviewBackground();
     });
 
     $('#close-overlay').on('click', function(event) {
@@ -158,11 +162,11 @@ AdminController.prototype.addEventHandlers = function() {
     });
 
     $('#show-images-for-series').on('click', function(event) {
-        App.showImagesForSeries(); 
+        App.showImagesForSeries();
         $('#by-title').on('click', App.orderSeriesImagesByTitle);
-        $('#by-display_order').on('click', App.orderSeriesImagesByOriginalOrder); 
-        $('#by-date_added').on('click', App.orderSeriesImagesByDateAdded); 
-        $('#by-date').on('click', App.orderSeriesImagesByDate); 
+        $('#by-display_order').on('click', App.orderSeriesImagesByOriginalOrder);
+        $('#by-date_added').on('click', App.orderSeriesImagesByDateAdded);
+        $('#by-date').on('click', App.orderSeriesImagesByDate);
     });
 
     $('#images-in-grid').on('click', function(event) {
@@ -176,13 +180,13 @@ AdminController.prototype.addEventHandlers = function() {
         App.containerItemsInCols(container);
     });
 
-    $('button[type=reset]').on('click', function(event) {  
+    $('button[type=reset]').on('click', function(event) {
          /*  only clears non-hidden elements
          *  so as not to lose csrf/auth tokens and such
          * */
         var skipTypes = ['hidden',]
         var $inputs = $(this.form).find(':input'); /* includes textarea */
-        $inputs.each(function(ind, elem) { 
+        $inputs.each(function(ind, elem) {
             console.log(elem);
             if (skipTypes.indexOf(elem.type) === -1) {
                 elem.value = '';
@@ -193,12 +197,12 @@ AdminController.prototype.addEventHandlers = function() {
     });
 
     /* disable inputs on text/link form so you can't input both a text and a link at the same time */
-    var $newTextInputs = [$('#text-form-container #title'), 
-        $('#text-form-container #author'), 
+    var $newTextInputs = [$('#text-form-container #title'),
+        $('#text-form-container #author'),
         $('#text-form-container #date'),
         $('#text-form-container #body'),
     ];
-    var $newLinkInputs = [$('#text-form-container #label'), 
+    var $newLinkInputs = [$('#text-form-container #label'),
         $('#text-form-container #link_target'),
         $('#text-form-container #description'),
     ];
@@ -210,14 +214,14 @@ AdminController.prototype.addEventHandlers = function() {
         });
     };
 
-    $newTextInputs.forEach(function(elem) { 
-        elem.on('change', function() { 
+    $newTextInputs.forEach(function(elem) {
+        elem.on('change', function() {
             disableInputs($newLinkInputs)
         });
     });
 
-    $newLinkInputs.forEach(function(elem) { 
-        elem.on('change', function() { 
+    $newLinkInputs.forEach(function(elem) {
+        elem.on('change', function() {
             disableInputs($newTextInputs)
         });
     });
@@ -267,7 +271,7 @@ AdminController.prototype.confirmSubmit = function(event) {
 };
 
 AdminController.prototype.populateForm =function(form, formData) {
-    /* formdata must be an array of [name, value] pairs */ 
+    /* formdata must be an array of [name, value] pairs */
     for (i=0; i<formData.length; i++) {
         item = formData[i];
         name = item[0];
@@ -395,7 +399,7 @@ AdminController.prototype.submitForm = function(elem) {
             } else {
                 window.alert('show errors')
             };
-        }, 
+        },
         error: function(jqXHR, status, error) {
             console.log(jqXHR.responseText);
         },
@@ -414,9 +418,25 @@ AdminController.prototype.submitForm = function(elem) {
 };
 
 AdminController.prototype.updatePreviewBackground = function() {
+    if (!this.imagePreviewCanvas) { return };
     var paddingColor = $('#padding_color').val() || '#ffffff';
     this.imagePreviewCanvas.style.backgroundColor = paddingColor;
     $('span#padding-color').html(paddingColor);
+};
+
+AdminController.prototype.showMultipleImageFilenames = function() {
+    var fnList = document.getElementById("filenames-list");
+
+    while (fnList.firstChild) {
+        fnList.removeChild(fnList.firstChild);
+    };
+
+    for (i=0; i<this.files.length; i++) {
+        var elem = document.createElement('li');
+        var txtNode = document.createTextNode(this.files[i].name);
+        elem.appendChild(txtNode);
+        fnList.appendChild(elem);
+    };
 };
 
 AdminController.prototype.showImageFilename = function(Filename) {
@@ -426,6 +446,10 @@ AdminController.prototype.showImageFilename = function(Filename) {
 AdminController.prototype.loadImagePreview = function(imgURL, Filename) {
     /* called for image upload and when edit image loads existing image*/
     var canv = this.imagePreviewCanvas;
+    if (!canv) {
+        return
+    };
+
     var ctx = canv.getContext('2d');
     var img = new Image();
 
@@ -452,7 +476,7 @@ AdminController.prototype.loadImagePreview = function(imgURL, Filename) {
             var padding = [canv.width, canv.height][ind]-val;
             return padding/2;
         });
-    
+
         ctx.clearRect(0, 0, canv.width, canv.height);
         ctx.drawImage(img, imgPos[0], imgPos[1], scaledXY[0], scaledXY[1]);
         App.updatePreviewBackground();
@@ -470,7 +494,7 @@ AdminController.prototype.saveSeriesOrder = function(event) {
         var id = seriesRows[i].dataset.seriesid;
         seriesData[id] = i.toString();
     };
-    
+
     $.ajax({
         url:'/admin/updateseriesorder',
         method: 'post',
@@ -543,7 +567,7 @@ AdminController.prototype.showImagesForSeries = function() {
 };
 
 AdminController.prototype.containerItemsInRows = function(container) {
-    /*  this changes the orientation of items in a flex box 
+    /*  this changes the orientation of items in a flex box
      *  cols or rows refers to flex-direction
     */
     $(container).css('flex-direction', 'row');
@@ -587,7 +611,7 @@ AdminController.prototype.orderSeriesImagesByDateAdded = function() {
         if (aDate < bDate) {
             return -1;
         };
-    
+
         if (aDate > bDate) {
             return 1;
         };
@@ -604,7 +628,7 @@ AdminController.prototype.orderSeriesImagesByDateAdded = function() {
 AdminController.prototype.orderSeriesImagesByDate = function() {
     /* date refers to image date, not date_added to db */
     var containers = document.getElementsByClassName('container');
-    var containerElems = []; 
+    var containerElems = [];
     var savedOrder = [];
 
     for (i=0; i<containers.length; i++) {
@@ -658,7 +682,7 @@ AdminController.prototype.orderSeriesImagesByTitle = function() {
     function prismTitleSort() {
         /* this has no error checking for malformed titles! */
         containerElems.forEach(function(i, ind, arr) {
-            var parsed = prismRe.exec(i.title); 
+            var parsed = prismRe.exec(i.title);
             var values = parsed.slice(1,7);
             var ymd = values.slice(0,3).reverse();
             var hms = values.slice(3,7);
@@ -729,7 +753,7 @@ AdminController.prototype.orderSeriesImagesByTitle = function() {
 };
 
 AdminController.prototype.saveImageOrder = function(event) {
-    /* sends json to server with series id and images obj 
+    /* sends json to server with series id and images obj
      * where image ids are keys and new order are values */
     var containers = document.getElementsByClassName('container');
     var data = {};
@@ -785,7 +809,7 @@ AdminController.prototype.showIconPreview = function() {
             window.alert('64px is the max image size');
             $img[0].src = '';
             $img.addClass('no-icon');
-        } else { 
+        } else {
             $img.removeClass('no-icon');
         };
     });

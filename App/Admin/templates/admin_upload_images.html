@@ -1,0 +1,65 @@
+{% extends 'admin_base.html' %}
+{% block container %}
+<h3>upload a lot of images to <span class="bold">{{ series.title }}</span></h3>
+<p><a href="{{ url_for('Admin.edit_series', _id=series.id) }}">back</a> to series</p>
+<p>These attributes will be used for all images uploaded.</p>
+
+<form class="admin-form"
+      id="image-form"
+      method="POST"
+      enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    {{ form.auth_token(value=get_auth_token()) }}
+    {{ form.series_id(value=series.id) }}
+
+    <div id="left-col">
+        <p id="file-upload">
+            <label for='images' class='button'>choose files</label>
+            {{ form.images(accept=".jpeg, .jpg, .png", multiple=true) }}
+        </p>
+
+        <br>
+        <p>Regex to &amp; from will be used with re.sub.</p>
+        <p>
+            <label for='title_re'>title regex from</label>
+            {{ form.title_re_from(value=title_re_from) }}
+
+            <label for='title_re'>title replacement match</label>
+            {{ form.title_re_to(value=title_re_to) }}
+
+            <label for='date_re'>date replacement match</label>
+            {{ form.date_re(value=date_re) }}
+
+        <p id="padding-color-label-container">
+            {{ form.padding_color.label }}<br>
+            <span id="padding-color"></span>
+            <p id="padding-color-selector-container">
+                {{ form.padding_color }}
+            </p>
+        </p>
+
+        <p>{{ form.medium.label}} {{form.medium }}</p>
+
+        <p>
+        <label>dimensions in cm w x h</label><br>
+        {{ form.dimensions[0](size=4, placeholder='w') }} x {{ form.dimensions[1](size=4, placeholder='h') }}
+        </p>
+
+        <p>
+            <button type="reset" name="reset" value="reset" formmethod="get">reset</button>
+            <button type="submit" name="save" value="save" formmethod="post">save</button>
+        </p>
+
+    </div>
+
+    <div id="right-col">
+        <p id='filename-container'>
+            files:
+            <ul id="filenames-list">
+            </ul>
+        </p>
+    </div>
+</form>
+
+
+{% endblock %}
