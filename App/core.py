@@ -5,9 +5,9 @@ from colorama import Fore, Back, Style
 from colorama import init as init_colorama
 init_colorama(autoreset=True)
 
-from flask import (Blueprint, 
-                   current_app, 
-                   request_finished, 
+from flask import (Blueprint,
+                   current_app,
+                   request_finished,
                    request_started,
                    _request_ctx_stack,
                    session)
@@ -15,21 +15,22 @@ from flask import (Blueprint,
 from flask_sqlalchemy import SQLAlchemy as SQLAlchemy
 from flask_sqlalchemy import declarative_base
 
+
 db = SQLAlchemy()
 Base = declarative_base()
 
 from App.lib.template_globals import (
-    get_all_series, 
+    get_all_series,
     get_auth_token)
 
 
 def _bp_factory(mod_name, url_prefix, config_args=None, app=None, **kwargs):
-    """ blueprint factory """    
+    """ blueprint factory """
 
     import_name = 'App.{}'.format(mod_name)
 
-    options = {'template_folder':'App/{}/templates'.format(mod_name), 
-               'static_folder':'App/{}/static'.format(mod_name), 
+    options = {'template_folder':'App/{}/templates'.format(mod_name),
+               'static_folder':'App/{}/static'.format(mod_name),
                'static_url_path':'/{}/static'.format(mod_name.lower()),
                'url_prefix':url_prefix}
 
@@ -38,7 +39,7 @@ def _bp_factory(mod_name, url_prefix, config_args=None, app=None, **kwargs):
     if kwargs:
         options.update(kwargs)
 
-    bp = Blueprint(mod_name, import_name, **options) 
+    bp = Blueprint(mod_name, import_name, **options)
     return bp
 
 def load_blueprints(app):
@@ -55,22 +56,22 @@ def load_blueprints(app):
 admin_bp = _bp_factory('Admin', '/admin')
 public_bp = _bp_factory('Public', None)
 ## don't use values from app.config
-thumbnails_bp = _bp_factory('Thumbnails', '/images', static_folder='images/thumbnails') 
+thumbnails_bp = _bp_factory('Thumbnails', '/images', static_folder='images/thumbnails')
 images_bp = _bp_factory('Images', '', static_folder='images')
 
 Blueprints = [admin_bp, public_bp, images_bp, thumbnails_bp]
 
 
 def no_cookie(app, **kwargs):
-    """ Clear cookie before sending response 
-        Except for Admin blueprint 
+    """ Clear cookie before sending response
+        Except for Admin blueprint
         or when a csrf token is in the session
     """
     if app.testing:
         return None
 
     bp = _request_ctx_stack.top.request.blueprint
-    # don't unset cookie if csrf_token in session 
+    # don't unset cookie if csrf_token in session
     has_csrf = session.get('csrf_token')
 
     if bp != 'Admin' or has_csrf is None:
@@ -88,7 +89,7 @@ def setup_logger(app):
         log_fmt_str = app.config['LOG_FORMAT']
     else:
         log_fmt_str = '[{levelname}] {asctime} [{name}] {msg}'
-    
+
     log_fmt = logging.Formatter(fmt=log_fmt_str, style='{')
     app.logger.handlers[0].setFormatter(log_fmt)
 
@@ -98,9 +99,9 @@ def setup_logger(app):
     if not log_path.exists():
         log_path.touch()
 
-    fhandler = logging.handlers.RotatingFileHandler(str(log_path), 
-                                                    maxBytes=48600, 
-                                                    backupCount=3, 
+    fhandler = logging.handlers.RotatingFileHandler(str(log_path),
+                                                    maxBytes=48600,
+                                                    backupCount=3,
                                                     delay=True)
     fhandler.setLevel(10)
     fhandler.setFormatter(log_fmt)

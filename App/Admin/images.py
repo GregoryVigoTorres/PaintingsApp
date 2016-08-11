@@ -23,6 +23,10 @@ from .utils import (save_image,
 from App.lib.utils import flash_form_errors
 from App.core import (db, admin_bp)
 from App.models.public import Series, Image, Medium
+from .bulk_upload import BulkUpload
+
+
+admin_bp.add_url_rule('/uploadimages/<series_id>', view_func=BulkUpload.as_view('bulk_upload'))
 
 
 @admin_bp.route('/newimage/<series_id>', methods=['GET', 'POST'])
@@ -74,12 +78,18 @@ def new_image(series_id):
                            **tmpl_args)
 
 
-@admin_bp.route('/uploadimages/<series_id>', methods=['GET', 'POST'])
-@login_required
+# @admin_bp.route('/uploadimages/<series_id>', methods=['GET', 'POST'])
+# @login_required
 def bulk_upload(series_id):
     """
     Upload a lot of images to a series at once
     according to criteria applied to all the files
+
+    ToDo:
+        break this out into separate functions
+        OR a class based view
+        make it possible to use user entered date instead of
+        always using DEFAULT_DATE_RE
     """
     series = Series.query.get(series_id)
 
