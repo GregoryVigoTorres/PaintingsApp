@@ -2,7 +2,7 @@ import uuid
 import datetime
 
 from sqlalchemy_utils import (UUIDType, ColorType)
-from sqlalchemy.orm import relationship 
+from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import ARRAY
 from sqlalchemy.schema import Sequence
 
@@ -15,8 +15,8 @@ class Series(db.Model):
     id = db.Column('id', UUIDType(binary=False), primary_key=True, default=str(uuid.uuid4()))
     title = db.Column('title', db.String(length=255), nullable=False)
     date_created = db.Column('date_created', db.DateTime(), default=datetime.datetime.now)
-    order = db.Column('order', db.Integer(), nullable=False) 
-    
+    order = db.Column('order', db.Integer(), nullable=False)
+
     images = db.relationship('Image',
             backref='series',
             cascade='all, delete, delete-orphan',
@@ -29,32 +29,31 @@ class Series(db.Model):
 
 class Medium(db.Model):
     __tablename__ = 'medium'
-    
+
     id = db.Column('id', UUIDType(binary=False), primary_key=True, default=str(uuid.uuid4()))
     name = db.Column('name', db.String(length=255), nullable=False, unique=True)
 
     images = db.relationship('Image',
             backref='medium',
-            cascade='save-update',
-            lazy='joined')
-            
+            cascade='save-update')
+
     def __repr__(self):
-        return self.name
+        return '<{}>'.format(self.name)
 
 
 class Image(db.Model):
     __tablename__ = 'images'
-    
+
     id = db.Column('id', UUIDType(binary=False), primary_key=True, default=str(uuid.uuid4()))
     title = db.Column('title', db.String(length=255), nullable=False)
     date_created = db.Column('date_created', db.DateTime(), default=datetime.datetime.now)
     medium_id = db.Column('medium_id', UUIDType(binary=False), db.ForeignKey('medium.id'), nullable=True)
     img_ord_seq = Sequence('img_ord_seq')
-    order = db.Column('order', 
-            db.Integer, img_ord_seq, 
-            server_default=img_ord_seq.next_value(), 
-            nullable=True) 
-    
+    order = db.Column('order',
+            db.Integer, img_ord_seq,
+            server_default=img_ord_seq.next_value(),
+            nullable=True)
+
     date = db.Column('date', db.Integer()) # year as XXXX
     filename = db.Column('filename', db.String(), nullable=False)
     dimensions = db.Column('dimensions', ARRAY(db.Integer, dimensions=1))
