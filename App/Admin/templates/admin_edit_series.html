@@ -10,7 +10,7 @@
 
 {% block add_image_button %}
     <p>add an <a href="{{ url_for('Admin.new_image', series_id=form.id.data) }}">image</a></p>
-    <p><a href="{{ url_for('Admin.bulk_upload', series_id=form.id.data) }}">upload</a> a lot of images from a directory</p>
+    <p><a href="{{ url_for('Admin.bulk_upload', series_id=form.id.data) }}">upload</a> a lot of images at once</p>
 {% endblock %}
 
 {% block images %}
