@@ -142,9 +142,26 @@ AdminController.prototype.addEventHandlers = function() {
 
     // show a message when bulk images form is submitted
     $('#bulk-image-form').on('submit', function(eve) {
-        App.showLongUploadMessage.call(App, eve);
+        App.submitBulkUploadForm.call(App, eve);
     });
 
+    // date as string and date as regex/replace
+    // (for bulk upload)
+    // are mutually exclusive
+    // inputs get REALLY disabled on form submission
+    var dateInputs = document.getElementsByClassName('mutually-exclusive-inputs');
+
+    for (i=0; i<dateInputs.length; i++) {
+        dateInputs[i].addEventListener('focus', function(eve) {
+            // disable the OTHER ones, make sure this one is enabled
+            for (j=0; j<dateInputs.length; j++) {
+                dateInputs[j].classList.add('disabled');
+            };
+            eve.target.classList.remove('disabled');
+        });
+    };
+
+    // image upload
     $('#padding_color').on('change', function(event) {
         App.updatePreviewBackground();
     });
@@ -285,6 +302,8 @@ AdminController.prototype.populateForm =function(form, formData) {
         elem.value = value;
     };
 };
+
+// dialog
 
 AdminController.prototype.closeDialog = function() {
         $('#message-container').hide();
@@ -428,13 +447,31 @@ AdminController.prototype.updatePreviewBackground = function() {
     $('span#padding-color').html(paddingColor);
 };
 
-AdminController.prototype.showLongUploadMessage = function(eve) {
+// bulk upload form submission
+AdminController.prototype.submitBulkUploadForm = function(eve) {
     eve.preventDefault();
+    this.showLongUploadMessage();
+    var dateInputs = document.getElementsByClassName('mutually-exclusive-inputs');
+    this.disableMutuallyExclusiveInputs(dateInputs);
+    eve.target.submit();
+};
+
+AdminController.prototype.disableMutuallyExclusiveInputs = function(inputs) {
+    for (i=0; i<inputs.length; i++) {
+        if (inputs[i].classList.contains('disabled')) {
+            console.log(inputs[i]);
+            inputs[i].value = '';
+        };
+    };
+};
+
+AdminController.prototype.showLongUploadMessage = function() {
+
+
     var fileUpload = document.getElementById('images');
     var fileCount = fileUpload.files.length;
     var message = `Uploading ${fileCount} files. This may take a while`
     this.modalDialog({'message': message}, 'OK');
-    eve.target.submit();
 };
 
 AdminController.prototype.showMultipleImageFilenames = function() {
@@ -451,6 +488,8 @@ AdminController.prototype.showMultipleImageFilenames = function() {
         fnList.appendChild(elem);
     };
 };
+
+// image upload
 
 AdminController.prototype.showImageFilename = function(Filename) {
     $('#filename').html(Filename);
@@ -496,6 +535,8 @@ AdminController.prototype.loadImagePreview = function(imgURL, Filename) {
         App.showImageFilename(Filename);
     };
 };
+
+// series
 
 AdminController.prototype.saveSeriesOrder = function(event) {
     event.preventDefault();

@@ -2,7 +2,6 @@
 {% block container %}
 <h3>upload a lot of images to <span class="bold">{{ series.title }}</span></h3>
 <p><a href="{{ url_for('Admin.edit_series', _id=series.id) }}">back</a> to series</p>
-<p>These attributes will be used for all images uploaded.</p>
 
 <form class="admin-form"
       id="bulk-image-form"
@@ -13,22 +12,34 @@
     {{ form.series_id(value=series.id) }}
 
     <div id="left-col">
+        <p>Attributes applied to all images</p>
+
         <p id="file-upload">
             <label for='images' class='button'>choose files</label>
             {{ form.images(accept=".jpeg, .jpg, .png", multiple=true) }}
         </p>
 
         <br>
-        <p>Regex to &amp; from will be used with re.sub.</p>
-        <p>
-            <label for='title_re'>title regex from</label>
-            {{ form.title_re_from(value=title_re_from) }}
+        <p>Regex to &amp; from used with re.sub</p>
 
-            <label for='title_re'>title replacement match</label>
-            {{ form.title_re_to(value=title_re_to) }}
+        <div>
+            <div class='form-input-container'>
+                <label for='title_re'>title regex from</label>
+                {{ form.title_re_from(value=title_re_from) }}
 
-            <label for='date_re'>date replacement match</label>
-            {{ form.date_re(value=date_re) }}
+                <label for='title_re'>title replacement string</label>
+                {{ form.title_re_to(value=title_re_to) }}
+            </div>
+
+            <div class='form-input-container'>
+                <p>(matches title re)</p>
+                <label for='date_re'>date replacement string</label>
+                {{ form.date_re(value=date_re, class="mutually-exclusive-inputs") }}
+
+                <label for='date_str'>date string</label>
+                {{ form.date_str(class='disabled mutually-exclusive-inputs') }}
+            </div>
+        </div>
 
         <p id="padding-color-label-container">
             {{ form.padding_color.label }}<br>

@@ -205,7 +205,7 @@ form {
     }
 
     #left-col {
-        margin-right:3em;
+        margin-right: 5rem;
     }
 
     #dimensions-0, #dimensions-1 {
@@ -358,8 +358,24 @@ form {
     }
 
     #filename-container {
-        width: 15em;
+        width: 14em;
         word-wrap: break-word;
+    }
+
+    .form-input-container {
+        width: 14rem;
+        border: 1px solid black;
+        padding-top: 1rem;
+        margin-bottom: 1rem;
+
+        input {
+            width: 100%;
+            margin-bottom: .5rem;
+        }
+
+        p {
+            margin: .3rem 0 .3rem 0;
+        }
     }
 }
 
@@ -394,7 +410,7 @@ input#icon {
     display: none;
 }
 
-p#file-upload {
+#file-upload {
     img {
         max-height: 64px;
         max-width: 64px;
