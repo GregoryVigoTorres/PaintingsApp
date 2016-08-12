@@ -1,6 +1,7 @@
-
 import re
 import string
+
+import colour
 
 from wtforms.validators import (ValidationError, UUID)
 
@@ -12,10 +13,10 @@ def strong_password(password=None, field=None):
         upper and lower case letters
         digits
         punctuation
-    
+
     this should work with forms as well as Manager input
     """
-  
+
     if not password:
         password = field.data
 
@@ -39,9 +40,20 @@ def strong_password(password=None, field=None):
         and at least one number and special character""")
 
 
+def no_html(form, field):
+    """
+        field data cannot contain any html tags
+        escaping is handled by jinja
+    """
+    tag_re = re.compile('(<[a-zA-Z ]+>*)(</)*')
+    has_tags = re.search(tag_re, field.data)
+    if has_tags:
+        raise ValidationError(message='html tags are not allowed')
+
+
 def valid_email(_email):
     """ just determines whether an email address looks valid """
-    
+
     if '@' not in _email:
         raise ValidationError('>>the email must contain @')
 
@@ -62,10 +74,44 @@ def valid_email(_email):
         raise ValidationError('>>the domain is not valid')
 
 
-class UUIDType(UUID):
+def valid_color(form, field):
     """
-    this is a validator
+    raise ValidationError or return None
     """
+    if isinstance(field.data, colour.Color) is False:
+        raise ValidationError('Invalid color')
+
+    as_hex = field.data.get_hex_l()
+    valid_hex = re.match('#[a-zA-Z0-9]{6}', as_hex)
+
+    if valid_hex is None:
+        raise ValidationError('{} is not a valid color value'.format(as_hex))
+
+
+def exor(*fields):
+    """
+    Exactly one element in current field + fields is allowed.
+    This should only be declared on one of the fields.
+    """
+    message = 'exactly one of {} is required'
+
+    def _exor(form, field):
+        field_names = [field.label.text]
+        data = [field.data]
+        for i in fields:
+            fld = getattr(form, i)
+            field_names.append(fld.label.text)
+            data.append(fld.data)
+
+        one = [i for i in data if i]
+        if len(one) != 1:
+            field_str = ', '.join(field_names)
+            raise ValidationError(message.format(field_str))
+
+    return _exor
+
+
+class valid_uuid(UUID):
     def __call__(self, form, field):
         message = self.message
         field.data = str(field.data)
@@ -73,3 +119,4 @@ class UUIDType(UUID):
             message = field.gettext('Invalid UUID.')
 
         super(UUID, self).__call__(form, field, message)
+

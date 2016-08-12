@@ -1,5 +1,3 @@
-
-
 import uuid
 import datetime
 import re
@@ -9,9 +7,9 @@ from flask import (current_app, flash)
 
 from flask_wtf import Form
 from flask_wtf.file import (FileField, FileAllowed)
-from wtforms import (TextAreaField, 
-                    HiddenField, 
-                    StringField, 
+from wtforms import (TextAreaField,
+                    HiddenField,
+                    StringField,
                     DateTimeField,
                     IntegerField,
                     FieldList,
@@ -28,7 +26,7 @@ from wtforms.validators import (DataRequired,
                                 Optional,
                                 )
 
-from App.lib.validators import UUIDType
+from App.lib.validators import valid_uuid
 
 
 def no_html(form, field):
@@ -43,9 +41,9 @@ def no_html(form, field):
 
 class TextLinkFormBase(Form):
     auth_token = HiddenField('auth_token')
-    id = HiddenField('image_id', default=uuid.uuid4(), validators=[UUIDType(), DataRequired(message='required')])
+    id = HiddenField('image_id', default=uuid.uuid4(), validators=[valid_uuid(), DataRequired(message='required')])
     date_created = DateTimeField(default=datetime.datetime.now())
-    date = IntegerField('date', validators=[Optional(), NumberRange(min=1975, max=2025, message='must be year like 20YY')]) 
+    date = IntegerField('date', validators=[Optional(), NumberRange(min=1975, max=2025, message='must be year like 20YY')])
 
 class TextForm(TextLinkFormBase):
     title = StringField(label='*title', validators=[DataRequired(message='required'), no_html, Length(max=255)])
