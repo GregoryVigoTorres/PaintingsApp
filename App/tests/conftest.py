@@ -1,5 +1,10 @@
-import pytest 
-from App.App import create_app 
+import uuid
+
+import pytest
+
+from App.App import create_app
+from App.core import db
+from App.models.public import (Series, Image)
 
 
 def pytest_unconfigure(config):
@@ -16,14 +21,14 @@ def pytest_unconfigure(config):
 
     img_root = Path(config.STATIC_IMAGE_ROOT)
     thumb_root = Path(config.STATIC_THUMBNAIL_ROOT)
-    
+
     db_uri = test_config.SQLALCHEMY_DATABASE_URI
     test_engine = create_engine(db_uri)
     Session = sessionmaker(bind=test_engine)
     session = Session()
-    
+
     images = session.query(Image).all()
-    
+
     for i in images:
         img_path = Path(img_root, i.filename)
         thumb_path = Path(thumb_root, i.filename)
@@ -53,6 +58,18 @@ def pytest_collection_modifyitems(session, config, items):
     # ... tests probably shouldn't rely on data from previous tests...
     items = sorted(items, key=lambda i: 'series' not in i.name)
     session.items = items
+
+
+@pytest.fixture(scope='session')
+def test_series():
+    test_series = Series.query.filter_by(title='test_series2').first()
+    if not test_series:
+        test_series = Series(title='test_series2',
+                             order=1,
+                             id=uuid.uuid4())
+        db.session.add(test_series)
+        db.session.commit()
+    return test_series
 
 
 @pytest.fixture(scope='session')
