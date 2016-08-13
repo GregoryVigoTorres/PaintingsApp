@@ -1,6 +1,6 @@
 import uuid
 from pathlib import Path
-from flask import (current_app, url_for) 
+from flask import (current_app, url_for)
 from lxml import (html, etree)
 import pytest
 from App.core import db
@@ -22,6 +22,34 @@ class TestImage():
         id_elem = data.xpath('//input[@id="id"]')
         img_id = id_elem[0].value
         assert img_id
+
+
+    def test_bulk_upload(self, client, test_series):
+        """
+        images are successfully uploaded and saved to file and database
+        doesn't test submitted regexes
+        """
+        url = url_for('Admin.bulk_upload', series_id=test_series.id)
+        image_root = Path('App/tests/test_data')
+        image_files = image_root.glob('*.jpeg')
+        images = [(str(i.resolve()), str(i.name)) for i in image_files]
+
+        post_data = {'series_id': str(test_series.id),
+                     'dimensions-0': '21',
+                     'dimensions-1': '27',
+                     'date_str': '2016',
+                     'medium': 'Acrylic on paper',
+                     'padding_color': '#ffffff',
+                     'save': 'save',
+                     'images': images}
+
+        resp = client.post(url, data=post_data, follow_redirects=True)
+        data = html.fromstring(resp.data)
+        messages = data.xpath("//ul[@class='messages']/li")
+        message_text = ''.join([etree.tostring(i, encoding=str) for i in messages])
+
+        assert test_series.title in message_text
+        assert 'added' in message_text
 
 
     def test_post_image(self, client):
@@ -95,7 +123,7 @@ class TestImage():
         messages = data.xpath("//ul[@class='messages']/li")
         message_text = ''.join([etree.tostring(i, encoding=str) for i in messages])
         assert "Untitled 2" in message_text
-        assert 'has been changed' in message_text 
+        assert 'has been changed' in message_text
 
 
     @pytest.mark.trylast

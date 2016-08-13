@@ -1,5 +1,4 @@
 __doc__ = """This just calls py.test with a couple default arguments.
-    And it serves as a reminder that tests need to be called from this directory.
 """
 import pytest
 import sys
