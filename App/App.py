@@ -10,15 +10,12 @@ def create_app(config=None):
             url_for,
             render_template)
 
-    # from flask.ext.sqlalchemy import SQLAlchemy
     from flask_sqlalchemy import SQLAlchemy
-    # from flask.ext.security import (Security, SQLAlchemyUserDatastore)
     from flask_security import (Security, SQLAlchemyUserDatastore)
 
     from flask_wtf.csrf import CsrfProtect
 
-    # from flask.ext.assets import (Environment, Bundle)
-    from flask_assets  import (Environment, Bundle)
+    from flask_assets import (Environment, Bundle)
 
     from .app_setup import (init_db, setup_dirs)
     from .core import (db, load_blueprints, setup_logger)
@@ -77,4 +74,3 @@ def create_app(config=None):
     app.add_template_filter(get_images)
 
     return app
-
